@@ -1,0 +1,40 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
+
+class Meme extends Model
+{
+    use HasFactory;
+    use SoftDeletes;
+
+    protected $fillable = [
+        "title",
+        "content",
+        "description",
+        "slug",
+        "image",
+        "status",
+        "meme_type",
+        "user_id",
+    ];
+
+
+    public function tags()
+    {
+        return $this->belongsToMany(\App\Models\Tag::class, 'meme_tag', 'meme_id', 'tag_id');
+    }
+
+    public function categories()
+    {
+        return $this->belongsToMany(\App\Models\Category::class, 'meme_category', 'meme_id', 'category_id');
+    }
+
+    public function meme_meta()
+    {
+        return $this->hasMany(\App\Models\Meme_meta::class);
+    }
+}
