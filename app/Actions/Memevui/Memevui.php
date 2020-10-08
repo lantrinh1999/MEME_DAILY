@@ -49,10 +49,13 @@ class Memevui
                 $tags = [];
                 $image = $value['image'];
                 $new_image_url = Imgur::uploadImage2($value['image']);
+                $_key = '_pik';
                 if (empty($new_image_url)) {
                     $new_image_url = Imgur::uploadImage($value['image']);
+                    $_key = '_imgur';
                     if (empty($new_image_url)) {
                         $new_image_url = $value['image'];
+                        $key = '_memehay';
                     }
                 }
                 if (array_key_exists('tags', $value)) {
@@ -73,7 +76,7 @@ class Memevui
                     if (!$check_meta_exists) {
                         $meme->meme_meta()->createMany([
                             [
-                                'key' => '_imgur',
+                                'key' => $_key,
                                 'value' => $new_image_url,
                             ]
                         ]);
