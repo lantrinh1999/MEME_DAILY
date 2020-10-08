@@ -36,6 +36,6 @@ Route::get('/memes/{page?}', function ($page = 1) {
         // $item['tags'] = array_combine(array_column($item['tags'], 'slug'), array_column($item['tags'], 'name'));
         return $item;
     });
-    dd($memes->all());
+    // dd($memes->all());
     return response()->json($memes);
 })->where('page', '[0-9]+');
