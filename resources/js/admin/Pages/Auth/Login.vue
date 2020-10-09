@@ -5,51 +5,64 @@
                     <div class="card-body">
 
                         <!-- Logo -->
-                        <div class="auth-brand text-center text-lg-left">
-                            <div class="auth-logo">
-                                <a href="index.html" class="logo logo-dark text-center">
-                                    <span class="logo-lg">
-                                        <!-- <img src="../assets/images/logo-dark.png" alt="" height="22"> -->
-                                    </span>
-                                </a>
+<!--                        <div class="auth-brand text-center text-lg-left">-->
+<!--                            <div class="auth-logo">-->
+<!--                                <a href="index.html" class="logo logo-dark text-center">-->
+<!--                                    <span class="logo-lg">-->
+<!--                                         <img src="../assets/images/logo-dark.png" alt="" height="22">-->
+<!--                                    </span>-->
+<!--                                </a>-->
 
-                                <a href="index.html" class="logo logo-light text-center">
-                                    <span class="logo-lg">
-                                        <!-- <img src="../assets/images/logo-light.png" alt="" height="22"> -->
-                                    </span>
-                                </a>
-                            </div>
-                        </div>
+<!--                                <a href="index.html" class="logo logo-light text-center">-->
+<!--                                    <span class="logo-lg">-->
+<!--                                         <img src="../assets/images/logo-light.png" alt="" height="22"> -->
+<!--                                    </span>-->
+<!--                                </a>-->
+<!--                            </div>-->
+<!--                        </div>-->
 
                         <!-- title-->
                         <h4 class="mt-0">Sign In</h4>
                         <p class="text-muted mb-4">Enter your email address and password to access admin panel.</p>
 
                         <!-- form -->
-                        <form action="#">
-                            <div class="form-group">
-                                <label for="emailaddress">Email address</label>
-                                <input class="form-control" type="email" id="emailaddress" required="" placeholder="Enter your email">
-                            </div>
-                            <div class="form-group">
-                                <a href="auth-recoverpw-2.html" class="text-muted float-right"><small>Forgot your password?</small></a>
-                                <label for="password">Password</label>
-                                <div class="input-group input-group-merge">
-                                    <input type="password" id="password" class="form-control" placeholder="Enter your password">
-                                    <div class="input-group-append" data-password="false">
-                                        <div class="input-group-text">
-                                            <span class="password-eye"></span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                        <form @submit.prevent="submit">
+                            <div v-if="typeof $page.errors.username != 'undefined'"
+                        class="alert bg-danger text-white alert-dismissible">
+                        <button type="button" class="close" data-dismiss="alert">
+                            <span>×</span>
+                        </button>
+                        <span class="font-weight-semibold">Login failed:</span> "Invalid
+                        username or password.”
+                    </div>
 
-                            <div class="form-group mb-3">
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="checkbox-signin">
-                                    <label class="custom-control-label" for="checkbox-signin">Remember me</label>
-                                </div>
-                            </div>
+                    <div class="form-group form-group-feedback form-group-feedback-left">
+                        <input type="hidden" value />
+                        <label for="username">Username or Email</label>
+                        <input autofocus autocapitalize="off" autocomplete="false" id="username" type="text" v-model="form.username"
+                            name="username" class="form-control" placeholder="Username or Email" />
+                        <div class="form-control-feedback">
+                            <i class="icon-user text-muted"></i>
+                        </div>
+                    </div>
+
+                    <div class="form-group form-group-feedback form-group-feedback-left">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" v-model="form.password" name="password" class="form-control"
+                            placeholder="Password" />
+                        <div class="form-control-feedback">
+                            <i class="icon-lock2 text-muted"></i>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" v-model="form.remember" name="remember"
+                                id="custom_checkbox_stacked_unchecked" value="true" placeholder="Password"
+                                class="custom-control-input remember" />
+                            <label class="custom-control-label" for="custom_checkbox_stacked_unchecked">Remember
+                                me</label>
+                        </div>
+                    </div>
                             <div class="form-group mb-0 text-center">
                                 <button class="btn btn-primary btn-block" type="submit">Log In </button>
                             </div>
@@ -88,7 +101,7 @@
 <script>
 import AuthLayout from "../../Shared/AuthLayout";
 export default {
-  layout: AuthLayout,
+    layout: AuthLayout,
   components: {
   },
   data() {
@@ -107,7 +120,10 @@ export default {
   },
   mounted() {},
   methods: {
-    submit() {},
+    submit() {
+      this.loading = true;
+      this.$inertia.post(this.route("login.attempt"), this.form);
+    },
   },
 };
 </script>

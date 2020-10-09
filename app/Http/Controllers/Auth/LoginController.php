@@ -15,8 +15,10 @@ class LoginController extends Controller
 {
     use AuthenticatesUsers;
 
+//    protected $redirectTo = 'admin';
     public function __construct()
     {
+        $this->redirectTo = config('meme.admin_url', 'admin_');
         $this->middleware('guest')->except('logout');
     }
 
@@ -32,14 +34,15 @@ class LoginController extends Controller
 
     public function showAdminLoginForm()
     {
-        $admin_login = route('admin.login');
-        return Inertia::render('Auth/Login', compact('admin_login'));
+//        $admin_login = route('admin.login');
+        return Inertia::render('Auth/Login');
     }
 
     public function login(Request $request)
     {
         $this->validateLogin($request);
         $input = $request->all();
+//        dd($input);
         if (
             method_exists($this, 'hasTooManyLoginAttempts') &&
             $this->hasTooManyLoginAttempts($request)
@@ -53,8 +56,8 @@ class LoginController extends Controller
         // dd($data);
         if ($this->guard()->attempt($data, $remember)) {
             Auth::logoutOtherDevices($input['password']);
-            return redirect()->route('login');
-            // return $this->sendLoginResponse($request);
+//            return redirect()->route('admin');
+             return $this->sendLoginResponse($request);
         }
 
         // If the login attempt was unsuccessful we will increment the number of attempts

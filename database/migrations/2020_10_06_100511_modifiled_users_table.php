@@ -18,12 +18,14 @@ class ModifiledUsersTable extends Migration
             $table->id();
             $table->string('first_name', 50)->nullable();
             $table->string('last_name', 50)->nullable();
+            $table->string('name')->nullable();
             $table->string('username', 32)->unique();
             $table->string('email', 120)->unique();
             $table->string('password')->nullable();
-            $table->integer('avatar_id')->nullable()->default(NULL)->index();
+            $table->text('profile_photo_path')->nullable();
             $table->boolean('is_active')->nullable()->default(TRUE)->comment('{TRUE,FALSE}');
             $table->boolean('is_super')->nullable()->default(FALSE)->comment('{TRUE,FALSE}');
+            $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();

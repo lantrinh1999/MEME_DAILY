@@ -6,6 +6,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
+/**
+ * @method static select(string $string)
+ */
 class Meme extends Model
 {
     use HasFactory;
@@ -21,6 +24,8 @@ class Meme extends Model
         "meme_type",
         "user_id",
     ];
+
+
 
 
     public function tags()

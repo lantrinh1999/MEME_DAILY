@@ -11,12 +11,12 @@ use App\Models\User;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 
-class Memevui
+class Meme_
 {
 
-    protected $data;
-    protected $currentPage = 0;
-    protected $nextPage;
+    protected array $data;
+    protected int $currentPage = 0;
+    protected int $nextPage;
     protected const KEY_PAGE_CACHE = 'memehay_page';
 
     function __construct()
@@ -29,7 +29,11 @@ class Memevui
 
         $this->nextPage = $this->currentPage + 1;
         $this->getData();
-        $this->insertData();
+        try {
+            $this->insertData();
+        } catch (\Exception $e) {
+            throw \Exception($e->getMessage());
+        }
         $this->setCurrentPage($this->nextPage);
     }
 
@@ -47,7 +51,7 @@ class Memevui
             // dd($data);
             foreach ($data as $key => $value) {
                 $tags = [];
-                $image = $value['image'];
+//                $image = $value['image'];
                 $new_image_url = Imgur::uploadImage2($value['image']);
                 $_key = '_pik';
                 if (empty($new_image_url)) {
@@ -92,7 +96,7 @@ class Memevui
                     DB::commit();
                 } catch (\Exception $e) {
                     DB::rollBack();
-                    throw new \Exception($e->getMessage());
+                    throw \Exception($e->getMessage());
                 }
             }
         }

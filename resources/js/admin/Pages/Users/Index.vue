@@ -1,826 +1,317 @@
 <template>
-  <div class="wrapper">
-    <!-- Navbar -->
-    <nav class="main-header navbar navbar-expand navbar-white navbar-light">
-      <!-- Left navbar links -->
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link" data-widget="pushmenu" href="#" role="button"
-            ><i class="fas fa-bars"></i
-          ></a>
-        </li>
-        <li class="nav-item d-none d-sm-inline-block">
-          <a href="../../index3.html" class="nav-link">Home</a>
-        </li>
-        <li class="nav-item d-none d-sm-inline-block">
-          <a href="#" class="nav-link">Contact</a>
-        </li>
-      </ul>
-
-      <!-- SEARCH FORM -->
-      <form class="form-inline ml-3">
-        <div class="input-group input-group-sm">
-          <input
-            class="form-control form-control-navbar"
-            type="search"
-            placeholder="Search"
-            aria-label="Search"
-          />
-          <div class="input-group-append">
-            <button class="btn btn-navbar" type="submit">
-              <i class="fas fa-search"></i>
-            </button>
-          </div>
-        </div>
-      </form>
-
-      <!-- Right navbar links -->
-      <ul class="navbar-nav ml-auto">
-        <!-- Messages Dropdown Menu -->
-        <li class="nav-item dropdown">
-          <a class="nav-link" data-toggle="dropdown" href="#">
-            <i class="far fa-comments"></i>
-            <span class="badge badge-danger navbar-badge">3</span>
-          </a>
-          <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-            <a href="#" class="dropdown-item">
-              <!-- Message Start -->
-              <div class="media">
-                <!-- <img
-                  src="../../dist/img/user1-128x128.jpg"
-                  alt="User Avatar"
-                  class="img-size-50 mr-3 img-circle"
-                /> -->
-                <div class="media-body">
-                  <h3 class="dropdown-item-title">
-                    Brad Diesel
-                    <span class="float-right text-sm text-danger"
-                      ><i class="fas fa-star"></i
-                    ></span>
-                  </h3>
-                  <p class="text-sm">Call me whenever you can...</p>
-                  <p class="text-sm text-muted">
-                    <i class="far fa-clock mr-1"></i> 4 Hours Ago
-                  </p>
-                </div>
-              </div>
-              <!-- Message End -->
-            </a>
-            <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item">
-              <!-- Message Start -->
-              <div class="media">
-                <!-- <img
-                  src="../../dist/img/user8-128x128.jpg"
-                  alt="User Avatar"
-                  class="img-size-50 img-circle mr-3"
-                /> -->
-                <div class="media-body">
-                  <h3 class="dropdown-item-title">
-                    John Pierce
-                    <span class="float-right text-sm text-muted"
-                      ><i class="fas fa-star"></i
-                    ></span>
-                  </h3>
-                  <p class="text-sm">I got your message bro</p>
-                  <p class="text-sm text-muted">
-                    <i class="far fa-clock mr-1"></i> 4 Hours Ago
-                  </p>
-                </div>
-              </div>
-              <!-- Message End -->
-            </a>
-            <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item">
-              <!-- Message Start -->
-              <div class="media">
-                <!-- <img
-                  src="../../dist/img/user3-128x128.jpg"
-                  alt="User Avatar"
-                  class="img-size-50 img-circle mr-3"
-                /> -->
-                <div class="media-body">
-                  <h3 class="dropdown-item-title">
-                    Nora Silvester
-                    <span class="float-right text-sm text-warning"
-                      ><i class="fas fa-star"></i
-                    ></span>
-                  </h3>
-                  <p class="text-sm">The subject goes here</p>
-                  <p class="text-sm text-muted">
-                    <i class="far fa-clock mr-1"></i> 4 Hours Ago
-                  </p>
-                </div>
-              </div>
-              <!-- Message End -->
-            </a>
-            <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item dropdown-footer"
-              >See All Messages</a
-            >
-          </div>
-        </li>
-        <!-- Notifications Dropdown Menu -->
-        <li class="nav-item dropdown">
-          <a class="nav-link" data-toggle="dropdown" href="#">
-            <i class="far fa-bell"></i>
-            <span class="badge badge-warning navbar-badge">15</span>
-          </a>
-          <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-            <span class="dropdown-item dropdown-header">15 Notifications</span>
-            <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item">
-              <i class="fas fa-envelope mr-2"></i> 4 new messages
-              <span class="float-right text-muted text-sm">3 mins</span>
-            </a>
-            <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item">
-              <i class="fas fa-users mr-2"></i> 8 friend requests
-              <span class="float-right text-muted text-sm">12 hours</span>
-            </a>
-            <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item">
-              <i class="fas fa-file mr-2"></i> 3 new reports
-              <span class="float-right text-muted text-sm">2 days</span>
-            </a>
-            <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item dropdown-footer"
-              >See All Notifications</a
-            >
-          </div>
-        </li>
-        <li class="nav-item">
-          <a
-            class="nav-link"
-            data-widget="control-sidebar"
-            data-slide="true"
-            href="#"
-            role="button"
-          >
-            <i class="fas fa-th-large"></i>
-          </a>
-        </li>
-      </ul>
-    </nav>
-    <!-- /.navbar -->
-
-    <!-- Main Sidebar Container -->
-    <aside
-      class="main-sidebar sidebar-dark-primary elevation-4 sidebar-no-expand"
-    >
-      <!-- Brand Logo -->
-      <a href="../../index3.html" class="brand-link">
-        <!-- <img
-          src="../../dist/img/AdminLTELogo.png"
-          alt="AdminLTE Logo"
-          class="brand-image img-circle elevation-3"
-          style="opacity: 0.8"
-        /> -->
-        <span class="brand-text font-weight-light">AdminLTE 3</span>
-      </a>
-
-      <!-- Sidebar -->
-      <div class="sidebar">
-        <!-- Sidebar user (optional) -->
-        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-          <div class="image">
-            <!-- <img
-              src="../../dist/img/user2-160x160.jpg"
-              class="img-circle elevation-2"
-              alt="User Image"
-            /> -->
-          </div>
-          <div class="info">
-            <a href="#" class="d-block">Alexander Pierce</a>
-          </div>
-        </div>
-
-        <!-- Sidebar Menu -->
-        <nav class="mt-2">
-          <ul
-            class="nav nav-pills nav-sidebar flex-column nav-flat nav-legacy"
-            data-widget="treeview"
-            role="menu"
-            data-accordion="false"
-          >
-            <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
-            <li class="nav-item has-treeview">
-              <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-tachometer-alt"></i>
-                <p>
-                  Dashboard
-                  <i class="right fas fa-angle-left"></i>
-                </p>
-              </a>
-              <ul class="nav nav-treeview">
-                <li class="nav-item">
-                  <a href="../../index.html" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Dashboard v1</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="../../index2.html" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Dashboard v2</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="../../index3.html" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Dashboard v3</p>
-                  </a>
-                </li>
-              </ul>
-            </li>
-            <li class="nav-item">
-              <a href="../widgets.html" class="nav-link">
-                <i class="nav-icon fas fa-th"></i>
-                <p>
-                  Widgets
-                  <span class="right badge badge-danger">New</span>
-                </p>
-              </a>
-            </li>
-            <li class="nav-item has-treeview menu-open">
-              <a href="#" class="nav-link active">
-                <i class="nav-icon fas fa-copy"></i>
-                <p>
-                  Layout Options
-                  <i class="fas fa-angle-left right"></i>
-                  <span class="badge badge-info right">6</span>
-                </p>
-              </a>
-              <ul class="nav nav-treeview">
-                <li class="nav-item">
-                  <a href="../layout/top-nav.html" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Top Navigation</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="../layout/top-nav-sidebar.html" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Top Navigation + Sidebar</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="../layout/boxed.html" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Boxed</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a
-                    href="../layout/fixed-sidebar.html"
-                    class="nav-link active"
-                  >
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Fixed Sidebar</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="../layout/fixed-topnav.html" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Fixed Navbar</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="../layout/fixed-footer.html" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Fixed Footer</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="../layout/collapsed-sidebar.html" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Collapsed Sidebar</p>
-                  </a>
-                </li>
-              </ul>
-            </li>
-            <li class="nav-item has-treeview">
-              <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-chart-pie"></i>
-                <p>
-                  Charts
-                  <i class="right fas fa-angle-left"></i>
-                </p>
-              </a>
-              <ul class="nav nav-treeview">
-                <li class="nav-item">
-                  <a href="../charts/chartjs.html" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>ChartJS</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="../charts/flot.html" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Flot</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="../charts/inline.html" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Inline</p>
-                  </a>
-                </li>
-              </ul>
-            </li>
-            <li class="nav-item has-treeview">
-              <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-tree"></i>
-                <p>
-                  UI Elements
-                  <i class="fas fa-angle-left right"></i>
-                </p>
-              </a>
-              <ul class="nav nav-treeview">
-                <li class="nav-item">
-                  <a href="../UI/general.html" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>General</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="../UI/icons.html" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Icons</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="../UI/buttons.html" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Buttons</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="../UI/sliders.html" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Sliders</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="../UI/modals.html" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Modals & Alerts</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="../UI/navbar.html" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Navbar & Tabs</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="../UI/timeline.html" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Timeline</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="../UI/ribbons.html" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Ribbons</p>
-                  </a>
-                </li>
-              </ul>
-            </li>
-            <li class="nav-item has-treeview">
-              <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-edit"></i>
-                <p>
-                  Forms
-                  <i class="fas fa-angle-left right"></i>
-                </p>
-              </a>
-              <ul class="nav nav-treeview">
-                <li class="nav-item">
-                  <a href="../forms/general.html" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>General Elements</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="../forms/advanced.html" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Advanced Elements</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="../forms/editors.html" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Editors</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="../forms/validation.html" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Validation</p>
-                  </a>
-                </li>
-              </ul>
-            </li>
-            <li class="nav-item has-treeview">
-              <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-table"></i>
-                <p>
-                  Tables
-                  <i class="fas fa-angle-left right"></i>
-                </p>
-              </a>
-              <ul class="nav nav-treeview">
-                <li class="nav-item">
-                  <a href="../tables/simple.html" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Simple Tables</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="../tables/data.html" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>DataTables</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="../tables/jsgrid.html" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>jsGrid</p>
-                  </a>
-                </li>
-              </ul>
-            </li>
-            <li class="nav-header">EXAMPLES</li>
-            <li class="nav-item">
-              <a href="../calendar.html" class="nav-link">
-                <i class="nav-icon far fa-calendar-alt"></i>
-                <p>
-                  Calendar
-                  <span class="badge badge-info right">2</span>
-                </p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="../gallery.html" class="nav-link">
-                <i class="nav-icon far fa-image"></i>
-                <p>Gallery</p>
-              </a>
-            </li>
-            <li class="nav-item has-treeview">
-              <a href="#" class="nav-link">
-                <i class="nav-icon far fa-envelope"></i>
-                <p>
-                  Mailbox
-                  <i class="fas fa-angle-left right"></i>
-                </p>
-              </a>
-              <ul class="nav nav-treeview">
-                <li class="nav-item">
-                  <a href="../mailbox/mailbox.html" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Inbox</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="../mailbox/compose.html" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Compose</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="../mailbox/read-mail.html" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Read</p>
-                  </a>
-                </li>
-              </ul>
-            </li>
-            <li class="nav-item has-treeview">
-              <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-book"></i>
-                <p>
-                  Pages
-                  <i class="fas fa-angle-left right"></i>
-                </p>
-              </a>
-              <ul class="nav nav-treeview">
-                <li class="nav-item">
-                  <a href="../examples/invoice.html" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Invoice</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="../examples/profile.html" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Profile</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="../examples/e-commerce.html" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>E-commerce</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="../examples/projects.html" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Projects</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="../examples/project-add.html" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Project Add</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="../examples/project-edit.html" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Project Edit</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="../examples/project-detail.html" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Project Detail</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="../examples/contacts.html" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Contacts</p>
-                  </a>
-                </li>
-              </ul>
-            </li>
-            <li class="nav-item has-treeview">
-              <a href="#" class="nav-link">
-                <i class="nav-icon far fa-plus-square"></i>
-                <p>
-                  Extras
-                  <i class="fas fa-angle-left right"></i>
-                </p>
-              </a>
-              <ul class="nav nav-treeview">
-                <li class="nav-item">
-                  <a href="../examples/login.html" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Login</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="../examples/register.html" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Register</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="../examples/forgot-password.html" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Forgot Password</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="../examples/recover-password.html" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Recover Password</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="../examples/lockscreen.html" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Lockscreen</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="../examples/legacy-user-menu.html" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Legacy User Menu</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="../examples/language-menu.html" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Language Menu</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="../examples/404.html" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Error 404</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="../examples/500.html" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Error 500</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="../examples/pace.html" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Pace</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="../examples/blank.html" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Blank Page</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="../../starter.html" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Starter Page</p>
-                  </a>
-                </li>
-              </ul>
-            </li>
-            <li class="nav-header">MISCELLANEOUS</li>
-            <li class="nav-item">
-              <a href="https://adminlte.io/docs/3.0" class="nav-link">
-                <i class="nav-icon fas fa-file"></i>
-                <p>Documentation</p>
-              </a>
-            </li>
-            <li class="nav-header">MULTI LEVEL EXAMPLE</li>
-            <li class="nav-item">
-              <a href="#" class="nav-link">
-                <i class="fas fa-circle nav-icon"></i>
-                <p>Level 1</p>
-              </a>
-            </li>
-            <li class="nav-item has-treeview">
-              <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-circle"></i>
-                <p>
-                  Level 1
-                  <i class="right fas fa-angle-left"></i>
-                </p>
-              </a>
-              <ul class="nav nav-treeview">
-                <li class="nav-item">
-                  <a href="#" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Level 2</p>
-                  </a>
-                </li>
-                <li class="nav-item has-treeview">
-                  <a href="#" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>
-                      Level 2
-                      <i class="right fas fa-angle-left"></i>
-                    </p>
-                  </a>
-                  <ul class="nav nav-treeview">
-                    <li class="nav-item">
-                      <a href="#" class="nav-link">
-                        <i class="far fa-dot-circle nav-icon"></i>
-                        <p>Level 3</p>
-                      </a>
-                    </li>
-                    <li class="nav-item">
-                      <a href="#" class="nav-link">
-                        <i class="far fa-dot-circle nav-icon"></i>
-                        <p>Level 3</p>
-                      </a>
-                    </li>
-                    <li class="nav-item">
-                      <a href="#" class="nav-link">
-                        <i class="far fa-dot-circle nav-icon"></i>
-                        <p>Level 3</p>
-                      </a>
-                    </li>
-                  </ul>
-                </li>
-                <li class="nav-item">
-                  <a href="#" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Level 2</p>
-                  </a>
-                </li>
-              </ul>
-            </li>
-            <li class="nav-item">
-              <a href="#" class="nav-link">
-                <i class="fas fa-circle nav-icon"></i>
-                <p>Level 1</p>
-              </a>
-            </li>
-            <li class="nav-header">LABELS</li>
-            <li class="nav-item">
-              <a href="#" class="nav-link">
-                <i class="nav-icon far fa-circle text-danger"></i>
-                <p class="text">Important</p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="#" class="nav-link">
-                <i class="nav-icon far fa-circle text-warning"></i>
-                <p>Warning</p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="#" class="nav-link">
-                <i class="nav-icon far fa-circle text-info"></i>
-                <p>Informational</p>
-              </a>
-            </li>
-          </ul>
-        </nav>
-        <!-- /.sidebar-menu -->
-      </div>
-      <!-- /.sidebar -->
-    </aside>
-
-    <!-- Content Wrapper. Contains page content -->
-    <div class="content-wrapper">
-      <!-- Content Header (Page header) -->
-      <section class="content-header">
-        <div class="container-fluid">
-          <div class="row mb-2">
-            <div class="col-sm-6">
-              <h1>Fixed Layout</h1>
-            </div>
-            <div class="col-sm-6">
-              <ol class="breadcrumb float-sm-right">
-                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item"><a href="#">Layout</a></li>
-                <li class="breadcrumb-item active">Fixed Layout</li>
-              </ol>
-            </div>
-          </div>
-        </div>
-        <!-- /.container-fluid -->
-      </section>
-
-      <!-- Main content -->
-      <section class="content">
-        <div class="container-fluid">
-          <div class="row">
-            <div class="col-12">
-              <!-- Default box -->
-              <div class="card">
-                <div class="card-header">
-                  <h3 class="card-title">Title</h3>
-
-                  <div class="card-tools">
-                    <button
-                      type="button"
-                      class="btn btn-tool"
-                      data-card-widget="collapse"
-                      data-toggle="tooltip"
-                      title="Collapse"
+  <div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="mr-auto d-flex justify-content-start">
+                  <div class="mb-2">
+                    <inertia-link
+                      class="btn btn-info btn-sm"
+                      :href="route('users.create')"
                     >
-                      <i class="fas fa-minus"></i>
-                    </button>
-                    <button
-                      type="button"
-                      class="btn btn-tool"
-                      data-card-widget="remove"
-                      data-toggle="tooltip"
-                      title="Remove"
-                    >
-                      <i class="fas fa-times"></i>
-                    </button>
+                      <i class="fa fa-plus"></i>
+                      <span class="d-none d-lg-inline">Create New User</span>
+                    </inertia-link>
                   </div>
                 </div>
-                <div class="card-body">
-                  Start creating your amazing application!
-                </div>
-                <!-- /.card-body -->
-                <div class="card-footer">Footer</div>
-                <!-- /.card-footer-->
               </div>
-              <!-- /.card -->
+            </div>
+            <div class="row">
+              <div class="col-md-12 d-flex">
+                <div class="mr-auto d-flex justify-content-start">
+                  <div class="dropdown mr-1">
+                    <button
+                      class="btn btn-light btn-outline-dark dropdown-toggle"
+                      type="button"
+                      id="dropdownMenuButton"
+                      data-toggle="dropdown"
+                      aria-haspopup="true"
+                      aria-expanded="false"
+                    >
+                      Bulk actions
+                    </button>
+                    <div
+                      class="dropdown-menu"
+                      aria-labelledby="dropdownMenuButton"
+                    >
+                      <a
+                        v-if="filters.trashed !== 'only'"
+                        class="dropdown-item"
+                        @click="bulkMoveToTrash"
+                        >Move to Trash</a
+                      >
+                      <a
+                        v-if="filters.trashed === 'only'"
+                        class="dropdown-item"
+                        @click="bulkRestore"
+                        >Restore</a
+                      >
+                      <a
+                        v-if="filters.trashed === 'only'"
+                        class="dropdown-item"
+                        @click="bulkDestroy"
+                        >Permanently Delete</a
+                      >
+                    </div>
+                  </div>
+                  <div class="filters d-flex">
+                    <div class="form-group d-none d-sm-inline-block">
+                      <text-input
+                        inputClass="form-control-sm"
+                        :maxlength="20"
+                        v-model="form.search"
+                        type="text"
+                        placeholder="Search"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="ml-auto d-flex justify-content-end">
+                  <div class>
+                    <inertia-link
+                      class="btn btn-light"
+                      method="get"
+                      :href="route('users.index')"
+                      :data="filters.trashed == 'only' ? {} : bin.data"
+                      >{{
+                        filters.trashed == "only" ? "Users List" : bin.title
+                      }}</inertia-link
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card-body">
+            <div class="table-responsive">
+              <table
+                data-check-all-container
+                class="table table-striped table-borderless table-hover table-sm tablesaw tablesaw-stack table-togglable"
+              >
+                <thead>
+                  <tr>
+                    <th visible>
+                      <input
+                        type="checkbox"
+                        data-check-all
+                        class="checkall__all"
+                      />
+                    </th>
+                    <th data-hide="phone,tablet">
+                      <inertia-link href method="get" :data="{}"
+                        >ID</inertia-link
+                      >
+                    </th>
+                    <th>
+                      <inertia-link href method="get" :data="{}"
+                        >Username</inertia-link
+                      >
+                    </th>
+                    <th data-hide="phone">
+                      <inertia-link href method="get" :data="{}"
+                        >Email</inertia-link
+                      >
+                    </th>
+                    <th data-hide="phone,tablet">Role</th>
+                    <th class="action">
+                      <inertia-link href method="get" :data="{}"
+                        >Action</inertia-link
+                      >
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr v-if="users.data.length > 0" v-for="user in users.data">
+                    <td>
+                      <input
+                        type="checkbox"
+                        name="id"
+                        :value="user.id"
+                        data-check-all-item
+                        class="checkall__item"
+                        v-model="checked"
+                      />
+                    </td>
+                    <td>
+                      <inertia-link href="#" method="get" :data="{}">{{
+                        user.id
+                      }}</inertia-link>
+                    </td>
+                    <td>
+                      <inertia-link href="#" method="get" :data="{}">{{
+                        user.username
+                      }}</inertia-link>
+                    </td>
+                    <td>
+                      <inertia-link href="#" method="get" :data="{}">{{
+                        user.email
+                      }}</inertia-link>
+                    </td>
+                    <td></td>
+                    <td>
+                      <div v-if="filters.trashed != 'only'">
+                        <inertia-link
+                          class="btn btn-warning btn-sm"
+                          :href="route('users.edit', user.id)"
+                          method="get"
+                          :data="{}"
+                          >Edit</inertia-link
+                        >
+                        <inertia-link
+                          preserve-scroll
+                          preserve-state
+                          @click.prevent="confirmDel(user.id)"
+                          class="btn btn-danger btn-sm"
+                          :href="route('users.trashed', user.id)"
+                          :class="{ disabled: $page.auth.user.id === user.id }"
+                          method="delete"
+                          :data="{}"
+                          >Del</inertia-link
+                        >
+                      </div>
+                      <div v-else>
+                        <inertia-link
+                          preserve-state
+                          preserve-scroll
+                          class="btn btn-warning btn-sm"
+                          :href="route('users.restore')"
+                          method="post"
+                          :data="{ id: user.id }"
+                          >Restore</inertia-link
+                        >
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="pagination_ d-flex justify-content-end">
+              <pagination class="ml-auto" :links="users.links" />
             </div>
           </div>
         </div>
-      </section>
-      <!-- /.content -->
+      </div>
     </div>
-    <!-- /.content-wrapper -->
-
-    <!-- <footer class="main-footer">
-      <div class="float-right d-none d-sm-block"><b>Version</b> 3.0.5</div>
-      <strong
-        >Copyright &copy; 2014-2019
-        <a href="http://adminlte.io">AdminLTE.io</a>.</strong
-      >
-      All rights reserved.
-    </footer> -->
-
-    <!-- /.control-sidebar -->
   </div>
 </template>
 
 <script>
-export default {};
-</script>
 
-<style scoped>
-</style>
+import Pagination from "../../Shared/Pagination";
+import AdminLayout from "../../Shared/AdminLayout";
+import TextInput from "../../Shared/TextInput";
+import mapValues from "lodash/mapValues";
+import pickBy from "lodash/pickBy";
+import throttle from "lodash/throttle";
+import $ from "jquery";
+import checkAll from "@github/check-all";
+
+export default {
+  metaInfo: { title: "Users" },
+  layout: AdminLayout,
+  components: {
+    Pagination,
+    TextInput,
+  },
+  remember: ["bin"],
+  data() {
+    return {
+      checked: [],
+      check: false,
+      test: "",
+      bin: {
+        title: "Go to Bin",
+        data: {
+          trashed: "only",
+        },
+      },
+      form: {
+        search: this.filters.search,
+        trashed: this.filters.trashed,
+      },
+    };
+  },
+  props: {
+    users: Object,
+    filters: {
+      type: Object,
+      default: null,
+    },
+  },
+  mounted() {
+    // this.footable();
+      console.log(this.users);
+    checkAll(document.querySelector("[data-check-all-container]"));
+  },
+  watch: {
+    form: {
+      handler: throttle(function () {
+        let query = pickBy(this.form);
+        this.$inertia.replace(
+          this.route("users.index", Object.keys(query).length ? query : {})
+        );
+      }, 150),
+      deep: true,
+    },
+  },
+
+  methods: {
+    footable() {
+      // $(".table-togglable").footable();
+    },
+    bulkDestroy() {
+      if (this.checked.length === 0) {
+        alert("Please select at least 1 item!");
+      } else {
+        if (confirm("Are you sure you want to delete these items?")) {
+          console.log(this.checked);
+          this.$inertia.post(
+            this.route("users.destroy"),
+            { id: this.checked },
+            { replace: true, preserveState: true, preserveScroll: true }
+          );
+        }
+      }
+    },
+    bulkMoveToTrash() {
+      if (this.checked.length === 0) {
+        alert("Please select at least 1 item!");
+      } else {
+        if (confirm("Are you sure you want to delete these items?")) {
+          this.$inertia.post(
+            this.route("users.trashed"),
+            { id: this.checked },
+            { replace: true, preserveState: true, preserveScroll: true }
+          );
+        }
+      }
+    },
+    bulkRestore() {
+      if (this.checked.length === 0) {
+        alert("Please select at least 1 item!");
+      } else {
+        if (confirm("Are you sure you want to restore these items?")) {
+          this.$inertia.post(
+            this.route("users.restore"),
+            { id: this.checked },
+            { replace: true, preserveState: true, preserveScroll: true }
+          );
+        }
+      }
+    },
+    confirmDel(id) {
+      if (confirm("Are you sure you want to move to trash this user?")) {
+        this.$inertia.post(
+          this.route("users.trashed"),
+          { id: id },
+          { replace: true, preserveState: true, preserveScroll: true }
+        );
+      }
+    },
+  },
+};
+</script>

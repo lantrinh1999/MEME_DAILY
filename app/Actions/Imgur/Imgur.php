@@ -28,10 +28,11 @@ class Imgur
                     ]
                 ]
             );
-            $response = (string) $request->getBody();
+            $response = (string)$request->getBody();
             $jsonResponse = @json_decode($response);
         } catch (\Exception $e) {
             return NULL;
+        } catch (GuzzleException $e) {
         }
 
         return @$jsonResponse->data->link; // return url of image
@@ -41,22 +42,26 @@ class Imgur
     {
         $base64 = self::imageToBase64($imagePath);
         $client = new GuzzleClient();
-        $request = $client->request(
-            'POST',
-            self::END_POINT_2,
-            [
-                'form_params' => [
-                    'image' => $base64,
+        try {
+            $request = $client->request(
+                'POST',
+                self::END_POINT_2,
+                [
+                    'form_params' => [
+                        'image' => $base64,
+                    ]
                 ]
-            ]
-        );
-        $response = (string) $request->getBody();
-        $jsonResponse = @json_decode($response);
+            );
+            $response = (string)$request->getBody();
+            $jsonResponse = @json_decode($response);
 
-        if (!empty($jsonResponse->saved)) {
-            return self::PIK . $jsonResponse->saved; // return url of image
+            if (!empty($jsonResponse->saved)) {
+                return self::PIK . $jsonResponse->saved; // return url of image
+            }
+            return false;
+        } catch (GuzzleException $e) {
         }
-        return false;
+
     }
 
 

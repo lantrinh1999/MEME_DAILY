@@ -2,6 +2,10 @@
 
 namespace App\Providers;
 
+use App\Http\Middleware\MemeAuthenticate;
+use App\Http\Middleware\MemeRedirectIfAuthenticated;
+use App\Models\User;
+use Illuminate\Routing\Router;
 use Illuminate\Support\ServiceProvider;
 use Inertia\Inertia;
 use Illuminate\Pagination\LengthAwarePaginator;
@@ -11,7 +15,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
-
+use Illuminate\Session\Middleware\AuthenticateSession;
 use League\Glide\Server;
 
 class MemeServiceProvider extends ServiceProvider
@@ -38,6 +42,23 @@ class MemeServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+//        parent::boot();
+        $this->middlewareRegister();
+
+    }
+    protected function overrideConfig()
+    {
+        config(['database.connections.mysql.prefix' => env('DB_PREFIX', 'meme_')]);
+        config(['database.connections.mysql.prefix_indexes' => true]);
+        config(['auth.providers.users.model' => User::class]);
+    }
+
+    protected function middlewareRegister()
+    {
+        $router = $this->app->make(Router::class);
+        $router->aliasMiddleware('auth', MemeAuthenticate::class);
+        $router->aliasMiddleware('guest', MemeRedirectIfAuthenticated::class);
+        $router->pushMiddlewareToGroup('web', AuthenticateSession::class);
     }
 
     public function setRootViewInertia()
@@ -60,11 +81,6 @@ class MemeServiceProvider extends ServiceProvider
                         'first_name' => Auth::user()->first_name,
                         'last_name' => Auth::user()->last_name,
                         'email' => Auth::user()->email,
-                        'role' => Auth::user()->role,
-                        'account' => [
-                            'id' => Auth::user()->account->id,
-                            'name' => Auth::user()->account->name,
-                        ],
                     ] : null,
                 ];
             },
@@ -94,6 +110,10 @@ class MemeServiceProvider extends ServiceProvider
         $this->app->bind(LengthAwarePaginator::class, function ($app, $values) {
             return new class (...array_values($values)) extends LengthAwarePaginator
             {
+                /**
+                 * @param mixed ...$attributes
+                 * @return $this
+                 */
                 public function only(...$attributes)
                 {
                     return $this->transform(function ($item) use ($attributes) {
