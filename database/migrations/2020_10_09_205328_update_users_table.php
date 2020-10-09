@@ -15,9 +15,9 @@ class UpdateUsersTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             if (!Schema::hasColumns('users', ['name'])){
-                $table->string('name');
+                $table->dropColumn('name');
             }
-            $table->string('name')->nullable()->change();
+            $table->string('name')->nullable();
         });
     }
 
