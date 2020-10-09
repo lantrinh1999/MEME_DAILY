@@ -13,12 +13,7 @@ class UpdateUsersTable extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            if (!Schema::hasColumns('users', ['name'])){
-                $table->dropColumn('name');
-            }
-            $table->string('name')->nullable();
-        });
+
     }
 
     /**
