@@ -17,7 +17,7 @@ class UpdateUsersTable extends Migration
             if (!Schema::hasColumns('users', ['name'])){
                 $table->string('name');
             }
-            $table->string('name')->nullable();
+            $table->string('name')->nullable()->change();
         });
     }
 
