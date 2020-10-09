@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
+
 class UsersTableSeeder extends Seeder
 {
     /**
@@ -17,7 +18,7 @@ class UsersTableSeeder extends Seeder
         $users = [];
         $users[] = [
             'name' => "LINH",
-            'fisrt_name' => "LINH",
+            'first_name' => "LINH",
             'last_name' => "LINH",
             'username' => 'linhlatin',
             'email' => 'linhtd.contact@gmail.com',
@@ -27,14 +28,13 @@ class UsersTableSeeder extends Seeder
             'is_super' => TRUE,
         ];
 
-        if (DB::table('users')->count() <= 0) {
+        if (true) {
             try {
-                DB::transaction(function () use ($users){
-                    DB::table('users')->insert($users);
-                });
-            } catch (\Exception $e){
+                DB::table('users')->insert($users);
+            } catch (\Exception $e) {
 
             }
+
         }
     }
 }
