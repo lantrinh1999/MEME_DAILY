@@ -21,6 +21,7 @@
         "@inertiajs/progress": "^0.1.2",
         "axios": "^0.19",
         "cross-env": "^7.0",
+        "footable": "^2.0.6",
         "jquery": "^3.5.1",
         "laravel-mix": "^5.0.1",
         "lodash": "^4.17.19",

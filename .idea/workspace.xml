@@ -20,9 +20,63 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d063b612-5b53-4eb9-95a4-48199586b6e5" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/public/admin/css/fonts/icomoon.eot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/admin/css/fonts/icomoon.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/admin/css/fonts/icomoon.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/admin/css/fonts/icomoon.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/admin/css/icomoon.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/fonts/icomoon.eot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/fonts/icomoon.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/fonts/icomoon.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/fonts/icomoon.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/assets/admin/dist/icons/fontawesome/fonts/fa-brands-400.eot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/assets/admin/dist/icons/fontawesome/fonts/fa-brands-400.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/assets/admin/dist/icons/fontawesome/fonts/fa-brands-400.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/assets/admin/dist/icons/fontawesome/fonts/fa-brands-400.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/assets/admin/dist/icons/fontawesome/fonts/fa-brands-400.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/assets/admin/dist/icons/fontawesome/fonts/fa-regular-400.eot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/assets/admin/dist/icons/fontawesome/fonts/fa-regular-400.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/assets/admin/dist/icons/fontawesome/fonts/fa-regular-400.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/assets/admin/dist/icons/fontawesome/fonts/fa-regular-400.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/assets/admin/dist/icons/fontawesome/fonts/fa-regular-400.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/assets/admin/dist/icons/fontawesome/fonts/fa-solid-900.eot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/assets/admin/dist/icons/fontawesome/fonts/fa-solid-900.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/assets/admin/dist/icons/fontawesome/fonts/fa-solid-900.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/assets/admin/dist/icons/fontawesome/fonts/fa-solid-900.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/assets/admin/dist/icons/fontawesome/fonts/fa-solid-900.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/assets/admin/dist/icons/fontawesome/styles.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/assets/admin/dist/icons/icomoon/fonts/icomoon.eot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/assets/admin/dist/icons/icomoon/fonts/icomoon.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/assets/admin/dist/icons/icomoon/fonts/icomoon.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/assets/admin/dist/icons/icomoon/fonts/icomoon.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/assets/admin/dist/icons/icomoon/styles.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/assets/admin/dist/icons/material/fonts/material-icons.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/assets/admin/dist/icons/material/fonts/material-icons.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/assets/admin/dist/icons/material/fonts/material-icons.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/assets/admin/dist/icons/material/styles.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/assets/admin/dist/icons/summernote/summernote.eot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/assets/admin/dist/icons/summernote/summernote.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/assets/admin/dist/icons/summernote/summernote.woff" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeders/UsersTableSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/UsersTableSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/admin/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/admin/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/js/scripts.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/admin/js/scripts.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/admin/0.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/admin/0.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/admin/1.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/admin/1.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/admin/2.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/admin/2.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/admin/3.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/admin/3.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/admin/4.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/admin/4.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/admin/5.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/admin/5.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/admin/6.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/admin/6.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/mix-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/mix-manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/admin/Pages/Users/Index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/admin/Pages/Users/Index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/admin/Shared/AdminLayout.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/admin/Shared/AdminLayout.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/bootstrap.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/bootstrap.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/app.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/app.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webpack.mix.js" beforeDir="false" afterPath="$PROJECT_DIR$/webpack.mix.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -212,7 +266,7 @@
       <updated>1602254302936</updated>
       <workItem from="1602254304823" duration="2231000" />
       <workItem from="1602257766956" duration="7322000" />
-      <workItem from="1602265681239" duration="12370000" />
+      <workItem from="1602265681239" duration="14376000" />
     </task>
     <servers />
   </component>
@@ -275,10 +329,10 @@
       <screen x="0" y="23" width="1680" height="984" />
     </state>
     <state x="505" y="237" key="run.anything.popup/0.23.1680.984@0.23.1680.984" timestamp="1602264791826" />
-    <state x="505" y="240" width="670" height="676" key="search.everywhere.popup" timestamp="1602273560853">
+    <state x="505" y="240" width="670" height="676" key="search.everywhere.popup" timestamp="1602293242866">
       <screen x="0" y="23" width="1680" height="984" />
     </state>
-    <state x="505" y="240" width="670" height="676" key="search.everywhere.popup/0.23.1680.984@0.23.1680.984" timestamp="1602273560853" />
+    <state x="505" y="240" width="670" height="676" key="search.everywhere.popup/0.23.1680.984@0.23.1680.984" timestamp="1602293242866" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
