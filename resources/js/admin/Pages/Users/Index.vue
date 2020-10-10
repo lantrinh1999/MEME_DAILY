@@ -96,11 +96,17 @@
                                 <thead>
                                 <tr>
                                     <th visible>
-                                        <input
-                                            type="checkbox"
-                                            data-check-all
-                                            class="checkall__all"
-                                        />
+
+                                        <div class="custom-control custom-checkbox">
+                                            <input
+                                                type="checkbox"
+                                                data-check-all
+                                                id="checkall__all"
+                                                class="custom-control-input checkall__item"/>
+                                            <label class="custom-control-label" for="checkall__all">
+                                            </label>
+                                        </div>
+
                                     </th>
                                     <th data-hide="phone,tablet">
                                         <inertia-link href method="get" :data="{}"
@@ -132,32 +138,31 @@
                                 <tbody>
                                 <tr v-if="users.data.length > 0" v-for="user in users.data">
                                     <td>
-                                        <input
-                                            type="checkbox"
-                                            name="id"
-                                            :value="user.id"
-                                            data-check-all-item
-                                            class="checkall__item"
-                                            v-model="checked"
-                                        />
+
+                                        <div class="custom-control custom-checkbox">
+                                            <input
+                                                data-check-all-item
+                                                v-model="checked"
+                                                type="checkbox" name="id"
+                                                :value="user.id"
+                                                :id="'user_id_' + user.id"
+                                                placeholder="Password"
+                                                class="custom-control-input checkall__item"/>
+                                            <label class="custom-control-label" :for="'user_id_' + user.id">
+                                            </label>
+                                        </div>
                                     </td>
                                     <td>
-                                        <inertia-link href="#" method="get" :data="{}">{{
-                                                user.id
-                                            }}
-                                        </inertia-link>
+                                        {{ user.id }}
+
                                     </td>
                                     <td>
-                                        <inertia-link href="#" method="get" :data="{}">{{
-                                                user.username
-                                            }}
-                                        </inertia-link>
+                                        {{ user.username }}
+
                                     </td>
                                     <td>
-                                        <inertia-link href="#" method="get" :data="{}">{{
-                                                user.email
-                                            }}
-                                        </inertia-link>
+                                        {{ user.email }}
+
                                     </td>
                                     <td></td>
                                     <td>
@@ -255,7 +260,7 @@ export default {
     },
     mounted() {
         this.footable();
-
+        console.log(this.$page.menu);
         checkAll(document.querySelector("[data-check-all-container]"));
     },
     watch: {
@@ -284,7 +289,9 @@ export default {
                         this.route("users.destroy"),
                         {id: this.checked},
                         {replace: true, preserveState: true, preserveScroll: true}
-                    );
+                    ).then(() => {
+                        this.checked = [];
+                    });
                 }
             }
         },
@@ -297,7 +304,9 @@ export default {
                         this.route("users.trashed"),
                         {id: this.checked},
                         {replace: true, preserveState: true, preserveScroll: true}
-                    );
+                    ).then(() => {
+                        this.checked = [];
+                    });
                 }
             }
         },
@@ -310,7 +319,9 @@ export default {
                         this.route("users.restore"),
                         {id: this.checked},
                         {replace: true, preserveState: true, preserveScroll: true}
-                    );
+                    ).then(() => {
+                        this.checked = [];
+                    });
                 }
             }
         },

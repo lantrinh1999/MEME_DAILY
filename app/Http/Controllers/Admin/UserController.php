@@ -29,7 +29,7 @@ protected $user;
         $filters = (object) $request->all();
 
         $users = $this->user->filter((array) $request->only('search', 'trashed'))
-            ->paginate(!empty($request->input('pp')) ? (int)$request->input('pp') : (int) config('base.general.items_per_page', 10))->onEachSide(1)
+            ->paginate(!empty($request->input('pp')) ? (int)$request->input('pp') : (int) config('meme.items_per_page', 20))->onEachSide(1)
             ->only('id', 'username', 'email', 'created_at', 'deleted_at');
 
 
@@ -56,15 +56,17 @@ protected $user;
     public function store(Request $request)
     {
 
-
+//        dd($request->all());
         $validator = $request->validate([
             'first_name' => ['required', 'max:50'],
             'last_name' => ['required', 'max:50'],
             'username' => ['required', 'max:50', 'min:3', Rule::unique('users')],
             'email' => ['required', 'max:50', 'email', Rule::unique('users')],
             'password' => ['max:50', 'min:8', 'confirmed'],
+            'is_super' => ['boolean']
         ]);
         $validator['password'] = bcrypt($validator['password']);
+//        dd($validator);
         if ($this->user->create($validator)) {
             return redirect()->back()->with('success', trans('Success'));
         }
@@ -111,6 +113,7 @@ protected $user;
             'last_name' => ['required', 'max:50'],
             'email' => ['required', 'max:50', 'email', Rule::exists('users')],
             'password' => ['max:50', 'min:8', 'confirmed', 'nullable'],
+            'is_super' => ['boolean']
         ]);
         if (!empty($validator['password']) && strlen($validator['password']) > 0) {
             $validator['password'] = bcrypt($validator['password']);

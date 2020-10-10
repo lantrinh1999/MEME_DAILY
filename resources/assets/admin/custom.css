@@ -1,0 +1,28 @@
+
+
+
+.footable-visible.footable-first-column {
+    width: 30px;
+}
+
+.card-header:not([class*=bg-]):not([class*=alpha-]) {
+    padding-top: .5rem;
+    padding-bottom: 0;
+}
+
+.btn-sm .fa {
+    font-size: .7rem !important;
+}
+
+.footable-row-detail-row {
+    display: flex;
+}
+
+.footable-row-detail-row>div {
+    display: table;
+}
+
+.footable-row-detail-row .footable-row-detail-name {
+    margin-right: 10px;
+    width: 10px;
+}

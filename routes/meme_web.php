@@ -5,6 +5,7 @@ use Inertia\Inertia;
 use App\Actions\Scaper\Crawler;
 use App\Actions\Imgur\Imgur;
 use App\Http\Controllers\Auth\LoginController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -34,25 +35,58 @@ Route::group([
 });
 
 
-
 // admin module
-Route::group(['prefix' => $adminRoute,'namespace' => 'App\Http\Controllers\Admin', 'middleware' => 'auth'], function () {
-    Route::get( '/',  function (){
+Route::group(['prefix' => $adminRoute, 'namespace' => 'App\Http\Controllers\Admin', 'middleware' => 'auth'], function () {
+    Route::get('/', function () {
         return Inertia::render('Users/Index');
-        })->name('admin');
+    })->name('admin');
 
     Route::group(['prefix' => 'users',], function () {
-        Route::get('/', 'UserController@index')->name('users.index');
-        Route::get('create', 'UserController@create')->name('users.create');
-        Route::post('store', 'UserController@store')->name('users.store');
-        Route::get('{id}/edit', 'UserController@edit')->name('users.edit');
-        Route::put('{id}', 'UserController@update')->name('users.update');
-        Route::post('destroy', 'UserController@destroy')->name('users.destroy');
-        Route::post('trashed', 'UserController@trashed')->name('users.trashed');
-        Route::post('restore', 'UserController@restore')->name('users.restore');
+        Route::get('/', [
+            'as' => 'users.index',
+            'uses' => 'UserController@index',
+            'permission' => 'users.index',
+            'menu' => ['parent_name' => 'Users', 'name' => 'List Users' ,'priority' => '3', 'icon' => 'fa fa-user', 'parent' => null],
+        ]);
+        Route::get('create', [
+            'as' => 'users.create',
+            'uses' => 'UserController@create',
+            'permission' => 'users.create',
+            'menu' => ['name' => 'Create Users', 'priority' => '3', 'icon' => ' fa fa-plus', 'parent' => 'users.index'],
+
+        ]);
+        Route::post('store', [
+            'as' => 'users.store',
+            'uses' => 'UserController@store',
+            'permission' => ['users.create'],
+        ]);
+        Route::get('{id}/edit', [
+            'as' => 'users.edit',
+            'uses' => 'UserController@edit',
+            'permission' => ['users.edit']
+        ]);
+        Route::put('{id}', [
+            'as' => 'user.update',
+            'uses' => 'UserController@update',
+            'permission' => ['users.edit']
+        ]);
+        Route::post('destroy', [
+            'as' => 'users.destroy',
+            'uses' => 'UserController@destroy',
+            'permission' => ['users.destroy']
+        ]);
+        Route::post('trashed', [
+            'as' => 'users.trashed',
+            'uses' => 'UserController@trashed',
+            'permission' => ['users.destroy']
+        ]);
+        Route::post('restore', [
+            'as' => 'users.restore',
+            'uses' => 'UserController@restore',
+            'permission' => ['users.destroy']
+        ]);
     });
 });
-
 
 
 Route::get('/users', function () {

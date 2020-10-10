@@ -57,8 +57,12 @@ export default {
 </script>
 
 <style>
-.btn {
-    padding: 0.5rem .75rem;
+.text-sm {
+    font-size: .925rem!important;
+}
+.page-link:focus {
+
+    box-shadow: none;
 }
 .btn-outline-dark {
     border-color: #ced4da;

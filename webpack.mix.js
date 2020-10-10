@@ -56,6 +56,7 @@ mix.js("resources/js/admin/app.js", "public/admin/js")
             admin_assets + "plugins/daterangepicker/daterangepicker.css",
             admin_assets + "plugins/summernote/summernote-bs4.css",
             admin_assets + "dist/icons/icomoon/styles.min.css",
+            admin_assets + "custom.css",
         ],
         "public/admin/css/style.css"
     )

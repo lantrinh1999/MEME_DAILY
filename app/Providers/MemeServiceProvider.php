@@ -5,7 +5,9 @@ namespace App\Providers;
 use App\Http\Middleware\MemeAuthenticate;
 use App\Http\Middleware\MemeRedirectIfAuthenticated;
 use App\Models\User;
+
 use Illuminate\Routing\Router;
+use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 use Inertia\Inertia;
 use Illuminate\Pagination\LengthAwarePaginator;
@@ -17,6 +19,7 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Session\Middleware\AuthenticateSession;
 use League\Glide\Server;
+use Illuminate\Support\Facades\Cache;
 
 class MemeServiceProvider extends ServiceProvider
 {
@@ -25,6 +28,9 @@ class MemeServiceProvider extends ServiceProvider
      *
      * @return void
      */
+
+    protected $menu;
+
     public function register()
     {
         // dd('aa');
@@ -33,6 +39,8 @@ class MemeServiceProvider extends ServiceProvider
         $this->registerInertia();
         $this->registerGlide();
         $this->registerLengthAwarePaginator();
+
+
     }
 
     /**
@@ -46,6 +54,7 @@ class MemeServiceProvider extends ServiceProvider
         $this->middlewareRegister();
 
     }
+
     protected function overrideConfig()
     {
         config(['database.connections.mysql.prefix' => env('DB_PREFIX', 'meme_')]);
@@ -73,24 +82,84 @@ class MemeServiceProvider extends ServiceProvider
             return md5_file(public_path('mix-manifest.json'));
         });
 
-        Inertia::share([
-            'auth' => function () {
-                return [
-                    'user' => Auth::user() ? [
-                        'id' => Auth::user()->id,
-                        'first_name' => Auth::user()->first_name,
-                        'last_name' => Auth::user()->last_name,
-                        'email' => Auth::user()->email,
-                    ] : null,
-                ];
-            },
-            'flash' => function () {
-                return [
-                    'success' => Session::get('success'),
-                    'error' => Session::get('error'),
-                ];
-            },
-        ]);
+        Route::matched(function () {
+            Inertia::share([
+                'auth' => function () {
+                    return [
+                        'user' => Auth::user() ? [
+                            'id' => Auth::user()->id,
+                            'first_name' => Auth::user()->first_name,
+                            'last_name' => Auth::user()->last_name,
+                            'email' => Auth::user()->email,
+                        ] : null,
+                    ];
+                },
+                'currentUrl' => function () {
+                    try {
+                       return route(Route::currentRouteName());
+                    } catch (\Exception $e) {
+                        return url('/ ');
+                    }
+                },
+                'flash' => function () {
+                    return [
+                        'success' => Session::get('success'),
+                        'error' => Session::get('error'),
+                    ];
+                },
+                'menu' => function () {
+                    return $this->adminMenu();
+                }
+            ]);
+        });
+
+    }
+
+    protected function adminMenu()
+    {
+        $menu = Cache::store('file')->get('admin_menu');
+        if (empty($menu)) {
+            $menuData = collect(Route::getRoutes())->filter(function ($route) {
+                return !empty($route->action['menu']);
+            })->map(function ($route) {
+                $_menu = $route->action['menu'];
+                $_menu['key'] = $route->action['as'];
+                $_menu['url'] = route($route->action['as']);
+                $_menu['permission'] = $route->action['permission'];
+                return $_menu;
+            })->sortBy('priority')->toArray();
+            function buildTree(array &$menuData, $parentId = null)
+            {
+                $menu = array();
+                foreach ($menuData as $element) {
+                    if ($element['parent'] == $parentId) {
+                        $children = buildTree($menuData, $element['key']);
+                        if ($children) {
+                            $element['children'] = $children;
+                        }
+                        $menu[$element['key']] = $element;
+                    }
+                }
+                return $menu;
+            }
+
+            $menu = buildTree($menuData);
+            Cache::store('file')->forever('admin_menu', $menu);
+        }
+        return $menu;
+    }
+
+    protected function menuFunc($menuData, $parent = null)
+    {
+        foreach ($menuData as $key => $item) {
+            if ($item['parent'] == $parent) {
+
+                $this->menu[] = $item;
+                unset($menuData[$key]);
+                $this->menuFunc($menuData, $item['key']);
+            }
+        }
+        return $this->menu;
     }
 
     protected function registerGlide()
@@ -108,8 +177,7 @@ class MemeServiceProvider extends ServiceProvider
     protected function registerLengthAwarePaginator()
     {
         $this->app->bind(LengthAwarePaginator::class, function ($app, $values) {
-            return new class (...array_values($values)) extends LengthAwarePaginator
-            {
+            return new class (...array_values($values)) extends LengthAwarePaginator {
                 /**
                  * @param mixed ...$attributes
                  * @return $this
