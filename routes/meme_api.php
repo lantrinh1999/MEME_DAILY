@@ -19,9 +19,9 @@ use App\Actions\Imgur\Imgur;
 |
 */
 
-Route::get('/crawler_memehay', function () {
-    (new Meme_())->run();
-});
+//Route::get('/crawler_memehay', function () {
+//    (new Meme_())->run();
+//});
 
 Route::get('/crawler_memehay_page/{page}', function ($page) {
     (new Meme2())->run($page);

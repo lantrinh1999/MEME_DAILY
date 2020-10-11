@@ -27,7 +27,7 @@ class Meme2
 
     public function run(int $page)
     {
-
+        $page_ = $page;
         if (Cache::store('file')->has(self::KEY_PAGE_CACHE . '2___')) {
             $page_ = Cache::store('file')->get(self::KEY_PAGE_CACHE . '2___');
             if ($page_ < 1 || $page_ >= $page) {
