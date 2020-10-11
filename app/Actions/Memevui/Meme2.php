@@ -46,7 +46,7 @@ class Meme2
         }
 
         Cache::store('file')->forever(self::KEY_PAGE_CACHE . '2___', $page_ - 1);
-
+//        dd($page_);
         return response()->json($this->data);
 
     }

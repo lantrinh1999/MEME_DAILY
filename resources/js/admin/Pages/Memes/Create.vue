@@ -34,7 +34,7 @@
                                         <text-input
                                             :maxlength="1000"
                                             v-model="form.image.value"
-                                            :errors="$page.errors.image"
+                                            :errors="$page.errors['image.value']"
                                             class="col-9 col-md-11"
 
                                         />
@@ -58,7 +58,7 @@
                                                 previewStyle="vertical"
                                                 ref="toastuiEditor"
                                                 initialEditType="wysiwyg"
-                                                 class="w-100"/>
+                                                class="w-100"/>
                                     </div>
                                 </div>
                             </div>
@@ -81,9 +81,13 @@
                 <div class="card">
                     <div class="card-body">
                         <div>
-                            <input type="hidden" name="tags" id="mySingleField" value="Apple, Orange">
-                            <label for="mytags">Tags:</label>
-                            <ul id="mytags"></ul>
+                            <vue-tags-input
+                                v-model="tag"
+                                :tags="tags"
+                                :autocomplete-items="filteredItems"
+:autocomplete-min-length="2"
+                                @tags-changed="newTags => tags = newTags"
+                            />
                         </div>
                     </div>
                 </div>
@@ -109,10 +113,12 @@ import 'codemirror/lib/codemirror.css';
 import '@toast-ui/editor/dist/toastui-editor.css';
 import ImageUpload from "../../Shared/ImageUpload";
 import {Editor} from '@toast-ui/vue-editor';
-
+import VueTagsInput from '@johmun/vue-tags-input';
 import Loading from 'vue-loading-overlay';
 // Import stylesheet
 import 'vue-loading-overlay/dist/vue-loading.css';
+import pickBy from "lodash/pickBy";
+import throttle from "lodash/throttle";
 
 export default {
     metaInfo: {
@@ -125,9 +131,12 @@ export default {
         TextInput,
         Btn,
         editor: Editor,
+        VueTagsInput,
     },
     data() {
         return {
+            tag: '',
+            tags: [],
             photo: null,
             loading: false,
             isLoading: false,
@@ -150,7 +159,8 @@ export default {
                 useDefaultHTMLSanitizer: true,
                 usageStatistics: true,
 
-            }
+            },
+            autocompleteItems: [],
         };
     },
     props: {
@@ -191,9 +201,10 @@ export default {
         submit() {
             this.loading = true;
             this.form.content = this.getHtml();
-            console.log(this.form)
-            this.$inertia.post(this.route("memes.store"), this.form).then(() => {
-                // console.log(this.$page.flash);
+            let form = this.form;
+            form.tags = this.tags;
+            this.$inertia.post(this.route("memes.store"), form).then(() => {
+
                 if (this.$page.flash.success) {
                     this.photo = null;
                     this.form = {
@@ -204,6 +215,7 @@ export default {
                         },
                         content: this.editorText,
                     };
+                    this.tags = [];
                     this.editorText = '';
                 }
 
@@ -217,31 +229,32 @@ export default {
     },
     mounted() {
 
-        $(document).ready(function () {
-            $("#mytags").tagit({
-                singleField: true,
-                singleFieldNode: $('#mySingleField'),
-                allowSpaces: true,
-                minLength: 2,
-                removeConfirmation: true,
-                tagSource: function (request, response) {
-                    //console.log("1");
-                    $.ajax({
-                        url: "search.php",
-                        data: {term: request.term},
-                        dataType: "json",
-                        success: function (data) {
-                            response($.map(data, function (item) {
-                                return {
-                                    label: item.label + " (" + item.id + ")",
-                                    value: item.value
-                                }
-                            }));
-                        }
+
+    },
+    computed: {
+        filteredItems() {
+            return this.autocompleteItems;
+        },
+    },
+    watch: {
+
+        tag: {
+            handler: throttle(function () {
+                if (this.tag.length > 0) {
+                    let query = pickBy({'name': this.tag});
+                    axios.post("/api/getTags", query).then(response => {
+                        // this.isLoading = false;
+                        this.autocompleteItems = response.data;
+                        console.log(response.data);
+
                     });
                 }
-            });
-        });
+
+            }, 500),
+        },
     },
 };
 </script>
+<style scoped>
+
+</style>

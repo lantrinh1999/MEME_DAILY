@@ -1,5 +1,5 @@
 <template>
-    <h1>Fixed Layout</h1>
+    <div></div>
 </template>
 
 <script>

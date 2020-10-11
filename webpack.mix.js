@@ -58,6 +58,9 @@ mix.js("resources/js/admin/app-client.js", "public/admin/js/app.js")
             admin_assets + "plugins/summernote/summernote-bs4.css",
             admin_assets + "dist/icons/icomoon/styles.min.css",
             admin_assets + "custom.css",
+            `node_modules/vue-loading-overlay/dist/vue-loading.css`,
+            `node_modules/codemirror/lib/codemirror.css`,
+            `node_modules/@toast-ui/editor/dist/toastui-editor.css`,
         ],
         "public/admin/css/style.css"
     )
@@ -96,3 +99,25 @@ mix.js("resources/js/admin/app-client.js", "public/admin/js/app.js")
     })
     .version()
     .sourceMaps();
+
+const theme_assets = "resources/assets/theme/";
+
+mix.scripts(
+    [
+        theme_assets + "js/jquery-3.5.1.min.js",
+        theme_assets + "js/popper.min.js",
+        theme_assets + "js/bootstrap.min.js",
+        theme_assets + "js/ResizeSensor.js",
+        theme_assets + "js/sticky-sidebar.js",
+        theme_assets + "js/is-mobile.js",
+        theme_assets + "js/scripts.js",
+    ],
+    "public/theme/js/scripts.js"
+).styles(
+    [
+        // admin_assets + 'plugins/fontawesome-free/css/all.min.css',
+        theme_assets + "css/bootstrap.min.css",
+        theme_assets + "css/style.css",
+    ],
+    "public/theme/css/style.css"
+);

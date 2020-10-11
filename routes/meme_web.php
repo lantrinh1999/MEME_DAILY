@@ -136,4 +136,10 @@ Route::group(['prefix' => $adminRoute, 'namespace' => 'App\Http\Controllers\Admi
 
 
 
+//THEME
 
+Route::group([
+    'namespace' => 'App\Http\Controllers',
+], function ()  {
+    Route::get('/{page?}', ['uses' => 'ThemeController@index'])->name('theme.home');
+});

@@ -1,5 +1,10 @@
 <template>
-    <div>
+    <div class="a">
+        <loading :active.sync="isLoading"
+                 :can-cancel="true"
+                 :on-cancel="onCancel"
+
+                 :is-full-page="fullPage"></loading>
         <div class="row">
             <div class="col-md-9">
                 <div class="card">
@@ -7,60 +12,55 @@
                         <form
                             method="post"
                             id="user_store"
-                            :action="route('users.store')"
+                            :action="route('memes.store')"
                             @submit.prevent="submit"
+                            autocomplete="off"
                         >
                             <div class="row">
                                 <text-input
-                                    :maxlength="50"
-                                    v-model="form.first_name"
-                                    :errors="$page.errors.first_name"
-                                    class="col-md-6"
-                                    label="First name"
-                                />
-                                <text-input
-                                    :maxlength="50"
-                                    v-model="form.last_name"
-                                    :errors="$page.errors.last_name"
-                                    class="col-md-6"
-                                    label="Last name"
-                                />
-                                <text-input
-                                    :maxlength="50"
-                                    v-model="form.email"
-                                    :errors="$page.errors.email"
-                                    class="col-md-6"
-                                    type="email"
-                                    label="Email"
-                                />
-                                <text-input
-                                    :maxlength="50"
-                                    :disabled="true"
-                                    v-model="form.username"
-                                    :errors="$page.errors.username"
-                                    class="col-md-6"
-                                    type="text"
-                                    label="Username"
+                                    :maxlength="500"
+                                    v-model="form.title"
+                                    :errors="$page.errors.title"
+                                    class="col-md-12"
+                                    label="Title"
                                 />
                             </div>
-
                             <div class="row">
-                                <text-input
-                                    :maxlength="50"
-                                    v-model="form.password"
-                                    :errors="$page.errors.password"
-                                    class="col-md-6"
-                                    type="password"
-                                    label="Password"
-                                />
-                                <text-input
-                                    :maxlength="50"
-                                    v-model="form.password_confirmation"
-                                    :errors="$page.errors.password_confirmation"
-                                    class="col-md-6"
-                                    type="password"
-                                    label="Confirm Password"
-                                />
+                                <div class="col-sm-12">
+
+
+                                    <div class="row">
+                                        <div class="col-12"><label>Link Image</label></div>
+                                        <text-input
+                                            :maxlength="1000"
+                                            v-model="form.image.value"
+                                            :errors="$page.errors['image.value']"
+                                            class="col-9 col-md-11"
+
+                                        />
+                                        <div class="col-1">
+                                            <input class="d-none" id="photo" type="file" @change="selectFile">
+                                            <span @click="clickPhoto" class=""><a
+                                                class="btn  btn-upload btn-info fa fa-upload"></a></span>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="row">
+
+                                <div class="col-sm-12">
+                                    <label for="content">Content</label>
+                                    <div class="form-group">
+                                        <editor id="content" :initialValue="editorText"
+                                                :options="editorOptions"
+                                                height="300px"
+                                                previewStyle="vertical"
+                                                ref="toastuiEditor"
+                                                initialEditType="wysiwyg"
+                                                class="w-100"/>
+                                    </div>
+                                </div>
                             </div>
                         </form>
                     </div>
@@ -68,32 +68,34 @@
             </div>
             <div class="col-md-3">
                 <div class="card">
-                    <div class="card-header">
-                        <h5>Actions</h5>
-                    </div>
                     <div class="card-body">
-                        <btn :loading="loading" class="btn btn-success" form="user_store" name="Save"></btn>
-                        <button
-                            v-if="!user.deleted_at && user.id != $page.auth.user.id"
-                            @click="trashed"
-                            class="btn btn-danger"
-                        >
-                            <i class="fa fa-trash" aria-hidden="true"></i> Move to Trash
-                        </button>
-                        <button v-if="user.deleted_at" @click="restore" class="btn btn-danger">Restore</button>
+                        <btn
+                            :loading="loading"
+                            class="btn btn-success"
+                            form="user_store"
+                            name="Save"
+                        ></btn>
                     </div>
                 </div>
 
                 <div class="card">
                     <div class="card-body">
-                        <div class="custom-control custom-checkbox">
-                            <input type="checkbox" v-model="form.is_super" name="remember"
-                                   id="custom_checkbox_stacked_unchecked" value="true" placeholder="Password"
-                                   class="custom-control-input remember"/>
-                            <label class="custom-control-label" for="custom_checkbox_stacked_unchecked">
-                                Super administrator</label>
+                        <div>
+                            <vue-tags-input
+                                v-model="tag"
+                                :tags="tags"
+                                :autocomplete-items="filteredItems"
+:autocomplete-min-length="2"
+                                @tags-changed="newTags => tags = newTags"
+                            />
                         </div>
-
+                    </div>
+                </div>
+                <div v-if="form.image.value" class="card">
+                    <div class="card-body">
+                        <div>
+                            <img width="100%" :src="form.image.value" alt="">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -102,61 +104,161 @@
 </template>
 
 <script>
+import axios from 'axios';
 import AdminLayout from "../../Shared/AdminLayout";
 import TextInput from "../../Shared/TextInput";
 import Btn from "../../Shared/Btn";
+import $ from 'jquery';
+import 'codemirror/lib/codemirror.css';
+import '@toast-ui/editor/dist/toastui-editor.css';
+import ImageUpload from "../../Shared/ImageUpload";
+import {Editor} from '@toast-ui/vue-editor';
+import VueTagsInput from '@johmun/vue-tags-input';
+import Loading from 'vue-loading-overlay';
+// Import stylesheet
+import 'vue-loading-overlay/dist/vue-loading.css';
+import pickBy from "lodash/pickBy";
+import throttle from "lodash/throttle";
 
 export default {
-    metaInfo: {title: "Edit User"},
+    metaInfo: {
+        title: "Create User",
+    },
     layout: AdminLayout,
     components: {
+        Loading,
+        ImageUpload,
         TextInput,
         Btn,
+        editor: Editor,
+        VueTagsInput,
     },
     data() {
         return {
+            tag: '',
+            tags: this.meme.tags.map(function ($tag){
+                $tag.text = $tag.name;
+                return $tag;
+            }),
+            photo: this.meme.image,
             loading: false,
+            isLoading: false,
+            fullPage: true,
             form: {
-                first_name: this.user.first_name ?? null,
-                last_name: this.user.last_name ?? null,
-                email: this.user.email ?? null,
-                username: this.user.username ?? null,
-                password: null,
-                password_confirmation: null,
-                is_super: this.user.is_super ?? null
+                title: this.meme.title,
+                image: {
+                    '_key': '_image',
+                    'value': this.meme.image,
+                },
+                content: this.editorText,
+
             },
+            editorText: this.meme.content,
+            editorOptions: {
+                hideModeSwitch: true,
+                minHeight: '300px',
+                language: 'en-US',
+                useCommandShortcut: true,
+                useDefaultHTMLSanitizer: true,
+                usageStatistics: true,
+
+            },
+            autocompleteItems: [],
         };
     },
     props: {
-        user: Object,
+        meme: Object,
         pageTitle: String,
     },
     methods: {
+        clickPhoto() {
+            document.getElementById('photo').click();
+        },
+        onCancel() {
+            console.log('User cancelled the loader.')
+        },
+        selectFile(event) {
+            // `files` is always an array because the file input may be in multiple mode
+            this.photo = event.target.files[0];
+            console.log(this.photo);
+            let data = new FormData();
+            data.append('photo', this.photo);
+            this.isLoading = true;
+            axios.post("/api/uploadPhoto", data).then(response => {
+                this.isLoading = false;
+                if (response.data.success) {
+                    this.form.image = response.data.success;
+                    console.log(this.form);
+                }
+
+            });
+        },
+        scroll() {
+            this.$refs.toastuiEditor.invoke('scrollTop', 10);
+        },
+        moveTop() {
+            this.$refs.toastuiEditor.invoke('moveCursorToStart');
+        },
+        getHtml() {
+            return this.$refs.toastuiEditor.invoke('getHtml');
+        },
         submit() {
             this.loading = true;
-            this.$inertia
-                .put(this.route("users.update", this.user.id), this.form)
-                .then(() => {
-                    setTimeout(() => {
-                        this.loading = false;
-                    }, 500);
-                });
+            this.form.content = this.getHtml();
+            let form = this.form;
+            form.tags = this.tags;
+            this.$inertia.post(this.route("memes.store"), form).then(() => {
+
+                if (this.$page.flash.success) {
+                    this.photo = null;
+                    this.form = {
+                        title: "",
+                        image: {
+                            '_key': '_image',
+                            'value': '',
+                        },
+                        content: this.editorText,
+                    };
+                    this.tags = [];
+                    this.editorText = '';
+                }
+
+                setTimeout(() => {
+                    this.loading = false;
+                }, 500);
+            });
         },
-        destroy() {
-            if (confirm("Are you sure you want to delete this?")) {
-                this.$inertia.delete(this.route("users.destroy", this.user.id));
-            }
+
+
+    },
+    mounted() {
+    console.log(this.meme)
+
+    },
+    computed: {
+        filteredItems() {
+            return this.autocompleteItems;
         },
-        trashed() {
-            if (confirm("Are you sure you want to move to trash this user?")) {
-                this.$inertia.post(this.route("users.trashed"), {id: this.user.id});
-            }
-        },
-        restore() {
-            if (confirm("Are you sure you want to restore this organization?")) {
-                this.$inertia.put(this.route("users.restore", this.user.id));
-            }
+    },
+    watch: {
+
+        tag: {
+            handler: throttle(function () {
+                if (this.tag.length > 0) {
+                    let query = pickBy({'name': this.tag});
+                    axios.post("/api/getTags", query).then(response => {
+                        // this.isLoading = false;
+                        this.autocompleteItems = response.data;
+                        console.log(response.data);
+
+                    });
+                }
+
+            }, 500),
         },
     },
 };
 </script>
+<style scoped>
+
+</style>

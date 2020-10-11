@@ -5,7 +5,11 @@ import VueMeta from "vue-meta";
 import PortalVue from "portal-vue";
 import { InertiaApp } from "@inertiajs/inertia-vue";
 import { InertiaProgress } from "@inertiajs/progress/src";
+import "codemirror/lib/codemirror.css";
+import "@toast-ui/editor/dist/toastui-editor.css";
+import VTooltip from "v-tooltip";
 
+Vue.use(VTooltip);
 Vue.config.productionTip = false;
 Vue.mixin({ methods: { route: window.route } });
 Vue.use(InertiaApp);

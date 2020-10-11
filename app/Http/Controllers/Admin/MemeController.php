@@ -4,8 +4,11 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Meme;
+use App\Models\Tag;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Auth;
 
@@ -29,12 +32,13 @@ class MemeController extends Controller
     {
         $filters = (object)$request->all();
 
-        $memes = $this->meme->filter((array)$request->only('search', 'trashed'))
+        $memes = $this->meme->filter((array)$request->only('search', 'trashed'))->with('tags', 'meme_meta')
             ->paginate(!empty($request->input('pp')) ? (int)$request->input('pp') : (int)config('meme.items_per_page', 20))->onEachSide(1)
-            ->only('id', 'username', 'email', 'created_at', 'deleted_at');
+            ->only('id', 'title', 'slug','image' ,'created_at', 'status', 'deleted_at');
 
 
-        return Inertia::render('Memes/Index', compact('users', 'filters'));
+
+        return Inertia::render('Memes/Index', compact('memes', 'filters'));
     }
 
     /**
@@ -59,22 +63,70 @@ class MemeController extends Controller
 
 //        dd($request->all());
         $validator = $request->validate([
-            'image' => ['required', 'max:1000'],
+            'image.value' => ['required', 'max:1000', 'url', 'active_url'],
+            'image._key' => ['required', 'max:1000'],
             'title' => ['required', 'max:500'],
-            'content' => [ 'max:10000000000000000000000'],
+            'content' => ['max:10000000000000000000000'],
+            'tags' => ['nullable'],
 //            'email' => ['required', 'max:50', 'email', Rule::unique('users')],
 //            'password' => ['max:50', 'min:8', 'confirmed'],
 //            'is_super' => ['boolean']
         ]);
-//        $validator['password'] = bcrypt($validator['password']);
-
+//        dd($validator);
+        $slug = Str::slug($validator['title']);
+        if (Meme::where('slug', '=', $slug)->exists()) {
+            $slug = $slug . '-' . Str::random(5);
+        }
         $memeData = [
             'title' => $validator['title'],
             'content' => $validator['content'],
-            'image' => $validator['image']['value']
+            'image' => $validator['image']['value'],
+            'slug' => $slug,
+            'user_id' => Auth::id(),
         ];
-        dd($memeData);
-        if ($this->meme->create($validator)) {
+
+
+        if (!empty($validator['tags'])) {
+            $tags = collect($validator['tags'])->map(function ($tag) {
+
+                if (empty($tag['slug'])) {
+
+                    $slug = Str::slug($tag['text']);
+                    if (Tag::where('slug', $slug)->exists()) {
+                        $slug = $slug . '-' . time();
+                    }
+                    $tag = Tag::create(['name' => $tag['text'], 'slug' => $slug]);
+                    if ($tag) {
+                        return $tag->id;
+                    }
+                }
+                return $tag['id'];
+            });
+        }
+        $flag = false;
+
+        DB::beginTransaction();
+        try {
+            $meme = $this->meme->create($memeData);
+
+            $meme->meme_meta()->createMany([
+                [
+                    'key' => $validator['image']['_key'],
+                    'value' => $validator['image']['value'],
+                ]
+            ]);
+            if (!empty($tags)) {
+                $meme->tags()->sync($tags);
+            }
+            DB::commit();
+            $flag = true;
+        } catch (\Exception $e) {
+            DB::rollBack();
+            throw \Exception($e->getMessage());
+        }
+
+//        dd($memeData);
+        if ($flag) {
             return redirect()->back()->with('success', trans('Success'));
         }
         return redirect()->back()->with('error', trans('Errors'));
@@ -103,7 +155,8 @@ class MemeController extends Controller
     {
         $pageTitle = 'Edit User';
         $meme = $this->meme->find($id);
-        return Inertia::render('Users/Edit', compact('user', 'pageTitle'));
+        $meme->load('tags', 'meme_meta');
+        return Inertia::render('Memes/Edit', compact('meme', 'pageTitle'));
     }
 
     /**

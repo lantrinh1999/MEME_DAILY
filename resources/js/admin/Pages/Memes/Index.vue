@@ -115,18 +115,24 @@
                                         >
                                     </th>
                                     <th>
-                                        <inertia-link href method="get" :data="{}"
-                                        >Username
+                                        <inertia-link style="" href method="get" :data="{}"
+                                        >Title
                                         </inertia-link
                                         >
                                     </th>
-                                    <th data-hide="phone">
+                                    <th style="width: 100px">
                                         <inertia-link href method="get" :data="{}"
-                                        >Email
+                                        >Status
                                         </inertia-link
                                         >
                                     </th>
-                                    <th data-hide="phone,tablet">Role</th>
+                                    <th style="width: 100px" data-hide="phone">
+                                        <inertia-link href method="get" :data="{}"
+                                        >Image
+                                        </inertia-link
+                                        >
+                                    </th>
+
                                     <th class="action">
                                         <inertia-link href method="get" :data="{}"
                                         >Action
@@ -136,7 +142,7 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr v-if="users.data.length > 0" v-for="user in users.data">
+                                <tr v-if="memes.data.length > 0" v-for="meme in memes.data">
                                     <td>
 
                                         <div class="custom-control custom-checkbox">
@@ -144,32 +150,45 @@
                                                 data-check-all-item
                                                 v-model="checked"
                                                 type="checkbox" name="id"
-                                                :value="user.id"
-                                                :id="'user_id_' + user.id"
+                                                :value="meme.id"
+                                                :id="'meme_id_' + meme.id"
                                                 placeholder="Password"
                                                 class="custom-control-input checkall__item"/>
-                                            <label class="custom-control-label" :for="'user_id_' + user.id">
+                                            <label class="custom-control-label" :for="'meme_id_' + meme.id">
                                             </label>
                                         </div>
                                     </td>
                                     <td>
-                                        {{ user.id }}
+                                        {{ meme.id }}
 
                                     </td>
                                     <td>
-                                        {{ user.username }}
+                                        {{ meme.title }}
 
                                     </td>
                                     <td>
-                                        {{ user.email }}
+                                        {{ meme.status }}
 
                                     </td>
-                                    <td></td>
+                                    <td>
+                                        <div style="height: 50px; overflow: hidden">
+
+                                            <img v-tooltip="{
+                                                placement: 'left-center',
+                                                    content: asyncContent(meme.image),
+                                                    loadingContent: '<i>Loading...</i>',
+                                                  }"
+                                                 width="50px" :src="meme.image" alt="">
+                                        </div>
+
+
+                                    </td>
+
                                     <td>
                                         <div v-if="filters.trashed != 'only'">
                                             <inertia-link
                                                 class="btn btn-warning btn-sm"
-                                                :href="route('users.edit', user.id)"
+                                                :href="route('memes.edit', meme.id)"
                                                 method="get"
                                                 :data="{}"
                                             >Edit
@@ -178,10 +197,9 @@
                                             <inertia-link
                                                 preserve-scroll
                                                 preserve-state
-                                                @click.prevent="confirmDel(user.id)"
+                                                @click.prevent="confirmDel(meme.id)"
                                                 class="btn btn-danger btn-sm"
-                                                :href="route('users.trashed', user.id)"
-                                                :class="{ disabled: $page.auth.user.id === user.id }"
+                                                :href="route('users.trashed', meme.id)"
                                                 method="delete"
                                                 :data="{}"
                                             >Del
@@ -195,7 +213,7 @@
                                                 class="btn btn-warning btn-sm"
                                                 :href="route('users.restore')"
                                                 method="post"
-                                                :data="{ id: user.id }"
+                                                :data="{ id: meme.id }"
                                             >Restore
                                             </inertia-link
                                             >
@@ -206,7 +224,7 @@
                             </table>
                         </div>
                         <div class="pagination_ d-flex justify-content-end">
-                            <pagination class="ml-auto" :links="users.links"/>
+                            <pagination class="ml-auto" :links="memes.links"/>
                         </div>
                     </div>
                 </div>
@@ -252,7 +270,7 @@ export default {
         };
     },
     props: {
-        users: Object,
+        memes: Object,
         filters: {
             type: Object,
             default: null,
@@ -276,6 +294,9 @@ export default {
     },
 
     methods: {
+        asyncContent(img){
+           return `<img src="${img}" width="100%"/>`;
+        },
         footable() {
             $(".table-toggle").footable();
         },

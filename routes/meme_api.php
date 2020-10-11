@@ -8,6 +8,7 @@ use App\Actions\Memevui\Meme_;
 use App\Actions\Memevui\Meme2;
 use App\Models\Meme;
 use App\Actions\Imgur\Imgur;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -52,6 +53,18 @@ Route::post('/uploadPhoto', function (\Illuminate\Http\Request $request) {
     ]);
 })->name('uploadPhoto');
 
+Route::post('/getTags', function (\Illuminate\Http\Request $request) {
+    $validator = $request->validate([
+        'name' => ['required', 'max:100'],
+    ]);
+
+    $tags = \App\Models\Tag::select('id', 'name as text', 'slug')
+        ->where('name', 'like', '%' . $validator['name'] . '%')
+        ->limit(10)
+        ->get()
+        ->toArray();
+    return response()->json($tags);
+});
 
 Route::get('/reset_page_memehay', function () {
     (new Meme_())->resetPage();
@@ -69,7 +82,10 @@ Route::get('/memes/{page?}',
         $memes->load(['tags', 'meme_meta']);
         $collection = collect($memes->toArray());
         $memes = $collection->map(function ($item) {
-            $item['meme_meta'] = array_combine(array_column($item['meme_meta'], 'key'), array_column($item['meme_meta'], 'value'));
+            $item['meme_meta'] = array_combine(
+                array_column($item['meme_meta'], 'key'),
+                array_column($item['meme_meta'], 'value')
+            );
 
             $item['tags'] = array_map(function ($tag) {
                 return $tag = [

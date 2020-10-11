@@ -42,4 +42,20 @@ class Meme extends Model
     {
         return $this->hasMany(\App\Models\Meme_meta::class);
     }
+
+    public function scopeFilter($query, array $filters)
+    {
+        $query->when($filters['search'] ?? null, function ($query, $search) {
+            $query->where(function ($query) use ($search) {
+                $query->where('title', 'like', '%' . trim($search) . '%')
+                    ->orWhere('slug', 'like', '%' . trim($search) . '%');
+            });
+        })->when($filters['role'] ?? null, function ($query, $role) {
+            $query->whereRole($role);
+        })->when($filters['trashed'] ?? null, function ($query, $trashed) {
+            if ($trashed === 'only') {
+                $query->onlyTrashed();
+            }
+        });
+    }
 }
