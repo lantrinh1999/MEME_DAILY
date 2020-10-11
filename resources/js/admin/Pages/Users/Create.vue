@@ -96,6 +96,7 @@
                                 Super administrator</label>
                         </div>
 
+
                     </div>
                 </div>
             </div>
@@ -107,7 +108,7 @@
 import AdminLayout from "../../Shared/AdminLayout";
 import TextInput from "../../Shared/TextInput";
 import Btn from "../../Shared/Btn";
-
+import $ from 'jquery';
 export default {
     metaInfo: {
         title: "Create User",
@@ -158,6 +159,31 @@ export default {
         },
     },
     mounted() {
+        $(document).ready(function () {
+            $("#mytags").tagit({
+                singleField: true,
+                singleFieldNode: $('#mySingleField'),
+                allowSpaces: true,
+                minLength: 2,
+                removeConfirmation: true,
+                tagSource: function (request, response) {
+                    //console.log("1");
+                    $.ajax({
+                        url: "search.php",
+                        data: {term: request.term},
+                        dataType: "json",
+                        success: function (data) {
+                            response($.map(data, function (item) {
+                                return {
+                                    label: item.label + " (" + item.id + ")",
+                                    value: item.value
+                                }
+                            }));
+                        }
+                    });
+                }
+            });
+        });
     },
 };
 </script>

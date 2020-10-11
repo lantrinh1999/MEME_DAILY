@@ -1,0 +1,53 @@
+{
+  "_from": "tag-it",
+  "_id": "tag-it@2.0.0",
+  "_inBundle": false,
+  "_integrity": "sha1-e2GHWd+ED7kClKVCV6lH+isUhUI=",
+  "_location": "/tag-it",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "tag-it",
+    "name": "tag-it",
+    "escapedName": "tag-it",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/tag-it/-/tag-it-2.0.0.tgz",
+  "_shasum": "7b618759df840fb90294a54257a947fa2b148542",
+  "_spec": "tag-it",
+  "_where": "/Users/linhtran/Developer/laravel/meme",
+  "author": {
+    "name": "Alex Ehlke"
+  },
+  "bugs": {
+    "url": "https://github.com/aehlke/tag-it/issues"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "A jQuery UI plugin to handle multi-tag fields as well as tag suggestions/autocomplete.",
+  "homepage": "https://github.com/aehlke/tag-it#readme",
+  "keywords": [
+    "jquery",
+    "tags",
+    "tag",
+    "tagit",
+    "input",
+    "select",
+    "suggest"
+  ],
+  "license": "MIT",
+  "main": "js/tag-it.min.js",
+  "name": "tag-it",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aehlke/tag-it.git"
+  },
+  "version": "2.0.0"
+}

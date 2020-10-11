@@ -6,7 +6,7 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet"
           type="text/css">
 
-    <link href="{{ mix('/admin/css/style.css') . rand(10000, 9999999) }}" rel="stylesheet">
+    <link href="{{ mix('/admin/css/style.css') }}" rel="stylesheet">
 
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
           integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
@@ -21,6 +21,7 @@
     <script src="https://polyfill.io/v3/polyfill.min.js?features=String.prototype.startsWith" defer></script>
     @routes
     <script src="{{ mix('/admin/js/app.js') }}" defer></script>
+    <script src="{{ mix('/admin/js/scripts.js') }}" defer></script>
     <style>
             html, body {
             font-family: 'Roboto' !important;
@@ -38,7 +39,8 @@
 
 <main class="sidebar-mini layout-fixed control-sidebar-slide-open text-md">
     @inertia
+{{--    {!! ssr('/admin/js/app-server.js')->render() !!}--}}
 </main>
-<script src="{{ mix('/admin/js/scripts.js') }}" defer></script>
+
 </body>
 </html>

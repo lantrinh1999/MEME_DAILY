@@ -41,7 +41,7 @@
                        with font-awesome or any other icon font library -->
                     <li v-for="menu in $page.menu" class="nav-item" :class="{
                         'has-treeview' : (typeof menu.children == 'object'),
-                        'menu-open' : ( geturl($page.currentUrl).includes(menu.url)) || parent == menu.key
+                        'menu-open' : ( geturl(menu.url).includes($page.currentUrl)) || parent == menu.key
                     }">
                         <a :href="menu.url" :class="{'active' : ( geturl($page.currentUrl).includes(menu.url))}"
                            class="nav-link">
@@ -51,9 +51,9 @@
                                 <i class="right fas fa-angle-left"></i>
                             </p>
                         </a>
-                        <ul v-if="typeof menu.children == 'object'" :class="{}" class="nav nav-treeview">
+                        <ul v-if="typeof menu.children == 'object'" :class="{}" :style="( geturl($page.currentUrl).includes(menu.url)) || parent == menu.key ? { 'display': 'block'}: {'display': 'none'}" class="nav nav-treeview">
                             <li class="nav-item">
-                                <inertia-link :href="menu.url"
+                                <inertia-link @click="clickNav()" :href="menu.url"
                                               :class="{'active' : ( geturl($page.currentUrl) == geturl(menu.url))}"
                                               class="nav-link">
                                     <i class="nav-icon" :class="menu.icon"></i>
@@ -61,7 +61,9 @@
                                 </inertia-link>
                             </li>
                             <li v-for="child in menu.children" class="nav-item">
-                                <inertia-link :load="setParent(geturl($page.currentUrl) == geturl(child.url), child.parent)" :href="child.url"
+                                <inertia-link @click="clickNav()"
+                                              :load="setParent(($page.parent) == (child.parent), child.parent)"
+                                              :href="child.url"
                                               :class="{'active' : ( geturl($page.currentUrl) == geturl(child.url))}"
                                               class="nav-link">
                                     <i class="nav-icon" :class="child.icon"></i>
@@ -81,11 +83,14 @@
 </template>
 
 <script>
+import $ from 'jquery';
+
 export default {
     name: "Sidebar",
 
     mounted() {
-        console.log(this.$page.currentUrl)
+        // console.log(this.$page.currentUrl);
+
     },
     data() {
         return {
@@ -96,13 +101,18 @@ export default {
     methods: {
         geturl(url) {
             let a = new URL(url);
+            // console.log(a.origin + a.pathname);
             return a.origin + a.pathname;
         },
-        setParent( boo ,parent){
-            if (boo){
+        setParent(boo, parent) {
+            if (boo) {
+                console.log(parent);
                 this.parent = parent;
             }
             // console.log(this.parent);
+        },
+        clickNav() {
+
         }
     }
 }

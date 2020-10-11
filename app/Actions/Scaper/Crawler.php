@@ -16,6 +16,7 @@ class Crawler
     public function memehay($page)
     {
         $crawler_ = $this->getCrawler(self::$meme_url . $page);
+
         if ($crawler_) {
             $result = $crawler_->filter('div#home div.card')->each(
                 function (BaseCrawler $node) {
@@ -43,8 +44,10 @@ class Crawler
                     return $value;
                 }
             );
-            return $result ?? false;
+//            dd($result);
+            return $result;
         }
+        return ;
     }
 
     protected function getCrawler($url)

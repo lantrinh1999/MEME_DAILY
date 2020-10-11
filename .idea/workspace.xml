@@ -20,30 +20,220 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d063b612-5b53-4eb9-95a4-48199586b6e5" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Actions/AdminMenu/Menu.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/assets/admin/custom.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Actions/Memevui/Meme2.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/fonts/vendor/summernote/dist/summernote.eot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/fonts/vendor/summernote/dist/summernote.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/fonts/vendor/summernote/dist/summernote.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/fonts/vendor/summernote/dist/summernote.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/admin/10.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/admin/11.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/admin/12.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/admin/13.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/admin/14.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/admin/15.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/admin/8.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/admin/9.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/admin/Pages/Memes/Create.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/admin/Pages/Memes/Edit.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/admin/Pages/Memes/Index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/admin/Shared/ImageUpload.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/admin/Shared/Loading.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/admin/Shared/TextAreaz.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/admin/app-client.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/admin/app-server.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/autocomplete.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/tag-it.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/tag-it/.githooks/install.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/tag-it/.githooks/post-commit" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/tag-it/.githooks/pre-commit" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/tag-it/.npmignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/tag-it/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/tag-it/Makefile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/tag-it/README.markdown" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/tag-it/_static/examples.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/tag-it/_static/master.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/tag-it/_static/reset.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/tag-it/_static/screenshot.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/tag-it/_static/subpage.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/tag-it/css/jquery.tagit.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/tag-it/css/tagit.ui-zendesk.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/tag-it/examples.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/tag-it/js/tag-it.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/tag-it/js/tag-it.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/tag-it/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/tag-it/prototype.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/ui/.jshintrc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/ui/core.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/ui/data.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/ui/disable-selection.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/ui/effect.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/ui/effects/effect-blind.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/ui/effects/effect-bounce.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/ui/effects/effect-clip.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/ui/effects/effect-drop.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/ui/effects/effect-explode.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/ui/effects/effect-fade.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/ui/effects/effect-fold.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/ui/effects/effect-highlight.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/ui/effects/effect-puff.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/ui/effects/effect-pulsate.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/ui/effects/effect-scale.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/ui/effects/effect-shake.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/ui/effects/effect-size.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/ui/effects/effect-slide.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/ui/effects/effect-transfer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/ui/escape-selector.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/ui/focusable.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/ui/form-reset-mixin.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/ui/form.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/ui/i18n/datepicker-af.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/ui/i18n/datepicker-ar-DZ.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/ui/i18n/datepicker-ar.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/ui/i18n/datepicker-az.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/ui/i18n/datepicker-be.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/ui/i18n/datepicker-bg.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/ui/i18n/datepicker-bs.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/ui/i18n/datepicker-ca.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/ui/i18n/datepicker-cs.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/ui/i18n/datepicker-cy-GB.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/ui/i18n/datepicker-da.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/ui/i18n/datepicker-de.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/ui/i18n/datepicker-el.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/ui/i18n/datepicker-en-AU.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/ui/i18n/datepicker-en-GB.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/ui/i18n/datepicker-en-NZ.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/ui/i18n/datepicker-eo.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/ui/i18n/datepicker-es.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/ui/i18n/datepicker-et.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/ui/i18n/datepicker-eu.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/ui/i18n/datepicker-fa.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/ui/i18n/datepicker-fi.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/ui/i18n/datepicker-fo.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/ui/i18n/datepicker-fr-CA.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/ui/i18n/datepicker-fr-CH.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/ui/i18n/datepicker-fr.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/ui/i18n/datepicker-gl.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/ui/i18n/datepicker-he.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/ui/i18n/datepicker-hi.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/ui/i18n/datepicker-hr.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/ui/i18n/datepicker-hu.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/ui/i18n/datepicker-hy.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/ui/i18n/datepicker-id.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/ui/i18n/datepicker-is.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/ui/i18n/datepicker-it-CH.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/ui/i18n/datepicker-it.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/ui/i18n/datepicker-ja.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/ui/i18n/datepicker-ka.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/ui/i18n/datepicker-kk.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/ui/i18n/datepicker-km.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/ui/i18n/datepicker-ko.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/ui/i18n/datepicker-ky.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/ui/i18n/datepicker-lb.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/ui/i18n/datepicker-lt.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/ui/i18n/datepicker-lv.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/ui/i18n/datepicker-mk.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/ui/i18n/datepicker-ml.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/ui/i18n/datepicker-ms.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/ui/i18n/datepicker-nb.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/ui/i18n/datepicker-nl-BE.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/ui/i18n/datepicker-nl.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/ui/i18n/datepicker-nn.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/ui/i18n/datepicker-no.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/ui/i18n/datepicker-pl.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/ui/i18n/datepicker-pt-BR.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/ui/i18n/datepicker-pt.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/ui/i18n/datepicker-rm.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/ui/i18n/datepicker-ro.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/ui/i18n/datepicker-ru.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/ui/i18n/datepicker-sk.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/ui/i18n/datepicker-sl.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/ui/i18n/datepicker-sq.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/ui/i18n/datepicker-sr-SR.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/ui/i18n/datepicker-sr.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/ui/i18n/datepicker-sv.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/ui/i18n/datepicker-ta.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/ui/i18n/datepicker-th.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/ui/i18n/datepicker-tj.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/ui/i18n/datepicker-tr.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/ui/i18n/datepicker-uk.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/ui/i18n/datepicker-vi.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/ui/i18n/datepicker-zh-CN.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/ui/i18n/datepicker-zh-HK.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/ui/i18n/datepicker-zh-TW.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/ui/ie.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/ui/jquery-1-7.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/ui/keycode.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/ui/labels.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/ui/plugin.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/ui/position.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/ui/safe-active-element.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/ui/safe-blur.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/ui/scroll-parent.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/ui/tabbable.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/ui/unique-id.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/ui/version.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/ui/widget.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/ui/widgets/accordion.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/ui/widgets/autocomplete.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/ui/widgets/button.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/ui/widgets/checkboxradio.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/ui/widgets/controlgroup.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/ui/widgets/datepicker.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/ui/widgets/dialog.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/ui/widgets/draggable.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/ui/widgets/droppable.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/ui/widgets/menu.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/ui/widgets/mouse.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/ui/widgets/progressbar.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/ui/widgets/resizable.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/ui/widgets/selectable.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/ui/widgets/selectmenu.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/ui/widgets/slider.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/ui/widgets/sortable.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/ui/widgets/spinner.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/ui/widgets/tabs.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/ui/widgets/tooltip.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/meme.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/meme.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Actions/Imgur/Imgur.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Actions/Imgur/Imgur.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Actions/Memevui/Meme_.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Actions/Memevui/Meme_.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Actions/Scaper/Crawler.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Actions/Scaper/Crawler.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/MemeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/MemeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/MenuController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/MenuController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/UserController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Providers/MemeServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/MemeServiceProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/admin/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/admin/css/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/admin/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/admin/js/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/admin/js/app.js.LICENSE.txt" beforeDir="false" afterPath="$PROJECT_DIR$/public/admin/js/app.js.LICENSE.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/admin/js/app.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/public/admin/js/app.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/js/scripts.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/admin/js/scripts.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/admin/0.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/admin/0.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/admin/0.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/admin/0.js.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/admin/1.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/admin/1.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/admin/1.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/admin/1.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/admin/2.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/admin/2.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/admin/2.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/admin/2.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/admin/3.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/admin/3.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/admin/3.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/admin/3.js.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/admin/4.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/admin/4.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/admin/5.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/admin/5.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/admin/5.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/admin/5.js.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/admin/6.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/admin/6.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/admin/7.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/admin/7.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/mix-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/mix-manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/admin/build/js/Treeview.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/assets/admin/build/js/Treeview.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/assets/admin/custom.css" beforeDir="false" afterPath="$PROJECT_DIR$/resources/assets/admin/custom.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/admin/Pages/Users/Create.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/admin/Pages/Users/Create.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/admin/Pages/Users/Edit.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/admin/Pages/Users/Edit.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/admin/Pages/Users/Index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/admin/Pages/Users/Index.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/admin/Shared/AdminLayout.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/admin/Shared/AdminLayout.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/admin/Shared/Sidebar.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/admin/Shared/Sidebar.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/admin/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/admin/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/bootstrap.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/bootstrap.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/app.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/meme_api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/meme_api.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/meme_web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/meme_web.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/webpack.mix.js" beforeDir="false" afterPath="$PROJECT_DIR$/webpack.mix.js" afterDir="false" />
     </list>
@@ -62,6 +252,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="composer.json" />
+        <option value="JavaScript File" />
         <option value="Vue Single File Component" />
       </list>
     </option>
@@ -197,6 +388,8 @@
       <path value="$PROJECT_DIR$/vendor/doctrine/cache" />
       <path value="$PROJECT_DIR$/vendor/doctrine/event-manager" />
       <path value="$PROJECT_DIR$/vendor/doctrine/dbal" />
+      <path value="$PROJECT_DIR$/vendor/spatie/server-side-rendering" />
+      <path value="$PROJECT_DIR$/vendor/spatie/laravel-server-side-rendering" />
     </include_path>
   </component>
   <component name="ProjectId" id="1ie3bVh03LMjhdpzie2qO9M1Jjh" />
@@ -212,12 +405,18 @@
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/js/admin/Pages/Memes" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="prettierjs.PrettierConfiguration.Package" value="$PROJECT_DIR$/node_modules/prettier" />
     <property name="run.prettier.on.save" value="true" />
     <property name="settings.editor.selected.configurable" value="reference.settings.ide.settings.web.browsers" />
     <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/resources/js/admin/Pages/Memes" />
+      <recent name="$PROJECT_DIR$/resources/js" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration name="phpunit.xml" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
@@ -235,7 +434,7 @@
       <updated>1602254302936</updated>
       <workItem from="1602254304823" duration="2231000" />
       <workItem from="1602257766956" duration="7322000" />
-      <workItem from="1602265681239" duration="37950000" />
+      <workItem from="1602265681239" duration="76481000" />
     </task>
     <servers />
   </component>
@@ -262,10 +461,10 @@
       <screen x="0" y="23" width="1680" height="984" />
     </state>
     <state x="634" y="402" key="#Composer/0.23.1680.984@0.23.1680.984" timestamp="1602254410115" />
-    <state x="474" y="200" key="#Inspections" timestamp="1602276376612">
+    <state x="474" y="200" key="#Inspections" timestamp="1602394260212">
       <screen x="0" y="23" width="1680" height="984" />
     </state>
-    <state x="474" y="200" key="#Inspections/0.23.1680.984@0.23.1680.984" timestamp="1602276376612" />
+    <state x="474" y="200" key="#Inspections/0.23.1680.984@0.23.1680.984" timestamp="1602394260212" />
     <state x="508" y="165" key="#PHP" timestamp="1602254427987">
       <screen x="0" y="23" width="1680" height="984" />
     </state>
@@ -282,30 +481,30 @@
       <screen x="0" y="23" width="1680" height="984" />
     </state>
     <state x="428" y="257" key="IDE.errors.dialog/0.23.1680.984@0.23.1680.984" timestamp="1602255777837" />
-    <state x="555" y="248" key="NewPhpClassDialog" timestamp="1602339724597">
+    <state x="555" y="248" key="NewPhpClassDialog" timestamp="1602430127435">
       <screen x="0" y="23" width="1680" height="984" />
     </state>
-    <state x="555" y="248" key="NewPhpClassDialog/0.23.1680.984@0.23.1680.984" timestamp="1602339724597" />
+    <state x="555" y="248" key="NewPhpClassDialog/0.23.1680.984@0.23.1680.984" timestamp="1602430127435" />
     <state x="444" y="95" key="SettingsEditor" timestamp="1602269287922">
       <screen x="0" y="23" width="1680" height="984" />
     </state>
     <state x="444" y="95" key="SettingsEditor/0.23.1680.984@0.23.1680.984" timestamp="1602269287922" />
-    <state width="254" height="200" key="ShowFilterAction_Filter_Popup" timestamp="1602263600231">
+    <state width="254" height="200" key="ShowFilterAction_Filter_Popup" timestamp="1602369974373">
       <screen x="0" y="23" width="1680" height="984" />
     </state>
-    <state width="254" height="200" key="ShowFilterAction_Filter_Popup/0.23.1680.984@0.23.1680.984" timestamp="1602263600231" />
-    <state width="600" height="428" key="javadoc.popup" timestamp="1602306050400">
+    <state width="254" height="200" key="ShowFilterAction_Filter_Popup/0.23.1680.984@0.23.1680.984" timestamp="1602369974373" />
+    <state width="600" height="428" key="javadoc.popup" timestamp="1602379738886">
       <screen x="0" y="23" width="1680" height="984" />
     </state>
-    <state width="600" height="428" key="javadoc.popup/0.23.1680.984@0.23.1680.984" timestamp="1602306050400" />
+    <state width="600" height="428" key="javadoc.popup/0.23.1680.984@0.23.1680.984" timestamp="1602379738886" />
     <state x="505" y="237" key="run.anything.popup" timestamp="1602264791826">
       <screen x="0" y="23" width="1680" height="984" />
     </state>
     <state x="505" y="237" key="run.anything.popup/0.23.1680.984@0.23.1680.984" timestamp="1602264791826" />
-    <state x="472" y="242" width="670" height="676" key="search.everywhere.popup" timestamp="1602360767326">
+    <state x="472" y="242" width="670" height="676" key="search.everywhere.popup" timestamp="1602424184223">
       <screen x="0" y="23" width="1680" height="984" />
     </state>
-    <state x="472" y="242" width="670" height="676" key="search.everywhere.popup/0.23.1680.984@0.23.1680.984" timestamp="1602360767326" />
+    <state x="472" y="242" width="670" height="676" key="search.everywhere.popup/0.23.1680.984@0.23.1680.984" timestamp="1602424184223" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

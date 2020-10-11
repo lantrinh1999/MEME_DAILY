@@ -21,6 +21,7 @@
         "laravel/tinker": "^2.0",
         "league/glide": "^1.6",
         "reinink/remember-query-strings": "^0.1.0",
+        "spatie/laravel-server-side-rendering": "^1.4",
         "tightenco/ziggy": "^0.9.4"
     },
     "require-dev": {

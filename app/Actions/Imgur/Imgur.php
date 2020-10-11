@@ -30,12 +30,13 @@ class Imgur
             );
             $response = (string)$request->getBody();
             $jsonResponse = @json_decode($response);
+
         } catch (\Exception $e) {
             return NULL;
         } catch (GuzzleException $e) {
         }
-
-        return @$jsonResponse->data->link; // return url of image
+        $data = @$jsonResponse->data->link;
+        return $data; // return url of image
     }
 
     public static function uploadImage2($imagePath)
@@ -52,9 +53,35 @@ class Imgur
                     ]
                 ]
             );
-            $response = (string)$request->getBody();
+            $response = $request->getBody();
             $jsonResponse = @json_decode($response);
+//            dd($jsonResponse);
+            if (!empty($jsonResponse->saved)) {
+                return self::PIK . $jsonResponse->saved; // return url of image
+            }
+            return false;
+        } catch (GuzzleException $e) {
+        }
 
+    }
+
+    public static function uploadImage23($imagePath)
+    {
+        $base64 = self::imageToBase64_($imagePath);
+        $client = new GuzzleClient();
+        try {
+            $request = $client->request(
+                'POST',
+                self::END_POINT_2,
+                [
+                    'form_params' => [
+                        'image' => $base64,
+                    ]
+                ]
+            );
+            $response = $request->getBody();
+            $jsonResponse = @json_decode($response);
+//            dd($jsonResponse);
             if (!empty($jsonResponse->saved)) {
                 return self::PIK . $jsonResponse->saved; // return url of image
             }
@@ -69,6 +96,15 @@ class Imgur
     {
         $type = pathinfo($path, PATHINFO_EXTENSION);
         $data = file_get_contents($path);
+        return 'data:image/' . $type . ';base64,' . base64_encode($data);
+
+
+    }
+
+    protected static function imageToBase64_($path)
+    {
+        $type = $path['extension'];
+        $data = file_get_contents($path['photo']);
         return 'data:image/' . $type . ';base64,' . base64_encode($data);
     }
 }

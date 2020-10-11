@@ -66,7 +66,7 @@ Route::group(['prefix' => $adminRoute, 'namespace' => 'App\Http\Controllers\Admi
             'permission' => ['users.edit']
         ]);
         Route::put('{id}', [
-            'as' => 'user.update',
+            'as' => 'users.update',
             'uses' => 'UserController@update',
             'permission' => ['users.edit']
         ]);
@@ -86,11 +86,54 @@ Route::group(['prefix' => $adminRoute, 'namespace' => 'App\Http\Controllers\Admi
             'permission' => ['users.destroy']
         ]);
     });
+
+    Route::group(['prefix' => 'memes',], function () {
+        Route::get('/', [
+            'as' => 'memes.index',
+            'uses' => 'MemeController@index',
+            'permission' => 'memes.index',
+            'menu' => ['parent_name' => 'Memes', 'name' => 'List Memes' ,'priority' => '1', 'icon' => 'far fa-grin-alt', 'parent' => null],
+        ]);
+        Route::get('create', [
+            'as' => 'memes.create',
+            'uses' => 'MemeController@create',
+            'permission' => 'memes.create',
+            'menu' => ['name' => 'Create Memes', 'priority' => '3', 'icon' => ' fa fa-plus', 'parent' => 'memes.index'],
+
+        ]);
+        Route::post('store', [
+            'as' => 'memes.store',
+            'uses' => 'MemeController@store',
+            'permission' => ['memes.create'],
+        ]);
+        Route::get('{id}/edit', [
+            'as' => 'memes.edit',
+            'uses' => 'MemeController@edit',
+            'permission' => ['memes.edit']
+        ]);
+        Route::put('{id}', [
+            'as' => 'memes.update',
+            'uses' => 'MemeController@update',
+            'permission' => ['memes.edit']
+        ]);
+        Route::post('destroy', [
+            'as' => 'memes.destroy',
+            'uses' => 'MemeController@destroy',
+            'permission' => ['memes.destroy']
+        ]);
+        Route::post('trashed', [
+            'as' => 'memes.trashed',
+            'uses' => 'MemeController@trashed',
+            'permission' => ['memes.destroy']
+        ]);
+        Route::post('restore', [
+            'as' => 'memes.restore',
+            'uses' => 'UserController@restore',
+            'permission' => ['memes.destroy']
+        ]);
+    });
 });
 
 
-Route::get('/users', function () {
-    dd(\Illuminate\Support\Facades\Auth::check());
-    return Inertia::render('Users/Index');
-})->middleware('auth');
+
 

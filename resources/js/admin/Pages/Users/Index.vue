@@ -127,7 +127,7 @@
                                         >
                                     </th>
                                     <th data-hide="phone,tablet">Role</th>
-                                    <th class="action">
+                                    <th style="width: 100px;" class="action">
                                         <inertia-link href method="get" :data="{}"
                                         >Action
                                         </inertia-link
@@ -260,7 +260,7 @@ export default {
     },
     mounted() {
         this.footable();
-        console.log(this.$page.menu);
+        // console.log(this.$page.menu);
         checkAll(document.querySelector("[data-check-all-container]"));
     },
     watch: {

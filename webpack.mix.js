@@ -20,7 +20,8 @@ const purgecss = require("@fullhuman/postcss-purgecss");
  * ADMIN
  */
 const admin_assets = "resources/assets/admin/";
-mix.js("resources/js/admin/app.js", "public/admin/js")
+mix.js("resources/js/admin/app-client.js", "public/admin/js/app.js")
+    // .js("resources/js/admin/app-server.js", "public/admin/js/app-server.js")
     .scripts(
         [
             admin_assets + "plugins/jquery/jquery.min.js",

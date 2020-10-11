@@ -13,12 +13,13 @@ use Illuminate\Validation\Rule;
 
 class UserController extends Controller
 {
-protected $user;
+    protected $user;
 
     public function __construct(User $user)
     {
         $this->user = $user;
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -26,10 +27,10 @@ protected $user;
      */
     public function index(Request $request)
     {
-        $filters = (object) $request->all();
+        $filters = (object)$request->all();
 
-        $users = $this->user->filter((array) $request->only('search', 'trashed'))
-            ->paginate(!empty($request->input('pp')) ? (int)$request->input('pp') : (int) config('meme.items_per_page', 20))->onEachSide(1)
+        $users = $this->user->filter((array)$request->only('search', 'trashed'))
+            ->paginate(!empty($request->input('pp')) ? (int)$request->input('pp') : (int)config('meme.items_per_page', 20))->onEachSide(1)
             ->only('id', 'username', 'email', 'created_at', 'deleted_at');
 
 
@@ -50,7 +51,7 @@ protected $user;
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\RedirectResponse
      */
     public function store(Request $request)
@@ -76,20 +77,20 @@ protected $user;
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
         $pageTitle = 'Detail User';
-        $user = (array) $this->user->find($id);
+        $user = (array)$this->user->find($id);
         Inertia::render('core/Users/Detail', compact('user', 'pageTitle'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -102,8 +103,8 @@ protected $user;
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -130,7 +131,7 @@ protected $user;
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy(Request $request)
@@ -141,6 +142,7 @@ protected $user;
         }
         return redirect()->back()->with('error', trans('error'));
     }
+
     public function trashed(Request $request)
     {
 
@@ -151,6 +153,7 @@ protected $user;
         }
         return redirect()->back()->with('error', trans('error'));
     }
+
     public function restore(Request $request)
     {
         $id = array_diff((array)$request->id, (array)Auth::user()->id);

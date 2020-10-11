@@ -4,7 +4,10 @@ var $ = global.jQuery;
 window.$ = $;
 
 let footable = require("footable/dist/footable.js");
+let tagit = require("./tag-it");
+import "./ui/widgets/autocomplete";
 window.fn = footable;
+window.fn = tagit;
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests
  * to our Laravel back-end. This library automatically handles sending the

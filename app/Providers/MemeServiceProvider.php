@@ -96,7 +96,7 @@ class MemeServiceProvider extends ServiceProvider
                 },
                 'currentUrl' => function () {
                     try {
-                       return route(Route::currentRouteName());
+                       return url()->current();
                     } catch (\Exception $e) {
                         return url('/ ');
                     }
