@@ -118,7 +118,7 @@ body {
         font-weight: bold;
     }
 
-    #nav-custom .nav-item:last-child>.nav-link {
+    #nav-custom .nav-item:last-child > .nav-link {
         padding-right: 0;
     }
 }
@@ -130,7 +130,6 @@ body {
         font-size: 13px;
     }
 }
-
 
 
 .meme {
@@ -168,4 +167,8 @@ body {
     .container-sm {
         max-width: 80% !important;
     }
+}
+
+.btn-danger:not(:disabled):not(.disabled).active:focus, .btn-danger:not(:disabled):not(.disabled):active:focus, .show > .btn-danger.dropdown-toggle:focus {
+    box-shadow: none;
 }

@@ -39,7 +39,6 @@ class ThemeController extends Controller
             // $item['tags'] = array_combine(array_column($item['tags'], 'slug'), array_column($item['tags'], 'name'));
             return $item;
         })->toArray();
-//        dd($memes);
         $nextPage = $page+1;
 
         return view('theme.index', compact('memes', 'page', 'nextPage'));
