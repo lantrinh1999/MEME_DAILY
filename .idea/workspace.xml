@@ -20,9 +20,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d063b612-5b53-4eb9-95a4-48199586b6e5" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Actions/Memevui/Meme2.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Actions/Memevui/Meme2.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/meme_api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/meme_api.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -221,7 +219,7 @@
       <updated>1602254302936</updated>
       <workItem from="1602254304823" duration="2231000" />
       <workItem from="1602257766956" duration="7322000" />
-      <workItem from="1602265681239" duration="76756000" />
+      <workItem from="1602265681239" duration="76869000" />
     </task>
     <servers />
   </component>
