@@ -20,10 +20,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d063b612-5b53-4eb9-95a4-48199586b6e5" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/database/migrations/2020_10_12_172827_add_view_count_to_tags_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/anhche-memes-haynhat-comment-dao-hot-nhat-cong-dong-mang-xa-hoi-viet-nam.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/theme/js/scripts.js.LICENSE.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/theme/js/scripts.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/images/Screen Shot 2020-10-07 at 12.48.14 2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/theme/allTags.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ThemeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ThemeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/assets/theme/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/resources/assets/theme/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Tag.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Tag.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/theme/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/theme/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/theme/layout/base.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/theme/layout/base.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/theme/layout/footer.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/theme/layout/footer.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/theme/layout/header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/theme/layout/header.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/meme_api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/meme_api.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/meme_web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/meme_web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -223,7 +236,9 @@
       <workItem from="1602254304823" duration="2231000" />
       <workItem from="1602257766956" duration="7322000" />
       <workItem from="1602265681239" duration="80492000" />
-      <workItem from="1602439838221" duration="16943000" />
+      <workItem from="1602439838221" duration="17888000" />
+      <workItem from="1602495874422" duration="1909000" />
+      <workItem from="1602511589074" duration="17933000" />
     </task>
     <servers />
   </component>
@@ -258,18 +273,18 @@
       <screen x="0" y="23" width="1680" height="984" />
     </state>
     <state x="508" y="165" key="#PHP/0.23.1680.984@0.23.1680.984" timestamp="1602254427987" />
-    <state x="477" y="185" key="#com.intellij.openapi.keymap.impl.ui.EditKeymapsDialog" timestamp="1602456397977">
+    <state x="477" y="185" key="#com.intellij.openapi.keymap.impl.ui.EditKeymapsDialog" timestamp="1602525557265">
       <screen x="0" y="23" width="1680" height="984" />
     </state>
-    <state x="477" y="185" key="#com.intellij.openapi.keymap.impl.ui.EditKeymapsDialog/0.23.1680.984@0.23.1680.984" timestamp="1602456397977" />
+    <state x="477" y="185" key="#com.intellij.openapi.keymap.impl.ui.EditKeymapsDialog/0.23.1680.984@0.23.1680.984" timestamp="1602525557265" />
     <state x="453" y="23" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1602254652049">
       <screen x="0" y="23" width="1680" height="984" />
     </state>
     <state x="453" y="23" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.23.1680.984@0.23.1680.984" timestamp="1602254652049" />
-    <state x="428" y="257" key="IDE.errors.dialog" timestamp="1602446624316">
+    <state x="428" y="257" key="IDE.errors.dialog" timestamp="1602525533422">
       <screen x="0" y="23" width="1680" height="984" />
     </state>
-    <state x="428" y="257" key="IDE.errors.dialog/0.23.1680.984@0.23.1680.984" timestamp="1602446624316" />
+    <state x="428" y="257" key="IDE.errors.dialog/0.23.1680.984@0.23.1680.984" timestamp="1602525533422" />
     <state x="555" y="248" key="NewPhpClassDialog" timestamp="1602430127435">
       <screen x="0" y="23" width="1680" height="984" />
     </state>
@@ -290,10 +305,10 @@
       <screen x="0" y="23" width="1680" height="984" />
     </state>
     <state x="505" y="237" key="run.anything.popup/0.23.1680.984@0.23.1680.984" timestamp="1602264791826" />
-    <state x="472" y="242" width="670" height="676" key="search.everywhere.popup" timestamp="1602452417312">
+    <state x="472" y="242" width="670" height="676" key="search.everywhere.popup" timestamp="1602512667297">
       <screen x="0" y="23" width="1680" height="984" />
     </state>
-    <state x="472" y="242" width="670" height="676" key="search.everywhere.popup/0.23.1680.984@0.23.1680.984" timestamp="1602452417312" />
+    <state x="472" y="242" width="670" height="676" key="search.everywhere.popup/0.23.1680.984@0.23.1680.984" timestamp="1602512667297" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

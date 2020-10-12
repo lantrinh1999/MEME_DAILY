@@ -141,5 +141,7 @@ Route::group(['prefix' => $adminRoute, 'namespace' => 'App\Http\Controllers\Admi
 Route::group([
     'namespace' => 'App\Http\Controllers',
 ], function ()  {
-    Route::get('/{page?}', ['uses' => 'ThemeController@index'])->name('theme.home');
+    Route::get('/{page?}', ['uses' => 'ThemeController@home'])->name('theme.home')->where('page', '[0-9]+');
+    Route::get('/tag', ['uses' => 'ThemeController@allTags'])->name('theme.allTags');
+    Route::get('/tag/{slug}/{page?}', ['uses' => 'ThemeController@tag'])->name('theme.tag')->where(['slug' => '^[a-z0-9]+(?:-[a-z0-9]+)*$']);
 });

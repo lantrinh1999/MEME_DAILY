@@ -37,14 +37,12 @@ Route::post('/uploadPhoto', function (\Illuminate\Http\Request $request) {
     ]);
     $photo = $request->file('photo')->getRealPath();
     $extension = $request->file('photo')->extension();
-//    dd($extension);
     $new_image_url = Imgur::uploadImage23(compact('photo', 'extension'));
     $_key = '_pik';
     if (empty($new_image_url)) {
         $new_image_url = Imgur::uploadImage($photo);
         $_key = '_imgur';
     }
-//    dd($new_image_url);
     return response()->json([
         'success' => [
             'value' => $new_image_url,
@@ -69,9 +67,7 @@ Route::post('/getTags', function (\Illuminate\Http\Request $request) {
 Route::get('/reset_page_memehay', function () {
     (new Meme_())->resetPage();
 });
-Route::get('/get_data/{page}', function ($page) {
-    dd((new \App\Actions\Scaper\Crawler())->memehay($page));
-});
+
 Route::get('/memes/{page?}',
     function ($page = 1) {
         $limit = 20;
@@ -98,9 +94,8 @@ Route::get('/memes/{page?}',
             unset($item['image']);
             unset($item['deleted_at']);
 
-            // $item['tags'] = array_combine(array_column($item['tags'], 'slug'), array_column($item['tags'], 'name'));
             return $item;
         });
-        // dd($memes->all());
+
         return response()->json($memes);
     })->where('page', '[0-9]+');

@@ -1,7 +1,7 @@
-<header class="header bg-white shadow-sm">
+<header class="header bg-white shadow-sm mb-auto">
     <nav class="container navbar navbar-light navbar-expand-lg fixed-top_ position-sticky">
-        <a class="navbar-brand" href="#">
-            <img src="https://memehay.com/images/logo-meme-hay.png" style="height: 39px" title="Meme hay logo">
+        <a class="navbar-brand" href="{{url('/')}}">
+            <img src="{{url('/logo.png')}}" style="height: 39px" title="Meme daily vn logo">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav-custom"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">

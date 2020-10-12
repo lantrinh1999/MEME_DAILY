@@ -17,6 +17,6 @@ class Tag extends Model
 
     public function memes()
     {
-        return $this->belongsToMany(\App\Models\Meme::class);
+        return $this->belongsToMany(\App\Models\Meme::class, 'meme_tag', 'tag_id', 'meme_id');
     }
 }
