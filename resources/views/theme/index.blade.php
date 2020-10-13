@@ -80,7 +80,7 @@
                     <div class="row no-gutters">
                         <div class="col-md-7">
                             <div class="img p-2">
-                                <a href="/" title="{{ $meme['title'] }}">
+                                <a href="{{ route('theme.meme', $meme['slug']) }}" title="{{ $meme['title'] }}">
                                     @if(!empty($meme['meme_meta']['_pik']))
                                         <img class="w-100" src="{{ $meme['meme_meta']['_pik'] }} "
                                              alt="{{ $meme['title'] }}">
@@ -99,7 +99,7 @@
                         <div class="col-md-5 fixed_scroll">
                             <div class="content-meme p-2 px-lg-2">
                                 <div class="title">
-                                    <a class="text-dark text-decoration-none" href="/"
+                                    <a class="text-dark text-decoration-none" href="{{ route('theme.meme', $meme['slug']) }}"
                                        title="{{ $meme['title'] }}">{{ $meme['title'] }}</a>
                                 </div>
                                 <div class="tag">

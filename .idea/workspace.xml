@@ -20,21 +20,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d063b612-5b53-4eb9-95a4-48199586b6e5" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/database/migrations/2020_10_12_172827_add_view_count_to_tags_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/anhche-memes-haynhat-comment-dao-hot-nhat-cong-dong-mang-xa-hoi-viet-nam.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/logo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/theme/js/scripts.js.LICENSE.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/theme/js/scripts.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/images/Screen Shot 2020-10-07 at 12.48.14 2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/theme/allTags.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/theme/meme.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/meme.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/meme.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Actions/Memevui/Meme2.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Actions/Memevui/Meme2.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ThemeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ThemeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Meme.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Meme.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Models/Tag.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Tag.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/app.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/theme/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/theme/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/theme/layout/base.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/theme/layout/base.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/theme/layout/footer.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/theme/layout/footer.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/theme/layout/header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/theme/layout/header.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/meme_api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/meme_api.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/meme_web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/meme_web.php" afterDir="false" />
     </list>
@@ -191,6 +188,7 @@
       <path value="$PROJECT_DIR$/vendor/doctrine/dbal" />
       <path value="$PROJECT_DIR$/vendor/spatie/server-side-rendering" />
       <path value="$PROJECT_DIR$/vendor/spatie/laravel-server-side-rendering" />
+      <path value="$PROJECT_DIR$/vendor/laravelium/sitemap" />
     </include_path>
   </component>
   <component name="ProjectId" id="1ie3bVh03LMjhdpzie2qO9M1Jjh" />
@@ -238,7 +236,9 @@
       <workItem from="1602265681239" duration="80492000" />
       <workItem from="1602439838221" duration="17888000" />
       <workItem from="1602495874422" duration="1909000" />
-      <workItem from="1602511589074" duration="17933000" />
+      <workItem from="1602511589074" duration="21079000" />
+      <workItem from="1602595034682" duration="6000" />
+      <workItem from="1602596684169" duration="3464000" />
     </task>
     <servers />
   </component>

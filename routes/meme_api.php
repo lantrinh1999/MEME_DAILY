@@ -28,6 +28,9 @@ Route::get('/crawler_memehay_page/{page}', function ($page) {
     (new Meme2())->run($page);
 });
 
+Route::get('/publish_all_meme', function (){
+    Meme::where('status', 'DRAFT')->update(['status' => 'PUBLISH']);
+});
 
 Route::post('/uploadPhoto', function (\Illuminate\Http\Request $request) {
 

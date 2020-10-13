@@ -46,7 +46,7 @@ class Meme2
         }
 
         Cache::store('file')->forever(self::KEY_PAGE_CACHE . '2___', $page_ - 1);
-//        dd($page_);
+
         return response()->json($this->data);
 
     }
@@ -57,17 +57,6 @@ class Meme2
             $data = array_reverse($this->data);
             foreach ($data as $key => $value) {
                 $tags = [];
-//                $image = $value['image'];
-//                $new_image_url = Imgur::uploadImage2($value['image']);
-//                $_key = '_pik';
-//                if (empty($new_image_url)) {
-//                    $new_image_url = Imgur::uploadImage($value['image']);
-//                    $_key = '_imgur';
-//                    if (empty($new_image_url)) {
-//                        $new_image_url = $value['image'];
-//                        $_key = '_memehay';
-//                    }
-//                }
                 if (array_key_exists('tags', $value)) {
                     $tags = $value['tags'];
                     unset($value['tags']);
@@ -76,7 +65,7 @@ class Meme2
                 if (!Meme::where('slug', '=', $value['slug'])->exists()) {
                     DB::beginTransaction();
                     try {
-
+                        $value['status'] = 'PUBLISH';
                         $meme = Meme::firstOrCreate(($value));
                         $new_image_url = Imgur::uploadImage2($value['image']);
                         $_key = '_pik';

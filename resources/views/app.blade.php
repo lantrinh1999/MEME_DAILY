@@ -6,6 +6,10 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet"
           type="text/css">
 
+    <meta name="googlebot" content="noindex"/>
+    <meta name="googlebot" content="noindex">
+    <meta name="googlebot-news" content="nosnippet">
+
     <link href="{{ mix('/admin/css/style.css') }}" rel="stylesheet">
 
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
@@ -23,7 +27,7 @@
     <script src="{{ mix('/admin/js/app.js') }}" defer></script>
     <script src="{{ mix('/admin/js/scripts.js') }}" defer></script>
     <style>
-            html, body {
+        html, body {
             font-family: 'Roboto' !important;
         }
 
@@ -39,7 +43,7 @@
 
 <main class="sidebar-mini layout-fixed control-sidebar-slide-open text-md">
     @inertia
-{{--    {!! ssr('/admin/js/app-server.js')->render() !!}--}}
+    {{--    {!! ssr('/admin/js/app-server.js')->render() !!}--}}
 </main>
 
 </body>

@@ -8,9 +8,14 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * @method static select(string $string)
+ * @method static published()
  */
 class Meme extends Model
 {
+    protected $status = [
+      1 => 'PUBLISH',
+      0  => 'DRAFT'
+    ];
     use HasFactory;
     use SoftDeletes;
 
@@ -26,8 +31,6 @@ class Meme extends Model
     ];
 
 
-
-
     public function tags()
     {
         return $this->belongsToMany(\App\Models\Tag::class, 'meme_tag', 'meme_id', 'tag_id');
@@ -41,6 +44,15 @@ class Meme extends Model
     public function meme_meta()
     {
         return $this->hasMany(\App\Models\Meme_meta::class);
+    }
+
+    public function scopePublished($query)
+    {
+        return $query->where('status', 'PUBLISH');
+    }
+
+    public function public()
+    {
     }
 
     public function scopeFilter($query, array $filters)

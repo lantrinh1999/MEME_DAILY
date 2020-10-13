@@ -144,4 +144,8 @@ Route::group([
     Route::get('/{page?}', ['uses' => 'ThemeController@home'])->name('theme.home')->where('page', '[0-9]+');
     Route::get('/tag', ['uses' => 'ThemeController@allTags'])->name('theme.allTags');
     Route::get('/tag/{slug}/{page?}', ['uses' => 'ThemeController@tag'])->name('theme.tag')->where(['slug' => '^[a-z0-9]+(?:-[a-z0-9]+)*$']);
+    Route::get('meme', function (){
+        return redirect()->route('theme.home');
+    });
+    Route::get('/meme/{slug}', ['uses' => 'ThemeController@meme'])->name('theme.meme')->where(['slug' => '^[a-z0-9]+(?:-[a-z0-9]+)*$']);
 });

@@ -40,7 +40,7 @@ class ThemeController extends Controller
 
         $limit = 20;
         $offset = ($page - 1) * $limit;
-        $memes = Meme::orderBy('id', 'desc')
+        $memes = Meme::published()->orderBy('id', 'desc')
             ->offset($offset)
             ->limit($limit)
             ->get();
@@ -48,7 +48,7 @@ class ThemeController extends Controller
         $memes = $this->getMemeData($memes->toArray());
         $nextPage = $page + 1;
 
-        $nextMeme = Meme::where('id', '<', @(end($memes)['id']) ?? 0)->exists();
+        $nextMeme = Meme::published()->where('id', '<', @(end($memes)['id']) ?? 0)->exists();
         if (!$nextMeme) {
             $nextPage = false;
         }
@@ -76,7 +76,7 @@ class ThemeController extends Controller
         $tag = Tag::where('slug', $slug)
             ->withCount('memes')
             ->with(['memes' => function ($query) use ($page, $limit, $offset) {
-                $memes = $query->with(['tags', 'meme_meta'])
+                $memes = $query->published()->with(['tags', 'meme_meta'])
                     ->orderBy('id', 'desc')
                     ->offset($offset)
                     ->limit($limit)
@@ -103,5 +103,13 @@ class ThemeController extends Controller
 
         return view('theme.index', compact('tag', 'memes', 'page', 'nextPage'));
 
+    }
+
+    public  function meme($slug)
+    {
+        $meme = Meme::published()->where('slug', $slug)->with(['tags', 'meme_meta'])->get();
+        $meme = $this->getMemeData($meme->toArray())[0];
+
+        return view('theme.meme', compact('meme'));
     }
 }
