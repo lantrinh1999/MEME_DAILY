@@ -157,7 +157,7 @@ class UserController extends Controller
     public function restore(Request $request)
     {
         $id = array_diff((array)$request->id, (array)Auth::user()->id);
-        if ($this->user->whereIn('id', $id)->restore()) {
+        if ($this->user->withTrashed()->whereIn('id', $id)->restore()) {
             return redirect()->back()->with('success', trans('Success'));
         }
         return redirect()->back()->with('error', trans('error'));

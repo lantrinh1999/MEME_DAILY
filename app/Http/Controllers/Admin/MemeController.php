@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Meme;
+use App\Models\Meme_meta;
 use App\Models\Tag;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -32,11 +33,11 @@ class MemeController extends Controller
     {
         $filters = (object)$request->all();
 
-        $memes = $this->meme->filter((array)$request->only('search', 'trashed'))->with('tags', 'meme_meta')
+        $memes = $this->meme->orderBy('created_at', 'desc')->filter((array)$request->only('search', 'trashed'))->with('tags', 'meme_meta')
             ->paginate(!empty($request->input('pp')) ? (int)$request->input('pp') : (int)config('meme.items_per_page', 20))->onEachSide(1)
             ->only('id', 'title', 'slug','image' ,'created_at', 'status', 'deleted_at');
 
-
+//        dd($memes);
 
         return Inertia::render('Memes/Index', compact('memes', 'filters'));
     }
@@ -60,19 +61,14 @@ class MemeController extends Controller
      */
     public function store(Request $request)
     {
-
-//        dd($request->all());
         $validator = $request->validate([
             'image.value' => ['required', 'max:1000', 'url', 'active_url'],
             'image._key' => ['required', 'max:1000'],
             'title' => ['required', 'max:500'],
             'content' => ['max:10000000000000000000000'],
             'tags' => ['nullable'],
-//            'email' => ['required', 'max:50', 'email', Rule::unique('users')],
-//            'password' => ['max:50', 'min:8', 'confirmed'],
-//            'is_super' => ['boolean']
+            'status' => ['required']
         ]);
-//        dd($validator);
         $slug = Str::slug($validator['title']);
         if (Meme::where('slug', '=', $slug)->exists()) {
             $slug = $slug . '-' . Str::random(5);
@@ -125,7 +121,6 @@ class MemeController extends Controller
             throw \Exception($e->getMessage());
         }
 
-//        dd($memeData);
         if ($flag) {
             return redirect()->back()->with('success', trans('Success'));
         }
@@ -154,8 +149,11 @@ class MemeController extends Controller
     public function edit($id)
     {
         $pageTitle = 'Edit User';
-        $meme = $this->meme->find($id);
-        $meme->load('tags', 'meme_meta');
+        $meme = $this->meme->with('tags', 'meme_meta')->find($id)->toArray();
+        $meme['meme_meta'] = array_combine(
+                array_column($meme['meme_meta'], 'key'),
+                array_column($meme['meme_meta'], 'value')
+            );
         return Inertia::render('Memes/Edit', compact('meme', 'pageTitle'));
     }
 
@@ -168,20 +166,60 @@ class MemeController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->meme = Meme::find($id);
+
         $validator = $request->validate([
-            'first_name' => ['required', 'max:50'],
-            'last_name' => ['required', 'max:50'],
-            'email' => ['required', 'max:50', 'email', Rule::exists('users')],
-            'password' => ['max:50', 'min:8', 'confirmed', 'nullable'],
-            'is_super' => ['boolean']
+            'image.value' => ['required', 'max:1000', 'url', 'active_url'],
+            'image._key' => ['required', 'max:1000'],
+            'title' => ['required', 'max:500'],
+            'content' => ['max:10000000000000000000000'],
+            'tags' => ['nullable'],
+            'status' => ['required']
         ]);
-        if (!empty($validator['password']) && strlen($validator['password']) > 0) {
-            $validator['password'] = bcrypt($validator['password']);
-        } else {
-            unset($validator['password']);
+
+        $memeData = [
+            'title' => $validator['title'],
+            'content' => $validator['content'],
+            'status' => $validator['status'],
+            'image' => $validator['image']['value'],
+        ];
+
+
+        if (!empty($validator['tags'])) {
+            $tags = collect($validator['tags'])->map(function ($tag) {
+                if (empty($tag['slug'])) {
+                    $slug = Str::slug($tag['text']);
+                    if (Tag::where('slug', $slug)->exists()) {
+                        $slug = $slug . '-' . time();
+                    }
+                    $tag = Tag::create(['name' => $tag['text'], 'slug' => $slug]);
+                    if ($tag) {
+                        return $tag->id;
+                    }
+                }
+                return $tag['id'];
+            });
+        }
+        $flag = false;
+
+        DB::beginTransaction();
+        try {
+            $meme = $this->meme->update($memeData);
+            $meta = Meme_meta::where('meme_id', $this->meme->id)->where('key', '_image')->first();
+//            dd($validator );
+            $meta->update(['value' => $validator['image']['value']]);
+            if (!empty($tags)) {
+                $this->meme->tags()->sync($tags);
+            }
+            DB::commit();
+            $flag = true;
+        } catch (\Exception $e) {
+            DB::rollBack();
+            throw new \Exception($e->getMessage());
+
         }
 
-        if ($this->meme->find($id)->update($validator)) {
+        if ($flag) {
             return redirect()->back()->with('success', trans('Success'));
         }
         return redirect()->back()->with('error', trans('Errors'));
@@ -195,9 +233,9 @@ class MemeController extends Controller
      */
     public function destroy(Request $request)
     {
-        $id = array_diff((array)$request->id, (array)Auth::user()->id);
-        if ($this->meme->whereIn('id', $id)->forceDelete()) {
-            return redirect()->route('users.index')->with('success', trans('Success'));
+        $id = (array) $request->id;
+        if ($this->meme->withTrashed()->whereIn('id', $id)->forceDelete()) {
+            return redirect()->back()->with('success', trans('Success'));
         }
         return redirect()->back()->with('error', trans('error'));
     }
@@ -205,18 +243,19 @@ class MemeController extends Controller
     public function trashed(Request $request)
     {
 
-        $id = array_diff((array)$request->id, (array)Auth::user()->id);
+        $id = (array)$request->id;
 
         if ($this->meme->whereIn('id', $id)->delete()) {
-            return redirect()->route('users.index')->with('success', trans('Success'));
+            return redirect()->back()->with('success', trans('Success'));
         }
         return redirect()->back()->with('error', trans('error'));
     }
 
     public function restore(Request $request)
     {
-        $id = array_diff((array)$request->id, (array)Auth::user()->id);
-        if ($this->meme->whereIn('id', $id)->restore()) {
+        $id = (array)$request->id;
+//        dd($id);
+        if ($this->meme->withTrashed()->whereIn('id', $id)->restore()) {
             return redirect()->back()->with('success', trans('Success'));
         }
         return redirect()->back()->with('error', trans('error'));

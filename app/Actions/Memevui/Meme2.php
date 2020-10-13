@@ -68,26 +68,20 @@ class Meme2
                         $value['status'] = 'PUBLISH';
                         $meme = Meme::firstOrCreate(($value));
                         $new_image_url = Imgur::uploadImage2($value['image']);
-                        $_key = '_pik';
+                        $_key = '_image';
                         if (empty($new_image_url)) {
                             $new_image_url = Imgur::uploadImage($value['image']);
-                            $_key = '_imgur';
                             if (empty($new_image_url)) {
                                 $new_image_url = $value['image'];
-                                $_key = '_memehay';
                             }
                         }
-//                        dd($meme);
-                        // create_meta
+
                         $check_meta_exists = Meme_meta::where([
                             'meme_id' => $meme->id,
-                            'key' => '_imgur',
+                            'key' => '_image',
                         ])->exists();
-                        $check_meta_exists2 = Meme_meta::where([
-                            'meme_id' => $meme->id,
-                            'key' => '_pik',
-                        ])->exists();
-                        if (!$check_meta_exists && !$check_meta_exists2) {
+
+                        if (!$check_meta_exists) {
                             $meme->meme_meta()->createMany([
                                 [
                                     'key' => $_key,

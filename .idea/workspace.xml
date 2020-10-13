@@ -20,18 +20,44 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d063b612-5b53-4eb9-95a4-48199586b6e5" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/views/theme/meme.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/meme.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/meme.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/Meme_tag.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Actions/Memevui/Meme2.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Actions/Memevui/Meme2.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/MemeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/MemeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/UserController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ThemeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ThemeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Meme.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Meme.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Tag.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Tag.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/app.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/MemeRedirectIfAuthenticated.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/MemeRedirectIfAuthenticated.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/admin/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/admin/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/js/app.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/public/admin/js/app.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/admin/js/scripts.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/admin/js/scripts.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/admin/0.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/admin/0.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/admin/1.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/admin/1.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/admin/10.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/admin/10.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/admin/2.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/admin/2.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/admin/3.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/admin/3.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/admin/3.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/admin/3.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/admin/4.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/admin/4.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/admin/5.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/admin/5.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/admin/6.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/admin/6.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/admin/7.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/admin/7.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/admin/7.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/admin/7.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/admin/8.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/admin/8.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/admin/8.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/admin/8.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/admin/9.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/admin/9.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/mix-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/mix-manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/theme/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/theme/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/theme/js/scripts.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/theme/js/scripts.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/admin/Pages/Auth/Login.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/admin/Pages/Auth/Login.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/admin/Pages/Memes/Create.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/admin/Pages/Memes/Create.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/admin/Pages/Memes/Edit.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/admin/Pages/Memes/Edit.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/admin/Pages/Memes/Index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/admin/Pages/Memes/Index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/admin/Shared/Navbar.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/admin/Shared/Navbar.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/theme/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/theme/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/theme/layout/footer.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/theme/layout/footer.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/theme/layout/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/theme/layout/sidebar.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/meme_api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/meme_api.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/meme_web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/meme_web.php" afterDir="false" />
     </list>
@@ -238,7 +264,7 @@
       <workItem from="1602495874422" duration="1909000" />
       <workItem from="1602511589074" duration="21079000" />
       <workItem from="1602595034682" duration="6000" />
-      <workItem from="1602596684169" duration="3464000" />
+      <workItem from="1602596684169" duration="15011000" />
     </task>
     <servers />
   </component>
@@ -305,10 +331,10 @@
       <screen x="0" y="23" width="1680" height="984" />
     </state>
     <state x="505" y="237" key="run.anything.popup/0.23.1680.984@0.23.1680.984" timestamp="1602264791826" />
-    <state x="472" y="242" width="670" height="676" key="search.everywhere.popup" timestamp="1602512667297">
+    <state x="472" y="242" width="670" height="676" key="search.everywhere.popup" timestamp="1602618225661">
       <screen x="0" y="23" width="1680" height="984" />
     </state>
-    <state x="472" y="242" width="670" height="676" key="search.everywhere.popup/0.23.1680.984@0.23.1680.984" timestamp="1602512667297" />
+    <state x="472" y="242" width="670" height="676" key="search.everywhere.popup/0.23.1680.984@0.23.1680.984" timestamp="1602618225661" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

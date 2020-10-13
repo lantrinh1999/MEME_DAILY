@@ -3,17 +3,15 @@
         <div class="sidebar p-2 pt-0 rounded bg-white shadow-sm">
             <h5>Tag HOT</h5>
             <div class="tags clearfix">
-                <span class="float-left pr-1"><a class="hashtag" href="/" title="123">#Among </a></span>
-                <span class="float-left pr-1"><a class="hashtag" href="/" title="123">#Among Us</a></span>
-                <span class="float-left pr-1"><a class="hashtag" href="/" title="123">#Us</a></span>
-                <span class="float-left pr-1"><a class="hashtag" href="/" title="123">#ahihi</a></span>
-                <span class="float-left pr-1"><a class="hashtag" href="/" title="123">#Among Us</a></span>
-                <span class="float-left pr-1"><a class="hashtag" href="/" title="123">#hehe</a></span>
-                <span class="float-left pr-1"><a class="hashtag" href="/"
-                                                 title="123">#Đầu cắt moi</a></span>
-                <span class="float-left pr-1"><a class="hashtag" href="/" title="123">#Among Us</a></span>
-                <span class="float-left pr-1"><a class="hashtag" href="/" title="123">#chứng rán</a></span>
-                <span class="float-left pr-1"><a class="hashtag" href="/" title="123">#Among Us</a></span>
+                @if($tagHot || count($tagHot) > 0)
+                    @foreach($tagHot as $tag)
+                        <a class="hashtag mb-2" href="{{route('theme.tag', $tag->slug)}}" title="{{$tag->name}}">
+                        <span class="float-left pr-3 pb-1">#{{$tag->name}}</span>
+                        </a>
+
+                    @endforeach
+                @endif
+
             </div>
         </div>
     </div>

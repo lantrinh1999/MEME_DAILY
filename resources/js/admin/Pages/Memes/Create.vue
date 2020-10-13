@@ -81,16 +81,31 @@
                 <div class="card">
                     <div class="card-body">
                         <div>
+                            STATUS:
+                        </div>
+                        <div class="custom-control custom-radio">
+                          <input class="custom-control-input" value="PUBLISH" v-model="form.status" type="radio" id="Publish" name="status">
+                          <label for="Publish" class="custom-control-label">Publish</label>
+                        </div>
+                        <div class="custom-control custom-radio">
+                          <input class="custom-control-input" value="DRAFT"  v-model="form.status" type="radio" id="Draft" name="status">
+                          <label for="Draft" class="custom-control-label">Draft</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <div>
                             <vue-tags-input
                                 v-model="tag"
                                 :tags="tags"
-                                :autocomplete-items="filteredItems"
-:autocomplete-min-length="2"
+                                :autocomplete-items="filteredItems" :autocomplete-min-length="2"
                                 @tags-changed="newTags => tags = newTags"
                             />
                         </div>
                     </div>
                 </div>
+
                 <div v-if="form.image.value" class="card">
                     <div class="card-body">
                         <div>
@@ -122,7 +137,7 @@ import throttle from "lodash/throttle";
 
 export default {
     metaInfo: {
-        title: "Create User",
+        title: "Create MEME",
     },
     layout: AdminLayout,
     components: {
@@ -147,6 +162,7 @@ export default {
                     '_key': '_image',
                     'value': '',
                 },
+                status : 'PUBLISH',
                 content: this.editorText,
 
             },

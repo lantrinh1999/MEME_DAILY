@@ -36,7 +36,6 @@
 @endsection
 
 @section('meta')
-
     @if($nextPage !== false)
         @if(!empty($memes) && !empty($tag))
             <link rel="next" href="{{ route('theme.tag', ['slug' => $tag['slug'] ,'page' => $nextPage]) }}">

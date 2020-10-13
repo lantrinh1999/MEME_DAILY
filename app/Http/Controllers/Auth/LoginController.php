@@ -18,7 +18,7 @@ class LoginController extends Controller
 //    protected $redirectTo = 'admin';
     public function __construct()
     {
-        $this->redirectTo = config('meme.admin_url', 'admin_');
+        $this->redirectTo = route('memes.index');
         $this->middleware('guest')->except('logout');
     }
 

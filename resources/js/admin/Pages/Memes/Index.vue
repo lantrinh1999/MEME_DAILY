@@ -74,10 +74,10 @@
                                         <inertia-link
                                             class="btn btn-light"
                                             method="get"
-                                            :href="route('users.index')"
-                                            :data="filters.trashed == 'only' ? {} : bin.data"
+                                            :href="route('memes.index')"
+                                            :data="filters.trashed === 'only' ? {} : bin.data"
                                         >{{
-                                                filters.trashed == "only" ? "Users List" : bin.title
+                                                filters.trashed === "only" ? "Memes List" : bin.title
                                             }}
                                         </inertia-link
                                         >
@@ -109,35 +109,24 @@
 
                                     </th>
                                     <th data-hide="phone,tablet">
-                                        <inertia-link href method="get" :data="{}"
-                                        >ID
-                                        </inertia-link
-                                        >
+                                        ID
                                     </th>
                                     <th>
-                                        <inertia-link style="" href method="get" :data="{}"
-                                        >Title
-                                        </inertia-link
-                                        >
+                                        Title
+
                                     </th>
                                     <th style="width: 100px">
-                                        <inertia-link href method="get" :data="{}"
-                                        >Status
-                                        </inertia-link
-                                        >
+                                        Status
+
                                     </th>
                                     <th style="width: 100px" data-hide="phone">
-                                        <inertia-link href method="get" :data="{}"
-                                        >Image
-                                        </inertia-link
-                                        >
+                                        Image
+
                                     </th>
 
                                     <th class="action">
-                                        <inertia-link href method="get" :data="{}"
-                                        >Action
-                                        </inertia-link
-                                        >
+                                        Action
+
                                     </th>
                                 </tr>
                                 </thead>
@@ -146,8 +135,8 @@
                                     <td>
 
                                         <div class="custom-control custom-checkbox">
-                                            <input
-                                                data-check-all-item
+
+                                            <input data-check-all-item
                                                 v-model="checked"
                                                 type="checkbox" name="id"
                                                 :value="meme.id"
@@ -163,11 +152,14 @@
 
                                     </td>
                                     <td>
-                                        {{ meme.title }}
-
+                                        <a target="_blank" class="text-bold text-decoration-none text-dark"
+                                           :href="'/meme/'+ meme.slug">{{ meme.title }}</a>
                                     </td>
                                     <td>
-                                        {{ meme.status }}
+                                        <span v-if="meme.status === 'PUBLISH'" class="right badge badge-success">Published</span>
+                                        <span v-else-if=" meme.status === 'DRAFT'"
+                                              class="right badge badge-info">Draft</span>
+
 
                                     </td>
                                     <td>
@@ -185,7 +177,7 @@
                                     </td>
 
                                     <td>
-                                        <div v-if="filters.trashed != 'only'">
+                                        <div v-if="filters.trashed !== 'only'">
                                             <inertia-link
                                                 class="btn btn-warning btn-sm"
                                                 :href="route('memes.edit', meme.id)"
@@ -199,7 +191,7 @@
                                                 preserve-state
                                                 @click.prevent="confirmDel(meme.id)"
                                                 class="btn btn-danger btn-sm"
-                                                :href="route('users.trashed', meme.id)"
+                                                :href="route('memes.trashed', meme.id)"
                                                 method="delete"
                                                 :data="{}"
                                             >Del
@@ -211,7 +203,7 @@
                                                 preserve-state
                                                 preserve-scroll
                                                 class="btn btn-warning btn-sm"
-                                                :href="route('users.restore')"
+                                                :href="route('memes.restore')"
                                                 method="post"
                                                 :data="{ id: meme.id }"
                                             >Restore
@@ -245,7 +237,7 @@ import $ from "jquery";
 import checkAll from "@github/check-all";
 
 export default {
-    metaInfo: {title: "Users"},
+    metaInfo: {title: "MEME"},
     layout: AdminLayout,
     components: {
         Pagination,
@@ -278,7 +270,7 @@ export default {
     },
     mounted() {
         this.footable();
-        // console.log(this.$page.menu);
+        console.log(this.memes);
         checkAll(document.querySelector("[data-check-all-container]"));
     },
     watch: {
@@ -286,7 +278,7 @@ export default {
             handler: throttle(function () {
                 let query = pickBy(this.form);
                 this.$inertia.replace(
-                    this.route("users.index", Object.keys(query).length ? query : {})
+                    this.route("memes.index", Object.keys(query).length ? query : {})
                 );
             }, 150),
             deep: true,
@@ -294,8 +286,8 @@ export default {
     },
 
     methods: {
-        asyncContent(img){
-           return `<img src="${img}" width="100%"/>`;
+        asyncContent(img) {
+            return `<img alt="image" src="${img}" width="100%"/>`;
         },
         footable() {
             $(".table-toggle").footable();
@@ -307,7 +299,7 @@ export default {
                 if (confirm("Are you sure you want to delete these items?")) {
                     console.log(this.checked);
                     this.$inertia.post(
-                        this.route("users.destroy"),
+                        this.route("memes.destroy"),
                         {id: this.checked},
                         {replace: true, preserveState: true, preserveScroll: true}
                     ).then(() => {
@@ -322,7 +314,7 @@ export default {
             } else {
                 if (confirm("Are you sure you want to delete these items?")) {
                     this.$inertia.post(
-                        this.route("users.trashed"),
+                        this.route("memes.trashed"),
                         {id: this.checked},
                         {replace: true, preserveState: true, preserveScroll: true}
                     ).then(() => {
@@ -337,7 +329,7 @@ export default {
             } else {
                 if (confirm("Are you sure you want to restore these items?")) {
                     this.$inertia.post(
-                        this.route("users.restore"),
+                        this.route("memes.restore"),
                         {id: this.checked},
                         {replace: true, preserveState: true, preserveScroll: true}
                     ).then(() => {
@@ -347,9 +339,9 @@ export default {
             }
         },
         confirmDel(id) {
-            if (confirm("Are you sure you want to move to trash this user?")) {
+            if (confirm("Are you sure you want to move to trash this meme?")) {
                 this.$inertia.post(
-                    this.route("users.trashed"),
+                    this.route("memes.trashed"),
                     {id: id},
                     {replace: true, preserveState: true, preserveScroll: true}
                 );

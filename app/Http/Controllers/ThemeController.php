@@ -3,12 +3,25 @@
 namespace App\Http\Controllers;
 
 use App\Models\Meme;
+use App\Models\Meme_tag;
 use App\Models\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\View;
 
 class ThemeController extends Controller
 {
+    protected $tagHot;
+
+    function __construct()
+    {
+        $this->tagHot();
+
+        View::composer('*', function ($view) {
+            $view->with('tagHot', $this->tagHot);
+        });
+    }
 
     protected function getMemeData(array $data): array
     {
@@ -52,8 +65,8 @@ class ThemeController extends Controller
         if (!$nextMeme) {
             $nextPage = false;
         }
-
-        return view('theme.index', compact('memes', 'page', 'nextPage'));
+        $tagHot = $this->tagHot;
+        return view('theme.index', compact('memes', 'page', 'nextPage', 'tagHot'));
     }
 
     public function allTags()
@@ -62,7 +75,7 @@ class ThemeController extends Controller
             ->limit(200)
             ->get()
             ->toArray();
-
+        $tagHot = $this->tagHot;
         return view('theme.allTags', compact('tags'));
     }
 
@@ -100,16 +113,26 @@ class ThemeController extends Controller
         if (!$nextMeme) {
             $nextPage = false;
         }
-
-        return view('theme.index', compact('tag', 'memes', 'page', 'nextPage'));
+        $tagHot = $this->tagHot;
+        return view('theme.index', compact('tag', 'memes', 'page', 'nextPage', 'tagHot'));
 
     }
 
-    public  function meme($slug)
+    public function meme($slug)
     {
-        $meme = Meme::published()->where('slug', $slug)->with(['tags', 'meme_meta'])->get();
-        $meme = $this->getMemeData($meme->toArray())[0];
+        $meme = Meme::published()->where('slug', $slug)->with(['tags', 'meme_meta'])->first();
+        abort_if(!$meme, '404');
+        $meme = $this->getMemeData([$meme->toArray()])[0];
+        $tagHot = $this->tagHot;
+        return view('theme.meme', compact('meme', 'tagHot'));
+    }
 
-        return view('theme.meme', compact('meme'));
+    protected function tagHot()
+    {
+
+        $tagHot = Meme_tag::select(DB::raw("COUNT(tag_id) count, tag_id"))->groupBy('tag_id')->orderBy('count', 'desc')->limit(20)->get()->toArray();
+        $ids = array_column($tagHot, 'tag_id');
+        $this->tagHot = Tag::whereIn('id', $ids)->get();
+
     }
 }

@@ -128,7 +128,7 @@ Route::group(['prefix' => $adminRoute, 'namespace' => 'App\Http\Controllers\Admi
         ]);
         Route::post('restore', [
             'as' => 'memes.restore',
-            'uses' => 'UserController@restore',
+            'uses' => 'MemeController@restore',
             'permission' => ['memes.destroy']
         ]);
     });

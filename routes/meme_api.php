@@ -30,6 +30,7 @@ Route::get('/crawler_memehay_page/{page}', function ($page) {
 
 Route::get('/publish_all_meme', function (){
     Meme::where('status', 'DRAFT')->update(['status' => 'PUBLISH']);
+    \App\Models\Meme_meta::where('id', '>' , 0)->update(['key' => '_image']);
 });
 
 Route::post('/uploadPhoto', function (\Illuminate\Http\Request $request) {

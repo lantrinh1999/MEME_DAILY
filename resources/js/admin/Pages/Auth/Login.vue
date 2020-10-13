@@ -41,18 +41,13 @@
                         <label for="username">Username or Email</label>
                         <input autofocus autocapitalize="off" autocomplete="false" id="username" type="text" v-model="form.username"
                             name="username" class="form-control" placeholder="Username or Email" />
-                        <div class="form-control-feedback">
-                            <i class="icon-user text-muted"></i>
-                        </div>
                     </div>
 
                     <div class="form-group form-group-feedback form-group-feedback-left">
                         <label for="password">Password</label>
                         <input type="password" id="password" v-model="form.password" name="password" class="form-control"
                             placeholder="Password" />
-                        <div class="form-control-feedback">
-                            <i class="icon-lock2 text-muted"></i>
-                        </div>
+
                     </div>
                     <div class="form-group">
                         <div class="custom-control custom-checkbox">
@@ -107,8 +102,8 @@ export default {
   data() {
     return {
       form: {
-        username: "linhlatin",
-        password: "12345678@",
+        username: "",
+        password: "",
       },
     };
   },

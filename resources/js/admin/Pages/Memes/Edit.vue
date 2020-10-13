@@ -77,7 +77,23 @@
                         ></btn>
                     </div>
                 </div>
-
+                <div class="card">
+                    <div class="card-body">
+                        <div>
+                            STATUS:
+                        </div>
+                        <div class="custom-control custom-radio">
+                            <input class="custom-control-input" value="PUBLISH" v-model="form.status" type="radio"
+                                   id="Publish" name="status">
+                            <label for="Publish" class="custom-control-label">Publish</label>
+                        </div>
+                        <div class="custom-control custom-radio">
+                            <input class="custom-control-input" value="DRAFT" v-model="form.status" type="radio"
+                                   id="Draft" name="status">
+                            <label for="Draft" class="custom-control-label">Draft</label>
+                        </div>
+                    </div>
+                </div>
                 <div class="card">
                     <div class="card-body">
                         <div>
@@ -85,7 +101,7 @@
                                 v-model="tag"
                                 :tags="tags"
                                 :autocomplete-items="filteredItems"
-:autocomplete-min-length="2"
+                                :autocomplete-min-length="2"
                                 @tags-changed="newTags => tags = newTags"
                             />
                         </div>
@@ -136,11 +152,11 @@ export default {
     data() {
         return {
             tag: '',
-            tags: this.meme.tags.map(function ($tag){
+            tags: this.meme.tags.map(function ($tag) {
                 $tag.text = $tag.name;
                 return $tag;
             }),
-            photo: this.meme.image,
+            photo: this.meme.meme_meta._image,
             loading: false,
             isLoading: false,
             fullPage: true,
@@ -148,8 +164,9 @@ export default {
                 title: this.meme.title,
                 image: {
                     '_key': '_image',
-                    'value': this.meme.image,
+                    'value': this.meme.meme_meta._image,
                 },
+                status : this.meme.status,
                 content: this.editorText,
 
             },
@@ -207,20 +224,10 @@ export default {
             this.form.content = this.getHtml();
             let form = this.form;
             form.tags = this.tags;
-            this.$inertia.post(this.route("memes.store"), form).then(() => {
+            this.$inertia.put(this.route("memes.update", this.meme.id), form).then(() => {
 
                 if (this.$page.flash.success) {
-                    this.photo = null;
-                    this.form = {
-                        title: "",
-                        image: {
-                            '_key': '_image',
-                            'value': '',
-                        },
-                        content: this.editorText,
-                    };
-                    this.tags = [];
-                    this.editorText = '';
+
                 }
 
                 setTimeout(() => {
@@ -232,7 +239,7 @@ export default {
 
     },
     mounted() {
-    console.log(this.meme)
+        console.log(this.meme)
 
     },
     computed: {
