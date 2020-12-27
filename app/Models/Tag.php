@@ -16,6 +16,7 @@ class Tag extends Model
         "name",
         "slug",
         "content",
+        "location"
     ];
 
     public function memes()

@@ -28,6 +28,7 @@ class Meme extends Model
         "status",
         "meme_type",
         "user_id",
+        "location"
     ];
 
     protected static function booted()

@@ -53,6 +53,14 @@ class Meme2
 
     public function insertData()
     {
+
+        $location = 1;
+        if(env('SITE_GLOBAL', false) == false) {
+            $location = 1;
+        } else {
+            $location = 2;
+        }
+
         if (!empty($this->data)) {
             $data = array_reverse($this->data);
             foreach ($data as $key => $value) {
@@ -66,6 +74,7 @@ class Meme2
                     DB::beginTransaction();
                     try {
                         $value['status'] = 'PUBLISH';
+                        $value['location'] = $location;
                         $meme = Meme::firstOrCreate(($value));
                         $new_image_url = Imgur::uploadImage2($value['image']);
                         $_key = '_image';
@@ -92,6 +101,7 @@ class Meme2
                         if (!empty($tags) && count((array)$tags) > 0) {
                             $_tag = [];
                             foreach ($tags as $key => $tag) {
+                                $tag['location'] = $location;
                                 $_tag = Tag::firstOrCreate($tag)->id;
                             }
                             $meme->tags()->sync($_tag);

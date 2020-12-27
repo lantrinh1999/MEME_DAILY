@@ -9,13 +9,19 @@ use Symfony\Component\DomCrawler\Crawler as BaseCrawler;
 class Crawler
 {
 
-    protected static string $meme_url = 'https://memehay.com/';
+    protected $meme_url;
 
     protected array $data = [];
 
+    public function __construct()
+    {
+        // dd(env('SITE_CRAWLER', 'https://memehay.com/'));
+        $this->meme_url = env('SITE_CRAWLER', 'https://memehay.com/');
+    }
+
     public function memehay($page)
     {
-        $crawler_ = $this->getCrawler(self::$meme_url . $page);
+        $crawler_ = $this->getCrawler(trim($this->meme_url, '/') . '/' . $page);
 
         if ($crawler_) {
             $result = $crawler_->filter('div#home div.card')->each(
