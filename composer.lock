@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0f5e0de6a08e4044f4480946c126a5b9",
+    "content-hash": "8acc20ebe8d154f8fa24d3dcfc8d6f95",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -7169,6 +7169,67 @@
             "time": "2020-10-11T07:41:19+00:00"
         },
         {
+            "name": "samasend/laravel-make-scope",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/SamAsEnd/laravel-make-scope.git",
+                "reference": "13c9f210e5cf8fcee6180c51d18d500720e6c597"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/SamAsEnd/laravel-make-scope/zipball/13c9f210e5cf8fcee6180c51d18d500720e6c597",
+                "reference": "13c9f210e5cf8fcee6180c51d18d500720e6c597",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/console": "^6.0|^7.0|^8.0",
+                "illuminate/support": "^6.0|^7.0|^8.0",
+                "php": "^7.2"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^4.0"
+            },
+            "default-branch": true,
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.1-dev"
+                },
+                "laravel": {
+                    "providers": [
+                        "SamAsEnd\\ScopeMake\\ScopeMakeCommandServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "SamAsEnd\\ScopeMake\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "SamAsEnd",
+                    "email": "4sam21@gmail.com"
+                }
+            ],
+            "description": "Brings make:scope command to laravel",
+            "keywords": [
+                "laravel",
+                "make",
+                "scope"
+            ],
+            "support": {
+                "issues": "https://github.com/SamAsEnd/laravel-make-scope/issues",
+                "source": "https://github.com/SamAsEnd/laravel-make-scope/tree/master"
+            },
+            "time": "2020-10-15T18:59:05+00:00"
+        },
+        {
             "name": "scrivo/highlight.php",
             "version": "v9.18.1.2",
             "source": {
@@ -8249,5 +8310,5 @@
         "ext-json": "*"
     },
     "platform-dev": [],
-    "plugin-api-version": "1.1.0"
+    "plugin-api-version": "2.0.0"
 }

@@ -22,4 +22,9 @@ class Tag extends Model
     {
         return $this->belongsToMany(\App\Models\Meme::class, 'meme_tag', 'tag_id', 'meme_id');
     }
+
+    protected static function booted()
+    {
+        static::addGlobalScope(new \App\Scopes\LocationScope);
+    }
 }

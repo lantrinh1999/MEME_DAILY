@@ -17,7 +17,7 @@
                 </li>
             </ul>
             <ul class="navbar-nav m-0 bg-lg-dark px-3 p-lg-0">
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a class="nav-link text-truncate" href="#spy0">Hot</a>
                 </li>
                 <li class="nav-item">
@@ -25,12 +25,12 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link text-truncate" href="#spy1">Gái xinh</a>
-                </li>
+                </li> --}}
             </ul>
             <ul class="navbar-nav m-0 ml-lg-auto bg-lg-dark px-3 p-lg-0">
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a class="nav-link text-truncate" data-target="#codeply" href="//codeply.com">Gửi meme</a>
-                </li>
+                </li> --}}
             </ul>
         </div>
     </nav>

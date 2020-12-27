@@ -49,6 +49,7 @@ class ThemeController extends Controller
 
     public function home(Request $request, $page = 1)
     {
+        // dd(1);
         abort_if(!is_numeric($page), 404);
 
         $limit = 20;
@@ -57,10 +58,10 @@ class ThemeController extends Controller
             ->offset($offset)
             ->limit($limit)
             ->get();
+            // dd($memes);
         $memes->load(['tags', 'meme_meta']);
         $memes = $this->getMemeData($memes->toArray());
         $nextPage = $page + 1;
-
         $nextMeme = Meme::published()->where('id', '<', @(end($memes)['id']) ?? 0)->exists();
         if (!$nextMeme) {
             $nextPage = false;

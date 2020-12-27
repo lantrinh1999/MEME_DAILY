@@ -30,6 +30,11 @@ class Meme extends Model
         "user_id",
     ];
 
+    protected static function booted()
+    {
+        static::addGlobalScope(new \App\Scopes\LocationScope);
+    }
+
 
     public function tags()
     {
