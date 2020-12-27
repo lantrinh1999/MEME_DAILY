@@ -36,7 +36,8 @@ class Meme_
         try {
             $this->insertData();
         } catch (\Exception $e) {
-            throw \Exception($e->getMessage());
+            \Log::info($e->getMessage());
+                        dd($e->getMessage());
         }
         $this->setCurrentPage($this->nextPage);
     }
@@ -50,7 +51,8 @@ class Meme_
         try {
             $this->insertData();
         } catch (\Exception $e) {
-            throw \Exception($e->getMessage());
+            \Log::info($e->getMessage());
+                        dd($e->getMessage());
         }
         $this->setCurrentPage2($this->nextPage2);
 //        dd($this->nextPage2);
@@ -119,7 +121,8 @@ class Meme_
                     DB::commit();
                 } catch (\Exception $e) {
                     DB::rollBack();
-                    throw \Exception($e->getMessage());
+                    \Log::info($e->getMessage());
+                        dd($e->getMessage());
                 }
             }
         }

@@ -42,7 +42,8 @@ class Meme2
         try {
             $this->insertData();
         } catch (\Exception $e) {
-            throw \Exception($e->getMessage());
+            \Log::info($e->getMessage());
+                        dd($e->getMessage());
         }
 
         Cache::store('file')->forever(self::KEY_PAGE_CACHE . '2___', $page_ - 1);
@@ -70,7 +71,8 @@ class Meme2
                     unset($value['tags']);
                 }
 //                dd(Meme::where('slug', '=' , $value['slug'])->exists());
-                if (!Meme::where('slug', '=', $value['slug'])->exists()) {
+                if (empty(\DB::table('memes')->where('slug', '=', $value['slug'])->first())) {
+
                     DB::beginTransaction();
                     try {
                         $value['status'] = 'PUBLISH';
@@ -102,7 +104,11 @@ class Meme2
                             $_tag = [];
                             foreach ($tags as $key => $tag) {
                                 $tag['location'] = $location;
-                                $_tag = Tag::firstOrCreate($tag)->id;
+                                if(empty($aa = \DB::table('tags')->where('slug', $tag['slug'])->first())) {
+                                    $_tag = Tag::firstOrCreate($tag)->id;
+                                } else {
+                                    $_tag = $aa->id;
+                                }
                             }
                             $meme->tags()->sync($_tag);
                         }
@@ -110,7 +116,8 @@ class Meme2
                         DB::commit();
                     } catch (\Exception $e) {
                         DB::rollBack();
-                        throw \Exception($e->getMessage());
+                        \Log::info($e->getMessage());
+                        dd($e->getMessage());
                     }
                 }
             }

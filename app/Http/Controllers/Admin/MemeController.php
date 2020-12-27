@@ -118,7 +118,8 @@ class MemeController extends Controller
             $flag = true;
         } catch (\Exception $e) {
             DB::rollBack();
-            throw \Exception($e->getMessage());
+            \Log::info($e->getMessage());
+                        dd($e->getMessage());
         }
 
         if ($flag) {

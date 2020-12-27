@@ -31,6 +31,11 @@
                 {{-- <li class="nav-item">
                     <a class="nav-link text-truncate" data-target="#codeply" href="//codeply.com">Gửi meme</a>
                 </li> --}}
+                <li class="nav-item">
+                    <a class="nav-link text-truncate" data-target="#dailymeme.us" href="//dailymeme.us">
+                    <img src="/us.svg" alt="language" width="30" height="auto">
+                    </a>
+                </li>
             </ul>
         </div>
     </nav>

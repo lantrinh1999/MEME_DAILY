@@ -15,6 +15,7 @@
     <meta name="generator" content="//www.memedaily.vn" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
     @yield('title')
     @yield('keywords')
     <meta name="description" content="Kho ảnh chế, memes, trào lưu hot và đầy đủ nhất mạng xã hội Việt Nam" />
