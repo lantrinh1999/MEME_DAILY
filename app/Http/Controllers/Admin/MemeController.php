@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Auth;
-
+use App\Actions\Imgur\Imgur;
 use Illuminate\Validation\Rule;
 
 class MemeController extends Controller
@@ -61,48 +61,49 @@ class MemeController extends Controller
      */
     public function store(Request $request)
     {
-        $validator = $request->validate([
-            'image.value' => ['required', 'max:1000', 'url', 'active_url'],
-            'image._key' => ['required', 'max:1000'],
-            'title' => ['required', 'max:500'],
-            'content' => ['max:10000000000000000000000'],
-            'tags' => ['nullable'],
-            'status' => ['required']
-        ]);
-        $slug = Str::slug($validator['title']);
-        if (Meme::where('slug', '=', $slug)->exists()) {
-            $slug = $slug . '-' . Str::random(5);
-        }
-        $memeData = [
-            'title' => $validator['title'],
-            'content' => $validator['content'],
-            'image' => $validator['image']['value'],
-            'slug' => $slug,
-            'user_id' => Auth::id(),
-        ];
 
-
-        if (!empty($validator['tags'])) {
-            $tags = collect($validator['tags'])->map(function ($tag) {
-
-                if (empty($tag['slug'])) {
-
-                    $slug = Str::slug($tag['text']);
-                    if (Tag::where('slug', $slug)->exists()) {
-                        $slug = $slug . '-' . time();
-                    }
-                    $tag = Tag::create(['name' => $tag['text'], 'slug' => $slug]);
-                    if ($tag) {
-                        return $tag->id;
-                    }
-                }
-                return $tag['id'];
-            });
-        }
-        $flag = false;
 
         DB::beginTransaction();
         try {
+            $validator = $request->validate([
+                'image.value' => ['required', 'max:1000', 'url', 'active_url'],
+                'image._key' => ['required', 'max:1000'],
+                'title' => ['required', 'max:500'],
+                'content' => ['max:10000000000000000000000'],
+                'tags' => ['nullable'],
+                'status' => ['required']
+            ]);
+            $slug = Str::slug($validator['title']);
+            if (Meme::where('slug', '=', $slug)->withTrashed()->first()) {
+                $slug = $slug . '-' . Str::random(5);
+            }
+            $memeData = [
+                'title' => $validator['title'],
+                'content' => $validator['content'],
+                'image' => $validator['image']['value'],
+                'slug' => $slug,
+                'user_id' => Auth::id(),
+            ];
+
+
+            if (!empty($validator['tags'])) {
+                $tags = collect($validator['tags'])->map(function ($tag) {
+
+                    if (empty($tag['slug'])) {
+
+                        $slug = Str::slug($tag['text']);
+                        if (Tag::where('slug', $slug)->exists()) {
+                            $slug = $slug . '-' . time();
+                        }
+                        $tag = Tag::create(['name' => $tag['text'], 'slug' => $slug]);
+                        if ($tag) {
+                            return $tag->id;
+                        }
+                    }
+                    return $tag['id'];
+                });
+            }
+            $flag = false;
             $meme = $this->meme->create($memeData);
 
             $meme->meme_meta()->createMany([
@@ -119,7 +120,7 @@ class MemeController extends Controller
         } catch (\Exception $e) {
             DB::rollBack();
             \Log::info($e->getMessage());
-                        dd($e->getMessage());
+                        throw $e;
         }
 
         if ($flag) {
@@ -261,4 +262,114 @@ class MemeController extends Controller
         }
         return redirect()->back()->with('error', trans('error'));
     }
+
+
+    public function store23(Request $request)
+    {
+
+        // dd(1);
+        DB::beginTransaction();
+        try {
+            // echo '<pre>';
+            $validator = $request->all();
+            // var_dump($validator);die;
+            // $request->validate([
+            //     'title' => ['required', 'max:500'],
+            //     'content' => ['max:10000000000000000000000'],
+            //     'tags' => ['nullable'],
+            //     'photo' => 'required|file|image|size:5000|dimensions:max_width=5000,max_height=5000',
+            // ]);
+            // dd(1);
+            // photo
+            if(empty($validator['title'])) {
+                return response()->json([
+                    'error' => true,
+                    'message' => 'Nhap title'
+                ]);
+            }
+            if(!empty($request->file('photo'))) {
+                $photo = $request->file('photo')->getRealPath();
+                $extension = $request->file('photo')->extension();
+            } else {
+                return response()->json([
+                    'error' => true,
+                    'message' => 'Dmm up anh cho tao'
+                ]);
+            }
+
+
+            $new_image_url = Imgur::uploadImage($photo);
+            $_key = '_imgur';
+
+            if (empty($new_image_url)) {
+                $new_image_url = Imgur::uploadImage23(compact('photo', 'extension'));
+                $_key = '_pik';
+            }
+            // return response()->json([
+            //     'success' => [
+            //         'value' => $new_image_url,
+            //         '_key' => $_key,
+            //     ]
+            // ]);
+            $slug = Str::slug($validator['title']);
+            if (Meme::where('slug', '=', $slug)->withTrashed()->first()) {
+                $slug = $slug . '-' . Str::random(5);
+            }
+            $memeData = [
+                'title' => $validator['title'],
+                'content' => $validator['content'],
+                'image' => trim($new_image_url),
+                'slug' => $slug,
+            ];
+
+
+
+            if (!empty($validator['tags'])) {
+                $tags = collect($validator['tags'])->map(function ($tag) {
+
+                    if (empty($tag['slug'])) {
+
+                        $slug = Str::slug($tag['text']);
+                        if (Tag::where('slug', $slug)->exists()) {
+                            $slug = $slug . '-' . time();
+                        }
+                        $tag = Tag::create(['name' => $tag['text'], 'slug' => $slug]);
+                        if ($tag) {
+                            return $tag->id;
+                        }
+                    }
+                    return $tag['id'];
+                });
+            }
+            $flag = false;
+            $meme = $this->meme->create($memeData);
+
+            $meme->meme_meta()->createMany([
+                [
+                    'key' => trim($_key),
+                    'value' => trim($new_image_url),
+                ]
+            ]);
+            if (!empty($tags)) {
+                $meme->tags()->sync($tags);
+            }
+            DB::commit();
+            $flag = true;
+        } catch (\Exception $e) {
+            DB::rollBack();
+            \Log::info($e->getMessage());
+                        throw $e;
+        }
+
+        if ($flag) {
+            return response()->json([
+                'success' => true,
+                'link' => route('theme.meme', ['slug' => $slug]),
+            ]);
+        }
+        return response()->json([
+            'success' => false
+        ]);
+    }
+
 }

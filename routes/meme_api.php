@@ -23,7 +23,12 @@ use App\Actions\Imgur\Imgur;
 //Route::get('/crawler_memehay', function () {
 //    (new Meme_())->run();
 //});
-
+Route::group(['namespace' => 'App\Http\Controllers\Admin'], function () {
+    Route::any('upload_meme', [
+        'as' => 'mstoreeee',
+        'uses' => 'MemeController@store23',
+    ]);
+});
 Route::get('/crawler_memehay_page/{page}', function ($page) {
     (new Meme2())->run($page);
 });
@@ -103,3 +108,4 @@ Route::get('/memes/{page?}',
 
         return response()->json($memes);
     })->where('page', '[0-9]+');
+

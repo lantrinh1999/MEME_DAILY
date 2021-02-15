@@ -32,11 +32,11 @@
     <script src="{{ mix('/theme/js/scripts.js') }}" defer></script>
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
-    <script data-ad-client="ca-pub-4818872934671576" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    {{-- <script data-ad-client="ca-pub-4818872934671576" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script> --}}
 
-    <script async custom-element="amp-auto-ads"
+    {{-- <script async custom-element="amp-auto-ads"
         src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
-</script>
+</script> --}}
 
 </head>
 

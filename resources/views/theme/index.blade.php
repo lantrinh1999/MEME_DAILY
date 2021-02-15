@@ -28,7 +28,7 @@
 @section('og:image')
 
     @if(!empty($memes) && !empty($tag))
-        <meta property="og:image" content="{{$memes[0]['image']}}"/>
+        <meta property="og:image" content="{{ trim($memes[0]['image']) }}"/>
     @elseif(!empty($memes) && empty($tag))
         <meta property="og:image" content="{{url('/anhche-memes-haynhat-comment-dao-hot-nhat-cong-dong-mang-xa-hoi-viet-nam.png')}}"/>
     @else
@@ -75,23 +75,13 @@
         @endif
         @if(!empty($memes))
             @foreach($memes as $meme)
+
                 <div class="meme rounded shadow-sm">
                     <div class="row no-gutters">
                         <div class="col-md-7">
                             <div class="img p-2">
                                 <a href="{{ route('theme.meme', $meme['slug']) }}" title="{{ $meme['title'] }}">
-                                    @if(!empty($meme['meme_meta']['_pik']))
-                                        <img class="w-100" src="{{ $meme['meme_meta']['_pik'] }} "
-                                             alt="{{ $meme['title'] }}">
-                                    @elseif(!empty($meme['meme_meta']['_imgur']))
-                                        <img class="w-100" src="{{ $meme['meme_meta']['_imgur'] }} "
-                                             alt="{{ $meme['title'] }}">
-                                    @elseif(!empty($meme['meme_meta']['_image']))
-                                        <img class="w-100" src="{{ $meme['meme_meta']['_image'] }} "
-                                             alt="{{ $meme['title'] }}">
-                                    @else
-                                        <img class="w-100" src="{{ $meme['image'] }} " alt="{{ $meme['title'] }}">
-                                    @endif
+                                    <img class="w-100" src="{{ trim($meme['image']) }}" alt="{{ $meme['title'] }}">
                                 </a>
                             </div>
                         </div>

@@ -2,10 +2,9 @@
 
 @section('title')
 
-    <title> {{ $meme['title'] }}  - Tổng hợp ảnh chế, memes hay nhất mạng xã hội Việt
-        Nam</title>
+    <title> {{ $meme['title'] }} | Memehay</title>
     <meta property="og:title"
-          content="{{ $meme['title'] }} - Tổng hợp ảnh chế, memes hay nhất mạng xã hội Việt Nam"/>
+          content="{{ $meme['title'] }} | Memehay"/>
 
 
 @endsection
@@ -18,7 +17,7 @@
 
 @section('og:image')
 
-    <meta property="og:image" content="{{$meme['image']}}"/>
+    <meta property="og:image" content="{{trim($meme['image'])}}"/>
 @endsection
 
 @section('meta')
@@ -44,18 +43,7 @@
                         <div class="col-md-12">
                             <div class="img p-2">
                                 <a href="{{ route('theme.meme', $meme['slug']) }}" title="{{ $meme['title'] }}">
-                                    @if(!empty($meme['meme_meta']['_pik']))
-                                        <img class="mw-100" src="{{ $meme['meme_meta']['_pik'] }} "
-                                             alt="{{ $meme['title'] }}">
-                                    @elseif(!empty($meme['meme_meta']['_imgur']))
-                                        <img class="mw-100" src="{{ $meme['meme_meta']['_imgur'] }} "
-                                             alt="{{ $meme['title'] }}">
-                                    @elseif(!empty($meme['meme_meta']['_image']))
-                                        <img class="mw-100" src="{{ $meme['meme_meta']['_image'] }} "
-                                             alt="{{ $meme['title'] }}">
-                                    @else
-                                        <img class="mw-100" src="{{ $meme['image'] }} " alt="{{ $meme['title'] }}">
-                                    @endif
+                                    <img class="mw-100" src="{{ trim($meme['image']) }}" alt="{{ $meme['title'] }}">
                                 </a>
                             </div>
                         </div>
