@@ -5,7 +5,7 @@ namespace App\Actions\Scaper;
 use Goutte\Client;
 use PhpParser\Node\Stmt\TryCatch;
 use Symfony\Component\DomCrawler\Crawler as BaseCrawler;
-
+use Symfony\Component\HttpClient\HttpClient;
 class Crawler
 {
 
@@ -45,7 +45,8 @@ class Crawler
                                 $value['tags'] = $tags;
                             }
                         }
-                    } catch (\Exception $e) {
+                    } catch (\Throwable $e) {
+                        \Log::error($e->getMessage());
                     }
                     return $value;
                 }
@@ -59,7 +60,21 @@ class Crawler
     protected function getCrawler($url)
     {
         if (filter_var($url, FILTER_VALIDATE_URL)) {
-            $client = new Client();
+            $t = HttpClient::create(array(
+                'headers' => array(
+                    'user-agent' => 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:73.0) Gecko/20100101 Firefox/73.0', // will be forced using 'Symfony BrowserKit' in executing
+                    'Accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+                    'Accept-Language' => 'en-US,en;q=0.5',
+                    'Referer' => 'http://yourtarget.url/',
+                    'Upgrade-Insecure-Requests' => '1',
+                    'Save-Data' => 'on',
+                    'Pragma' => 'no-cache',
+                    'Cache-Control' => 'no-cache',
+                ),
+            ));
+            $client = new Client($t);
+            $client->setServerParameter('HTTP_USER_AGENT', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:73.0) Gecko/20100101 Firefox/73.0');
+
             return $client->request('GET', $url);
         }
         return false;
