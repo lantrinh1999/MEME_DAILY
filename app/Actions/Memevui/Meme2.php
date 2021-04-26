@@ -41,9 +41,9 @@ class Meme2
         $this->data = (new Crawler())->memehay($page_);
         try {
             $this->insertData();
-        } catch (\Exception $e) {
+        } catch (\Throwable $e) {
             \Log::info($e->getMessage());
-                        dd($e->getMessage());
+            throw $e;
         }
 
         Cache::store('file')->forever(self::KEY_PAGE_CACHE . '2___', $page_ - 1);
@@ -114,10 +114,10 @@ class Meme2
                         }
                         // create_tag
                         DB::commit();
-                    } catch (\Exception $e) {
+                    } catch (\Throwable $e) {
                         DB::rollBack();
                         \Log::info($e->getMessage());
-                        dd($e->getMessage());
+                        throw $e;
                     }
                 }
             }
