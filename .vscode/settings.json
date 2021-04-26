@@ -1,0 +1,8 @@
+{
+    "diffEditor.wordWrap": "on",
+    "editor.quickSuggestionsDelay": 5,
+    "editor.suggest.insertMode": "replace",
+    "editor.suggest.shareSuggestSelections": true,
+    "window.autoDetectColorScheme": true,
+    "search.collapseResults": "auto"
+}
