@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>Bootstrap masonry</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="googlebot" content="noindex, nofollow">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- gg font -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet"> -->
+    <!-- gg font -->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script type="text/javascript" src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/masonry/4.2.2/masonry.pkgd.min.js"></script>
+    <script type="text/javascript" src="https://www.jqueryscript.net/demo/clamp-max-line-cutter/line-cutter.js"></script>
+    <style type="text/css">
+    h3.h5 {
+        font-size: clamp(1rem, 1.3vw, 1.3rem);
+        font-weight: 600;
+    }
+
+    .badge {
+        font-weight: 600;
+        font-size: 80%;
+        line-height: 1.1
+    }
+    </style>
+    <style type="text/css">
+    .bs-canvas-overlay {
+        opacity: 0.85;
+        z-index: 1100;
+    }
+
+    .bs-canvas {
+        top: 0;
+        z-index: 1110;
+        overflow-x: hidden;
+        overflow-y: auto;
+        width: 330px;
+        transition: margin .4s ease-out;
+        -webkit-transition: margin .4s ease-out;
+        -moz-transition: margin .4s ease-out;
+        -ms-transition: margin .4s ease-out;
+    }
+
+    .bs-canvas-left {
+        left: 0;
+        margin-left: -330px;
+    }
+
+    .bs-canvas-right {
+        right: 0;
+        margin-right: -330px;
+    }
+
+    /* Only for demo */
+    body {
+        min-height: 100vh;
+    }
+
+    .bg-custom {
+        background-color: #ececec69 !important;
+    }
+
+    .btn,
+    .btn:focus,
+    .form-control,
+    .form-control:focus,
+    .navbar-dark .navbar-toggler {
+        box-shadow: none !important;
+        border: none !important;
+        outline: none !important;
+    }
+
+    .hover-dark:hover {
+        background-color: #343a40 !important;
+    }
+
+    .badge {
+        cursor: pointer;
+    }
+
+    .badge-secondary {
+        color: #fff;
+        background-color: #495057;
+    }
+
+    .fixed-top {
+        transition: transform .5s;
+
+    }
+    </style>
+</head>
+
+<body class="bg-custom">
+    <nav id="navbar_top" class="navbar shadow-sm navbar-expand-xl navbar-dark bg-info">
+        <div class="container">
+            <a class="navbar-brand font-weight-bold" href="#">MEMEDAILY</a>
+            <button class="navbar-toggler ml-auto pull-bs-canvas-right" type="button">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Link</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                    </li>
+                </ul>
+                <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-light my-2 my-sm-0" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+    <script type="text/javascript">
+    navbar_height = document.querySelector('.navbar').offsetHeight;
+    document.getElementById('navbar_top').classList.add('fixed-top');
+    document.body.style.paddingTop = navbar_height + 'px';
+    </script>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-lg-9">
+                <div class="row gallery-wrapper">
+                    <!-- Grid sizer -->
+                    <div class="grid-sizer col-lg-6 col-md-6"></div>
+                    <!-- Grid item -->
+                    <div class="col-lg-6 col-md-6 grid-item mb-4">
+                        <div class="w-100 shadow-sm rounded-1 p-2 mm-box">
+                            <img class="img-fluid w-100 mb-3" src="https://res.cloudinary.com/mhmd/image/upload/v1579670060/grid-item-1_gdkusl.png" alt="">
+                            <h3 class="h5">Masonry grid item</h3>
+                            <div class="meme-meta mb-2">
+                                <span class="badge badge-secondary badge-pill hover-dark">Meme</span>
+                                <span class="badge badge-secondary badge-pill hover-dark">Meme Mèo</span>
+                                <span class="badge badge-secondary badge-pill hover-dark">Meme Hay</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Grid item -->
+                    <div class="col-lg-6 col-md-6 grid-item mb-4">
+                        <div class="w-100 shadow-sm rounded-1 p-2 mm-box">
+                            <img class="img-fluid w-100 mb-3" src="https://res.cloudinary.com/mhmd/image/upload/v1579670057/grid-item-2_ek540c.png" alt="">
+                            <h3 class="h5">Masonry grid item</h3>
+                            <div class="meme-meta mb-2">
+                                <span class="badge badge-secondary badge-pill hover-dark">Meme</span>
+                                <span class="badge badge-secondary badge-pill hover-dark">Meme Mèo</span>
+                                <span class="badge badge-secondary badge-pill hover-dark">Meme Hay</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Grid item -->
+                    <div class="col-lg-6 col-md-6 grid-item mb-4">
+                        <div class="w-100 shadow-sm rounded-1 p-2 mm-box">
+                            <img class="img-fluid w-100 mb-3" src="https://res.cloudinary.com/mhmd/image/upload/v1579670057/grid-item-3_osmjje.png" alt="">
+                            <h3 class="h5">Masonry grid item</h3>
+                            <div class="meme-meta mb-2">
+                                <span class="badge badge-secondary badge-pill hover-dark">Meme</span>
+                                <span class="badge badge-secondary badge-pill hover-dark">Meme Mèo</span>
+                                <span class="badge badge-secondary badge-pill hover-dark">Meme Hay</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Grid item -->
+                    <div class="col-lg-6 col-md-6 grid-item mb-4">
+                        <div class="w-100 shadow-sm rounded-1 p-2 mm-box">
+                            <img class="img-fluid w-100 mb-3" src="https://res.cloudinary.com/mhmd/image/upload/v1579670059/grid-item-4_nfmiyt.png" alt="">
+                            <h3 class="h5">Masonry grid item</h3>
+                            <div class="meme-meta mb-2">
+                                <span class="badge badge-secondary badge-pill hover-dark">Meme</span>
+                                <span class="badge badge-secondary badge-pill hover-dark">Meme Mèo</span>
+                                <span class="badge badge-secondary badge-pill hover-dark">Meme Hay</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Grid item -->
+                    <div class="col-lg-6 col-md-6 grid-item mb-4">
+                        <div class="w-100 shadow-sm rounded-1 p-2 mm-box">
+                            <img class="img-fluid w-100 mb-3" src="https://res.cloudinary.com/mhmd/image/upload/v1579670057/grid-item-5_sft8ph.png" alt="">
+                            <h3 class="h5">Masonry grid item</h3>
+                            <div class="meme-meta mb-2">
+                                <span class="badge badge-secondary badge-pill hover-dark">Meme</span>
+                                <span class="badge badge-secondary badge-pill hover-dark">Meme Mèo</span>
+                                <span class="badge badge-secondary badge-pill hover-dark">Meme Hay</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Grid item -->
+                    <div class="col-lg-6 col-md-6 grid-item mb-4">
+                        <div class="w-100 shadow-sm rounded-1 p-2 mm-box">
+                            <img class="img-fluid w-100 mb-3" src="https://res.cloudinary.com/mhmd/image/upload/v1579670052/grid-item-6_apvkno.png" alt="">
+                            <h3 class="h5">Masonry grid item</h3>
+                            <div class="meme-meta mb-2">
+                                <span class="badge badge-secondary badge-pill hover-dark">Meme</span>
+                                <span class="badge badge-secondary badge-pill hover-dark">Meme Mèo</span>
+                                <span class="badge badge-secondary badge-pill hover-dark">Meme Hay</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 grid-item mb-4">
+                        <div class="w-100 shadow-sm rounded-1 p-2 mm-box">
+                            <img class="img-fluid w-100 mb-3" src="https://picsum.photos/600/900" alt="">
+                            <h3 class="h5">1 https://picsum.photos/600/900</h3>
+                            <div class="meme-meta mb-2">
+                                <span class="badge badge-secondary badge-pill hover-dark">Meme</span>
+                                <span class="badge badge-secondary badge-pill hover-dark">Meme Mèo</span>
+                                <span class="badge badge-secondary badge-pill hover-dark">Meme Hay</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 grid-item mb-4">
+                        <div class="w-100 shadow-sm rounded-1 p-2 mm-box">
+                            <img class="img-fluid w-100 mb-3" src="https://picsum.photos/900/800" alt="">
+                            <h3 class="h5">2 https://picsum.photos/900/800</h3>
+                            <div class="meme-meta mb-2">
+                                <span class="badge badge-secondary badge-pill hover-dark">Meme</span>
+                                <span class="badge badge-secondary badge-pill hover-dark">Meme Mèo</span>
+                                <span class="badge badge-secondary badge-pill hover-dark">Meme Hay</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 grid-item mb-4">
+                        <div class="w-100 shadow-sm rounded-1 p-2 mm-box">
+                            <img class="img-fluid w-100 mb-3" src="https://picsum.photos/1200/1700" alt="">
+                            <h3 class="h5">3 https://picsum.photos/1200/1700</h3>
+                            <div class="meme-meta mb-2">
+                                <span class="badge badge-secondary badge-pill hover-dark">Meme</span>
+                                <span class="badge badge-secondary badge-pill hover-dark">Meme Mèo</span>
+                                <span class="badge badge-secondary badge-pill hover-dark">Meme Hay</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 grid-item mb-4">
+                        <div class="w-100 shadow-sm rounded-1 p-2 mm-box">
+                            <img class="img-fluid w-100 mb-3" src="https://picsum.photos/500/700" alt="">
+                            <h3 class="h5">"4 https://picsum.photos/500/300</h3>
+                            <div class="meme-meta mb-2">
+                                <span class="badge badge-secondary badge-pill hover-dark">Meme</span>
+                                <span class="badge badge-secondary badge-pill hover-dark">Meme Mèo</span>
+                                <span class="badge badge-secondary badge-pill hover-dark">Meme Hay</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 grid-item mb-4">
+                        <div class="w-100 shadow-sm rounded-1 p-2 mm-box">
+                            <img class="img-fluid w-100 mb-3" src="https://picsum.photos/500/300" alt="">
+                            <h3 class="h5">"5 https://picsum.photos/500/400</h3>
+                            <div class="meme-meta mb-2">
+                                <span class="badge badge-secondary badge-pill hover-dark">Meme</span>
+                                <span class="badge badge-secondary badge-pill hover-dark">Meme Mèo</span>
+                                <span class="badge badge-secondary badge-pill hover-dark">Meme Hay</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="home-sidebar">
+                    <div class="sidebar p-2 pt-0 rounded bg-white shadow-sm mb-4">
+                        <h5 class="h5">TAG HOT</h5>
+                        <div class="tags clearfix">
+                            <a class="hashtag mb-2" href="https://memedaily.vn/tag/ong-nguyen-huu-da" title="Ông Nguyễn Hữu Đa">
+                                <span class="float-left badge badge-secondary badge-pill hover-dark mb-1 mr-1 hover-dark">#Ông Nguyễn Hữu Đa</span>
+                            </a>
+                            <a class="hashtag mb-2" href="https://memedaily.vn/tag/meme-meo" title="Meme mèo">
+                                <span class="float-left badge badge-secondary badge-pill hover-dark mb-1 mr-1 hover-dark">#Meme mèo</span>
+                            </a>
+                            <a class="hashtag mb-2" href="https://memedaily.vn/tag/meme-cho" title="Meme chó">
+                                <span class="float-left badge badge-secondary badge-pill hover-dark mb-1 mr-1 hover-dark">#Meme chó</span>
+                            </a>
+                            <a class="hashtag mb-2" href="https://memedaily.vn/tag/gau-truc-mat-nguoi-weibo" title="Meme gấu trúc">
+                                <span class="float-left badge badge-secondary badge-pill hover-dark mb-1 mr-1 hover-dark">#Meme gấu trúc</span>
+                            </a>
+                            <a class="hashtag mb-2" href="https://memedaily.vn/tag/duong-tang" title="Đường Tăng">
+                                <span class="float-left badge badge-secondary badge-pill hover-dark mb-1 mr-1 hover-dark">#Đường Tăng</span>
+                            </a>
+                            <a class="hashtag mb-2" href="https://memedaily.vn/tag/anh-da-den" title="Anh da đen">
+                                <span class="float-left badge badge-secondary badge-pill hover-dark mb-1 mr-1 hover-dark">#Anh da đen</span>
+                            </a>
+                            <a class="hashtag mb-2" href="https://memedaily.vn/tag/dau-nam" title="Đầu Nấm">
+                                <span class="float-left badge badge-secondary badge-pill hover-dark mb-1 mr-1 hover-dark">#Đầu Nấm</span>
+                            </a>
+                            <a class="hashtag mb-2" href="https://memedaily.vn/tag/jav-che" title="J.A.V chế">
+                                <span class="float-left badge badge-secondary badge-pill hover-dark mb-1 mr-1 hover-dark">#J.A.V chế</span>
+                            </a>
+                            <a class="hashtag mb-2" href="https://memedaily.vn/tag/kiem-hiep" title="Kiếm hiệp">
+                                <span class="float-left badge badge-secondary badge-pill hover-dark mb-1 mr-1 hover-dark">#Kiếm hiệp</span>
+                            </a>
+                            <a class="hashtag mb-2" href="https://memedaily.vn/tag/hacker-tre-trau" title="Hacker trẻ trâu bay acc">
+                                <span class="float-left badge badge-secondary badge-pill hover-dark mb-1 mr-1 hover-dark">#Hacker trẻ trâu bay acc</span>
+                            </a>
+                            <a class="hashtag mb-2" href="https://memedaily.vn/tag/doraemon" title="Doraemon">
+                                <span class="float-left badge badge-secondary badge-pill hover-dark mb-1 mr-1 hover-dark">#Doraemon</span>
+                            </a>
+                            <a class="hashtag mb-2" href="https://memedaily.vn/tag/xin-link" title="Xin link">
+                                <span class="float-left badge badge-secondary badge-pill hover-dark mb-1 mr-1 hover-dark">#Xin link</span>
+                            </a>
+                            <a class="hashtag mb-2" href="https://memedaily.vn/tag/meme-phim" title="Meme phim">
+                                <span class="float-left badge badge-secondary badge-pill hover-dark mb-1 mr-1 hover-dark">#Meme phim</span>
+                            </a>
+                            <a class="hashtag mb-2" href="https://memedaily.vn/tag/meme-cheems" title="Meme Cheems">
+                                <span class="float-left badge badge-secondary badge-pill hover-dark mb-1 mr-1 hover-dark">#Meme Cheems</span>
+                            </a>
+                            <a class="hashtag mb-2" href="https://memedaily.vn/tag/comment-dao" title="Comment dạo">
+                                <span class="float-left badge badge-secondary badge-pill hover-dark mb-1 mr-1 hover-dark">#Comment dạo</span>
+                            </a>
+                            <a class="hashtag mb-2" href="https://memedaily.vn/tag/nguoi-gia-hay-dung" title="Người già hay dùng">
+                                <span class="float-left badge badge-secondary badge-pill hover-dark mb-1 mr-1 hover-dark">#Người già hay dùng</span>
+                            </a>
+                            <a class="hashtag mb-2" href="https://memedaily.vn/tag/dau-cat-moi" title="Đầu cắt moi">
+                                <span class="float-left badge badge-secondary badge-pill hover-dark mb-1 mr-1 hover-dark">#Đầu cắt moi</span>
+                            </a>
+                            <a class="hashtag mb-2" href="https://memedaily.vn/tag/dark-meme" title="Dark Meme">
+                                <span class="float-left badge badge-secondary badge-pill hover-dark mb-1 mr-1 hover-dark">#Dark Meme</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="sidebar featured-memes d-none d-lg-block">
+                        <div class="row">
+                            <div class="col-12 mb-4">
+                                <div class="w-100 shadow-sm rounded-1 p-2 mm-box">
+                                    <img class="img-fluid w-100 mb-3" src="https://res.cloudinary.com/mhmd/image/upload/v1579670052/grid-item-6_apvkno.png" alt="">
+                                    <h3 class="h5">Masonry grid item</h3>
+                                    <div>
+                                        <span class="badge badge-secondary badge-pill hover-dark">Meme</span>
+                                        <span class="badge badge-secondary badge-pill hover-dark">Meme Mèo</span>
+                                        <span class="badge badge-secondary badge-pill hover-dark">Meme Hay</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 mb-4">
+                                <div class="w-100 shadow-sm rounded-1 p-2 mm-box">
+                                    <img class="img-fluid w-100 mb-3" src="https://res.cloudinary.com/mhmd/image/upload/v1579670052/grid-item-6_apvkno.png" alt="">
+                                    <h3 class="h5">Masonry grid item</h3>
+                                    <div>
+                                        <span class="badge badge-secondary badge-pill hover-dark">Meme</span>
+                                        <span class="badge badge-secondary badge-pill hover-dark">Meme Mèo</span>
+                                        <span class="badge badge-secondary badge-pill hover-dark">Meme Hay</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="bs-canvas bs-canvas-right position-fixed bg-light h-100">
+        <header class="bs-canvas-header p-3 bg-primary overflow-auto">
+            <button type="button" class="bs-canvas-close float-left close" aria-label="Close"><span aria-hidden="true" class="text-light">&times;</span></button>
+            <h4 class="d-inline-block text-light mb-0 float-right">Canvas Header</h4>
+        </header>
+        <div class="bs-canvas-content px-3 py-5">
+            <table class="table">
+                <thead class="thead-light">
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Item</th>
+                        <th scope="col">Qty.</th>
+                        <th scope="col">Remove</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>Quilt</td>
+                        <td>2</td>
+                        <td class="text-center"><a href="" class="text-decoration-none text-muted">&times;</a></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">2</th>
+                        <td>Shawl</td>
+                        <td>1</td>
+                        <td class="text-center"><a href="" class="text-decoration-none text-muted">&times;</a></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">3</th>
+                        <td>Pillow</td>
+                        <td>5</td>
+                        <td class="text-center"><a href="" class="text-decoration-none text-muted">&times;</a></td>
+                    </tr>
+                </tbody>
+            </table>
+            <p class="text-center"><button type="button" class="btn btn-primary">Checkout</button></p>
+            <div class="list-group my-5">
+                <a href="#" class="list-group-item list-group-item-action">Cras justo odio</a>
+                <a href="#" class="list-group-item list-group-item-action">Dapibus ac facilisis in</a>
+                <a href="#" class="list-group-item list-group-item-action">Morbi leo risus</a>
+                <a href="#" class="list-group-item list-group-item-action">Porta ac consectetur ac</a>
+                <a href="#" class="list-group-item list-group-item-action">Vestibulum at eros</a>
+            </div>
+            <p class="text-muted small">Subscribe to our newsletter:</p>
+            <div class="input-group flex-nowrap">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="addon-wrapping">@</span>
+                </div>
+                <input type="text" class="form-control" placeholder="Email" aria-label="Username" aria-describedby="addon-wrapping">
+            </div>
+            <p class="text-right mt-3 mb-0">
+                <button type="button" class="btn btn-outline-dark">Subscribe</button>
+            </p>
+        </div>
+    </div>
+    <script type="text/javascript">
+    $(function() {
+
+        // Initate masonry grid
+        var $grid = $('.gallery-wrapper').masonry({
+            temSelector: '.grid-item',
+            columnWidth: '.grid-sizer',
+            percentPosition: true,
+        });
+
+        // Initate imagesLoaded
+        $grid.imagesLoaded().progress(function() {
+            $grid.masonry('layout');
+        });
+    });
+    </script>
+    <script type="text/javascript">
+    jQuery(document).ready(function($) {
+        $(document).on('click', '.pull-bs-canvas-right', function() {
+            $('body').prepend('<div class="bs-canvas-overlay bg-dark position-fixed w-100 h-100"></div>');
+            if ($(this).hasClass('pull-bs-canvas-right'))
+                $('.bs-canvas-right').addClass('mr-0');
+            else
+                $('.bs-canvas-left').addClass('ml-0');
+            return false;
+        });
+
+        $(document).on('click', '.bs-canvas-close, .bs-canvas-overlay', function() {
+            var elm = $(this).hasClass('bs-canvas-close') ? $(this).closest('.bs-canvas') : $('.bs-canvas');
+            elm.removeClass('mr-0 ml-0');
+            $('.bs-canvas-overlay').remove();
+            return false;
+        });
+    });
+    </script>
+</body>
+
+</html>

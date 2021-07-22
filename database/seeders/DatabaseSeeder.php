@@ -2,20 +2,29 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Seeder;
+use Botble\Base\Supports\BaseSeeder;
 
-class DatabaseSeeder extends Seeder
+class DatabaseSeeder extends BaseSeeder
 {
     /**
-     * Seed the application's database.
+     * Run the database seeds.
      *
      * @return void
      */
     public function run()
     {
-        \App\Models\User::factory(10)->create();
-        $this->call([
-            UsersTableSeeder::class,
-        ]);
+        $this->activateAllPlugins();
+
+        $this->call(UserSeeder::class);
+        $this->call(LanguageSeeder::class);
+        $this->call(PageSeeder::class);
+        $this->call(GallerySeeder::class);
+        $this->call(MenuSeeder::class);
+        $this->call(WidgetSeeder::class);
+        $this->call(MemberSeeder::class);
+        $this->call(ContactSeeder::class);
+        $this->call(StaticBlockSeeder::class);
+        $this->call(ThemeOptionSeeder::class);
+        $this->call(BlogSeeder::class);
     }
 }

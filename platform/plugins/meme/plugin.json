@@ -1,0 +1,9 @@
+{
+    "name": "Meme",
+    "namespace": "Botble\\Meme\\",
+    "provider": "Botble\\Meme\\Providers\\MemeServiceProvider",
+    "author": "N/A",
+    "url": "N/A",
+    "version": "1.0",
+    "description": "The description for module meme"
+}

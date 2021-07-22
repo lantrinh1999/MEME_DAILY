@@ -1,0 +1,20 @@
+{
+  "name": "botble/meme",
+  "description": "Meme package for CMS application",
+  "type": "package",
+  "autoload": {
+    "psr-4": {
+      "Botble\\Meme\\": "src"
+    }
+  },
+  "require": {
+    "fabpot/goutte": "^4.0"
+  },
+  "extra":{
+    "laravel":{
+      "providers":[
+        "Botble\\Meme\\Providers\\MemeServiceProvider"
+      ]
+    }
+  }
+}
